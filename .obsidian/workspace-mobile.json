@@ -43,12 +43,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Log/Week/2026-W39.md",
+                "file": "02_Log/Days/2026-09-28.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-W39"
+              "title": "2026-09-28"
             }
           }
         ],
@@ -131,7 +131,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "02_Log/Week/2026-W38.md",
+            "file": "02_Log/Days/2026-09-28.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -200,8 +200,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be28173dd5f5668f",
+  "active": "667b38d88eabacf0",
   "lastOpenFiles": [
+    "02_Log/Days/2026-09-27.md",
+    "02_Log/Days/2026-09-26.md",
+    "02_Log/Days/2026-09-25.md",
     "02_Log/Days/2026-09-24.md",
     "02_Log/Days/2026-09-23.md",
     "02_Log/Week/2026-W39.md",
@@ -225,9 +228,6 @@
     "02_Log/Days/2026-09-03.md",
     "02_Log/Days/2026-09-02.md",
     "02_Log/Days/2026-08-27.md",
-    "Tasks.sync-conflict-20260816-133140-ADCXXVZ.md",
-    "02_Log/Days/2026-08-21.md",
-    "02_Log/Days/2026-08-22.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
