@@ -25,13 +25,123 @@ else dv.paragraph("*Чисто*");
 ```
 
 ---
-### 🧠 Запылившиеся алгоритмы (Давно не вызывались)
-```dataview
-TABLE task_num as "Задания", (date(today) - last_check).days as "Дней простоя"
-FROM "03_Knowledge/ЕГЭ/Русский/Номера"
-WHERE type = "rus_schema"
-SORT (date(today) - last_check).days DESC
-LIMIT 1
+### 🧠 Повторение номеров (давно не вызывались)
+```dataviewjs
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ⚙️ НАСТРОЙКИ (меняй здесь)
+const QUIZ_COUNT = 5; // Сколько квизов показывать за одно повторение
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const pages = dv.pages('"03_Knowledge/ЕГЭ/Русский/Номера"')
+    .where(p => p.type === "rus_schema")
+    .sort(p => {
+        const lc = p.last_check;
+        if (!lc) return -Infinity;
+        return window.moment(lc, "YYYY-MM-DD").valueOf();
+    }, "asc");
+
+if (pages.length === 0) {
+    dv.paragraph("❌ Нет файлов с `type: rus_schema`.");
+    return;
+}
+
+const page = pages[0];
+const taskNum = page.task_num;
+const lastCheck = page.last_check
+    ? window.moment(page.last_check, "YYYY-MM-DD").format("DD.MM.YYYY")
+    : "никогда";
+const daysAgo = page.last_check
+    ? window.moment().diff(window.moment(page.last_check, "YYYY-MM-DD"), "days")
+    : 9999;
+
+const tFile = app.vault.getAbstractFileByPath(page.file.path);
+const allTasks = Array.from(page.file.tasks.where(t => t.text.includes("http")));
+const openTasks = allTasks.filter(t => !t.completed);
+
+// ── Шапка блока ───────────────────────────────────────────────────────────────
+const header = document.createElement("div");
+header.style.cssText = "padding: 14px 16px; background: var(--background-primary-alt); border: 1px solid var(--background-modifier-border); border-radius: 10px; margin-bottom: 12px;";
+header.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div>
+            <span style="font-size:1.15em; font-weight:bold;">🔄 Задание ${taskNum}</span>
+            <span style="font-size:0.85em; color:var(--text-muted); margin-left:10px;">последний раз: ${lastCheck} (${daysAgo} дн. назад)</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button id="rv-schema-btn" style="background:#6366F1; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">📐 Схема</button>
+            <button id="rv-done-btn" style="background:#10B981; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">✅ Повторил</button>
+        </div>
+    </div>
+`;
+dv.container.appendChild(header);
+
+// ── Кнопка «Схема» — открывает canvas ─────────────────────────────────────────
+document.getElementById("rv-schema-btn").onclick = () => {
+    const canvasName = `Номер ${taskNum}.canvas`;
+    // Ищем canvas-файл в vault
+    const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
+    if (canvasFile) {
+        app.workspace.getLeaf(false).openFile(canvasFile);
+    } else {
+        new Notice(`❌ Файл «${canvasName}» не найден`);
+    }
+};
+
+// ── Кнопка «Повторил» — обновляет last_check ────────────────────────────────
+document.getElementById("rv-done-btn").onclick = async () => {
+    const today = window.moment().format("YYYY-MM-DD");
+    await app.vault.process(tFile, data =>
+        data.replace(/^last_check:.*$/m, `last_check: ${today}`)
+    );
+    new Notice(`✅ Задание ${taskNum}: last_check обновлён на ${today}`);
+};
+
+// ── Квизы ─────────────────────────────────────────────────────────────────────
+const quizPool = openTasks.length > 0 ? openTasks : allTasks; // если всё пройдено — берём всё
+const quizSlice = quizPool.slice(0, QUIZ_COUNT);
+
+if (quizSlice.length === 0) {
+    dv.paragraph("🔻 **Барабан пуст.** Добавь ссылки в файл задания.");
+    return;
+}
+
+const quizLabel = document.createElement("div");
+quizLabel.style.cssText = "font-size:0.85em; color:var(--text-muted); margin-bottom:6px;";
+quizLabel.textContent = `🎯 Квизы (${quizSlice.length} из ${allTasks.length}):`;
+dv.container.appendChild(quizLabel);
+
+const quizRow = document.createElement("div");
+quizRow.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px;";
+
+quizSlice.forEach((t, i) => {
+    const uMatch = t.text.match(/https?:\/\/[^\s)]+/);
+    const url = uMatch ? uMatch[0] : "#";
+    const nameMatch = t.text.match(/\(([^)]+)\)/);
+    const quizName = nameMatch ? nameMatch[1] : `Квиз #${i + 1}`;
+
+    const btn = document.createElement("button");
+    btn.innerHTML = t.completed
+        ? `✅ ${quizName}`
+        : `🚀 ${quizName}`;
+    btn.style.cssText = t.completed
+        ? "background:#374151; color:#9CA3AF; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;"
+        : "background:#2563EB; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:600; box-shadow:0 2px 6px rgba(37,99,235,0.3);";
+
+    btn.onclick = async () => {
+        window.open(url, "_blank");
+        if (!t.completed) {
+            await app.vault.process(tFile, data =>
+                data.replace("- [ ] " + t.text, "- [x] " + t.text)
+            );
+            btn.innerHTML = `✅ ${quizName}`;
+            btn.style.cssText = "background:#374151; color:#9CA3AF; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;";
+        }
+    };
+
+    quizRow.appendChild(btn);
+});
+
+dv.container.appendChild(quizRow);
 ```
 
 ```dataviewjs
