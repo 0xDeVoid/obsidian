@@ -49,16 +49,16 @@ style.innerHTML = `
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 .nothing-widget {
     font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.4;
     background-color: #000;
     color: #fff;
     border: 1px dashed #444;
-    border-radius: 12px;
-    padding: 18px;
+    border-radius: 10px;
+    padding: 12px;
     position: relative;
     overflow: hidden;
-    margin: 8px 0;
+    margin: 4px 0;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 .nothing-widget::before {
@@ -75,23 +75,23 @@ style.innerHTML = `
     z-index: 1;
 }
 .nothing-header {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 2px;
     color: #fff;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     border-bottom: 1px dashed #444;
-    padding-bottom: 12px;
+    padding-bottom: 8px;
 }
 .nothing-header::before {
     content: '';
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: #e50914;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
@@ -99,9 +99,9 @@ style.innerHTML = `
 .nothing-stat {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 6px;
+    padding-bottom: 4px;
     align-items: center;
 }
 .nothing-stat:last-child {
@@ -112,12 +112,12 @@ style.innerHTML = `
 .nothing-label {
     color: rgba(255,255,255,0.6);
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1.5px;
 }
 .nothing-val {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
 }
 .nothing-val.red {
     color: #e50914;
