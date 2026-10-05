@@ -44,8 +44,8 @@ const totalAvgScore = getAvgLast10(allRus) + getAvgLast10(allMath) + getAvgLast1
 // Функция очистки кривых дробей JS (чтобы вместо 14.30000001ч выводилось 14.3ч)
 const clean = (num) => Number(num.toFixed(1));
 
-dv.span(`
-<style>
+const style = document.createElement("style");
+style.innerHTML = \`
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 .nothing-widget {
     font-family: 'Space Mono', monospace;
@@ -53,8 +53,8 @@ dv.span(`
     line-height: 1.6;
     background-color: #000;
     color: #fff;
-    border: 1px solid #333;
-    border-radius: 16px;
+    border: 1px dashed #444;
+    border-radius: 12px;
     padding: 18px;
     position: relative;
     overflow: hidden;
@@ -92,7 +92,7 @@ dv.span(`
     display: block;
     width: 12px;
     height: 12px;
-    background-color: #e50914; /* Nothing Red */
+    background-color: #e50914;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
 }
@@ -123,31 +123,36 @@ dv.span(`
     color: #e50914;
     text-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
 }
-</style>
-<div class="nothing-widget">
+\`;
+
+const widget = document.createElement("div");
+widget.className = "nothing-widget";
+widget.innerHTML = \`
     <div class="nothing-content">
         <div class="nothing-header">SYS.TLMTRY</div>
         <div class="nothing-stat">
             <span class="nothing-label">ЕГЭ (ЧАСЫ)</span>
-            <span class="nothing-val">${clean(tEge)} h</span>
+            <span class="nothing-val">\${clean(tEge)} h</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">СРЕДНИЙ БАЛЛ</span>
-            <span class="nothing-val">${totalAvgScore}/275</span>
+            <span class="nothing-val">\${totalAvgScore}/275</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">КОД / CEO</span>
-            <span class="nothing-val">${clean(tWork)} h</span>
+            <span class="nothing-val">\${clean(tWork)} h</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">ЗАЛ (ТОННАЖ)</span>
-            <span class="nothing-val">${tGym.toLocaleString('ru-RU')} kg</span>
+            <span class="nothing-val">\${tGym.toLocaleString('ru-RU')} kg</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">ДО ЭКЗАМЕНА</span>
-            <span class="nothing-val red">${daysLeft+1} d</span>
+            <span class="nothing-val red">\${daysLeft+1} d</span>
         </div>
     </div>
-</div>
-`);
+\`;
+
+dv.container.appendChild(style);
+dv.container.appendChild(widget);
 ```
