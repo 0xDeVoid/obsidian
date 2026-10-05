@@ -62,7 +62,7 @@ const openTasks = allTasks.filter(t => !t.completed);
 
 // ── Шапка блока ───────────────────────────────────────────────────────────────
 const header = document.createElement("div");
-header.style.cssText = "padding: 14px 16px; background: var(--background-primary-alt); border: 1px solid var(--background-modifier-border); border-radius: 10px; margin-bottom: 12px;";
+header.style.cssText = "padding: 14px 16px; background: #000; border: 1px dashed #444; border-radius: 8px; margin-bottom: 12px; font-family:'Space Mono',monospace;";
 
 const headerTop = document.createElement("div");
 headerTop.style.cssText = "display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;";
@@ -70,7 +70,7 @@ headerTop.style.cssText = "display:flex; justify-content:space-between; align-it
 const headerInfo = document.createElement("div");
 
 const titleSpan = document.createElement("span");
-titleSpan.style.cssText = "font-size:1.15em; font-weight:bold;";
+titleSpan.style.cssText = "font-size:1.15em; font-weight:700; text-transform:uppercase; letter-spacing:1px;";
 titleSpan.textContent = `🔄 Задание ${taskNum}`;
 
 const subtitleSpan = document.createElement("span");
@@ -86,7 +86,7 @@ headerBtns.style.cssText = "display:flex; gap:8px; flex-wrap:wrap;";
 // Кнопка «Схема» — открывает canvas
 const schemaBtn = document.createElement("button");
 schemaBtn.textContent = "📐 Схема";
-schemaBtn.style.cssText = "background:#6366F1; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;";
+schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
 schemaBtn.onclick = () => {
     const canvasName = `Номер ${taskNum}.canvas`;
     const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
@@ -100,7 +100,7 @@ schemaBtn.onclick = () => {
 // Кнопка «Повторил» — обновляет last_check
 const doneBtn = document.createElement("button");
 doneBtn.textContent = "✅ Повторил";
-doneBtn.style.cssText = "background:#10B981; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;";
+doneBtn.style.cssText = "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
 doneBtn.onclick = async () => {
     const today = window.moment().format("YYYY-MM-DD");
     await app.fileManager.processFrontMatter(tFile, fm => {
@@ -142,8 +142,8 @@ quizSlice.forEach((t, i) => {
     const btn = document.createElement("button");
     btn.textContent = t.completed ? `✅ ${quizName}` : `🚀 ${quizName}`;
     btn.style.cssText = t.completed
-        ? "background:#374151; color:#9CA3AF; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;"
-        : "background:#2563EB; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:600; box-shadow:0 2px 6px rgba(37,99,235,0.3);";
+        ? "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;"
+        : "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
 
     btn.onclick = async () => {
         window.open(url, "_blank");
@@ -152,7 +152,7 @@ quizSlice.forEach((t, i) => {
                 data.replace("- [ ] " + t.text, "- [x] " + t.text)
             );
             btn.textContent = `✅ ${quizName}`;
-            btn.style.cssText = "background:#374151; color:#9CA3AF; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;";
+            btn.style.cssText = "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
         }
     };
 
@@ -227,13 +227,13 @@ if (vocabPaths.length > 0) {
         vocabProgress.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
 
         const vocabTitle = document.createElement("span");
-        vocabTitle.style.cssText = "font-size:0.82em; font-weight:600; color:#8B5CF6; white-space:nowrap;";
+        vocabTitle.style.cssText = "font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Space Mono',monospace; text-transform:uppercase;";
         vocabTitle.textContent = `📖 Словарь №${taskNum}`;
 
         const vBarOuter = document.createElement("div");
         vBarOuter.style.cssText = "flex:1; height:5px; background:var(--background-modifier-border); border-radius:3px; overflow:hidden;";
         const vBarInner = document.createElement("div");
-        vBarInner.style.cssText = "height:100%; background:#8B5CF6; border-radius:3px; transition:width 0.3s; width:0%;";
+        vBarInner.style.cssText = "height:100%; background:#e50914; border-radius:3px; transition:width 0.3s; width:0%;";
         vBarOuter.appendChild(vBarInner);
 
         const vCounter = document.createElement("span");
@@ -246,7 +246,7 @@ if (vocabPaths.length > 0) {
 
         // ── Карточка ─────────────────────────────────────────────
         const vocabCard = document.createElement("div");
-        vocabCard.style.cssText = "padding:10px 14px; background:var(--background-primary-alt); border-radius:8px; border:1px solid #8B5CF644;";
+        vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:'Space Mono',monospace;";
         vocabWrap.appendChild(vocabCard);
 
         function renderVocabCard() {
@@ -256,7 +256,7 @@ if (vocabPaths.length > 0) {
             vCounter.textContent = `${vIdx} / ${vocabBatch.length}`;
 
             if (vIdx >= vocabBatch.length) {
-                vocabCard.style.cssText = "padding:10px 14px; background:#8B5CF622; border-radius:8px; border:1px solid #8B5CF6; text-align:center; font-size:0.9em; font-weight:600;";
+                vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.9em; font-weight:700; font-family:'Space Mono',monospace;";
                 vocabCard.textContent = "✅ Словарь — сессия завершена!";
                 return;
             }
@@ -283,7 +283,7 @@ if (vocabPaths.length > 0) {
             const showBtn = document.createElement("button");
             showBtn.textContent = "👁️";
             showBtn.title = "Показать ответ";
-            showBtn.style.cssText = "background:transparent; color:#8B5CF6; border:1px solid #8B5CF644; padding:3px 8px; border-radius:5px; cursor:pointer; font-size:13px; flex-shrink:0;";
+            showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Space Mono',monospace;";
 
             topRow.appendChild(wordDiv);
             topRow.appendChild(showBtn);
@@ -334,12 +334,12 @@ if (vocabPaths.length > 0) {
 
             const btnW = document.createElement("button");
             btnW.textContent = "✅ Знаю";
-            btnW.style.cssText = "flex:1; background:#10B981; color:white; border:none; padding:7px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:13px;";
+            btnW.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
             btnW.onclick = () => processVocab(true);
 
             const btnF = document.createElement("button");
             btnF.textContent = "❌ Ошибся";
-            btnF.style.cssText = "flex:1; background:#EF4444; color:white; border:none; padding:7px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:13px;";
+            btnF.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
             btnF.onclick = () => processVocab(false);
 
             actionsDiv.appendChild(btnW);
@@ -435,13 +435,13 @@ async function makeWordBlock(filePath, title, accentColor) {
     // ── 100% победа ──────────────────────────────────────────
     if (allTasks.length > 0 && openTasks.length === 0) {
         const winDiv = document.createElement("div");
-        winDiv.style.cssText = `display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:${accentColor}22; border:1px solid ${accentColor}; border-radius:8px;`;
+        winDiv.style.cssText = `display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:#000; border:1px dashed #444; border-radius:8px;`;
         const winText = document.createElement("span");
         winText.style.cssText = "font-size:0.9em; font-weight:600;";
         winText.textContent = `🏆 ${title} — всё выучено!`;
         const resetBtn = document.createElement("button");
         resetBtn.textContent = "🔄 2-й круг";
-        resetBtn.style.cssText = `background:${accentColor}; color:white; border:none; padding:5px 12px; border-radius:5px; cursor:pointer; font-size:12px; font-weight:bold;`;
+        resetBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
         resetBtn.onclick = async () => {
             await app.vault.process(tFile, data => data.replace(/- \[x\]/g, "- [ ]"));
         };
@@ -473,7 +473,7 @@ async function makeWordBlock(filePath, title, accentColor) {
 
     if (idx >= batch.length && batch.length === 0) {
         const doneDiv = document.createElement("div");
-        doneDiv.style.cssText = `padding:10px 14px; background:${accentColor}22; border:1px solid ${accentColor}; border-radius:8px; font-size:0.9em; font-weight:600;`;
+        doneDiv.style.cssText = `padding:10px 14px; background:#000; border:1px dashed #444; border-radius:8px; font-size:0.9em; font-weight:700; font-family:\'Space Mono\',monospace;`;
         doneDiv.textContent = `✅ ${title} — норма выполнена (${DAILY_LIMIT} слов)`;
         wrap.appendChild(doneDiv);
         return;
@@ -484,13 +484,13 @@ async function makeWordBlock(filePath, title, accentColor) {
     progressBar.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
 
     const titleSpan = document.createElement("span");
-    titleSpan.style.cssText = `font-size:0.82em; font-weight:600; color:${accentColor}; white-space:nowrap;`;
+    titleSpan.style.cssText = `font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:\'Space Mono\',monospace; text-transform:uppercase;`;
     titleSpan.textContent = title;
 
     const barOuter = document.createElement("div");
     barOuter.style.cssText = "flex:1; height:5px; background:var(--background-modifier-border); border-radius:3px; overflow:hidden;";
     const barInner = document.createElement("div");
-    barInner.style.cssText = `height:100%; background:${accentColor}; border-radius:3px; transition:width 0.3s; width:0%;`;
+    barInner.style.cssText = `height:100%; background:#e50914; border-radius:3px; transition:width 0.3s; width:0%;`;
     barOuter.appendChild(barInner);
 
     const counterSpan = document.createElement("span");
@@ -503,7 +503,7 @@ async function makeWordBlock(filePath, title, accentColor) {
 
     // ── Карточка ──────────────────────────────────────────────
     const card = document.createElement("div");
-    card.style.cssText = `padding:10px 14px; background:var(--background-primary-alt); border-radius:8px; border:1px solid var(--background-modifier-border);`;
+    card.style.cssText = `padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:\'Space Mono\',monospace;`;
     wrap.appendChild(card);
 
     function updateProgress() {
@@ -516,7 +516,7 @@ async function makeWordBlock(filePath, title, accentColor) {
         card.innerHTML = "";
 
         if (idx >= batch.length) {
-            card.style.cssText = `padding:10px 14px; background:${accentColor}22; border-radius:8px; border:1px solid ${accentColor}; text-align:center; font-size:0.9em; font-weight:600;`;
+            card.style.cssText = `padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.9em; font-weight:700; font-family:\'Space Mono\',monospace;`;
             card.textContent = `✅ ${title} — сессия завершена!`;
             updateProgress();
             return;
@@ -544,7 +544,7 @@ async function makeWordBlock(filePath, title, accentColor) {
         const showBtn = document.createElement("button");
         showBtn.textContent = "👁️";
         showBtn.title = "Показать ответ";
-        showBtn.style.cssText = `background:transparent; color:${accentColor}; border:1px solid ${accentColor}44; padding:3px 8px; border-radius:5px; cursor:pointer; font-size:13px; flex-shrink:0;`;
+        showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Space Mono',monospace;";
 
         topRow.appendChild(wordDiv);
         topRow.appendChild(showBtn);
@@ -592,12 +592,12 @@ async function makeWordBlock(filePath, title, accentColor) {
 
         const btnWin = document.createElement("button");
         btnWin.textContent = "✅ Знаю";
-        btnWin.style.cssText = "flex:1; background:#10B981; color:white; border:none; padding:7px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:13px;";
+        btnWin.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
         btnWin.onclick = () => processTask(true);
 
         const btnFail = document.createElement("button");
         btnFail.textContent = "❌ Ошибся";
-        btnFail.style.cssText = "flex:1; background:#EF4444; color:white; border:none; padding:7px; border-radius:6px; cursor:pointer; font-weight:bold; font-size:13px;";
+        btnFail.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
         btnFail.onclick = () => processTask(false);
 
         actionsDiv.appendChild(btnWin);
@@ -644,7 +644,7 @@ if (count >= CAPACITY) color = "#EF4444"; // Красный (Перегруз)
 else if (count >= CAPACITY * 0.7) color = "#F59E0B"; // Желтый (Внимание)
 
 dv.span(`
-<div style="background: var(--background-primary-alt); padding: 15px; border-radius: 8px; border: 1px solid var(--background-modifier-border); margin-bottom: 20px;">
+<div style="background: #000; padding: 15px; border-radius: 8px; border: 1px dashed #444; margin-bottom: 20px; font-family:'Space Mono',monospace;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <b style="color: ${color}; font-size: 1.1em;">📦 Буфер задач: ${count} / ${CAPACITY}</b>
         <span style="font-size: 0.9em; color: var(--text-muted);">Разбор: <b>${nextReview.format("DD.MM в HH:mm")}</b> (${nextReview.fromNow()})</span>
