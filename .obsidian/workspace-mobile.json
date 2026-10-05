@@ -57,12 +57,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md",
-                "mode": "source",
-                "source": false
+                "file": "Tasks.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "Словник"
+              "title": "Tasks"
             }
           }
         ],
@@ -216,6 +216,10 @@
   },
   "active": "aecab1a709d83c73",
   "lastOpenFiles": [
+    "02_Log/Days/2026-10-05.md",
+    "Tasks.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
+    "02_Log/Week/2026-W41.md",
     "02_Log/Days/2026-10-03.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Задание 15 (Н и НН).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md",
@@ -238,10 +242,6 @@
     "02_Log/Days/2026-09-14.md",
     "02_Log/Days/2026-09-13.md",
     "02_Log/Week/2026-W37.md",
-    "02_Log/Days/2026-09-11.md",
-    "Dashboard.md",
-    "02_Log/Days/2026-09-10.md",
-    "Tasks.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
@@ -267,7 +267,6 @@
     "База знаний/ЕГЭ/Русский/Номер 15.canvas",
     "База знаний/ЕГЭ/Русский/Номер 13.canvas",
     "База знаний/ЕГЭ/Русский/Номер 10.canvas",
-    "База знаний/ЕГЭ/Русский/Задание 7.canvas",
     "Вложения/PDF/Задание_7__Теория__Слова_для_заучивания__afgk3.pdf"
   ]
 }
