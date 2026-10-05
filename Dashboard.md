@@ -6,89 +6,87 @@ style.innerHTML = `
 @media (max-width: 768px) { .dash-container { grid-template-columns: 1fr; } }
 .dash-col { display: flex; flex-direction: column; gap: 24px; }
 
-/* Volumetric Glassmorphism Cards */
+/* Brutalist Nothing Cards */
 .dash-card {
-    background: linear-gradient(145deg, rgba(36, 40, 59, 0.6), rgba(26, 27, 38, 0.9));
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(125, 207, 255, 0.1);
+    background-color: #000;
+    border: 2px solid #333;
     border-radius: 16px;
     padding: 22px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.5), 
-        inset 0 1px 1px rgba(255, 255, 255, 0.05),
-        0 0 20px rgba(125, 207, 255, 0.03);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.05); /* Brutalist shadow */
 }
-.dash-card:hover {
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.6), 
-        inset 0 1px 1px rgba(255, 255, 255, 0.1),
-        0 0 25px rgba(125, 207, 255, 0.15);
-    border: 1px solid rgba(125, 207, 255, 0.25);
-    transform: translateY(-2px);
+.dash-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 8px 8px;
+    z-index: 0;
+    pointer-events: none;
+}
+.dash-card > * {
+    position: relative;
+    z-index: 1;
 }
 
-/* Neon Headings */
+/* Nothing Headings */
 .dash-card h3 { 
     margin-top: 0; margin-bottom: 18px; font-size: 1.15em; 
-    color: #7dcfff; 
-    text-shadow: 0 0 10px rgba(125, 207, 255, 0.4);
-    border-bottom: 1px solid rgba(125, 207, 255, 0.2); 
+    color: #fff; 
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px dashed #444; 
     padding-bottom: 10px; display: flex; align-items: center; gap: 8px; 
 }
 
-/* Volumetric Buttons */
+/* Brutalist Buttons */
 .dv-btn { 
     padding: 8px 14px; 
-    background: rgba(41, 46, 66, 0.8); 
-    color: var(--text-normal); 
-    border: 1px solid rgba(122, 162, 247, 0.2); 
-    border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 0.9em;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+    background: #000; 
+    color: #fff; 
+    border: 1px solid #555; 
+    border-radius: 4px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.9em;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
 }
 .dv-btn:hover { 
-    background: rgba(122, 162, 247, 0.15); 
-    border-color: #7aa2f7; 
-    box-shadow: 0 0 12px rgba(122, 162, 247, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    background: #e50914; 
+    border-color: #e50914; 
+    color: #fff;
 }
 .dv-btn-active { 
-    background: linear-gradient(145deg, #7aa2f7, #3d59a1); 
-    color: #1a1b26; 
-    border: none;
-    box-shadow: 0 0 15px rgba(122, 162, 247, 0.5), inset 0 2px 4px rgba(255,255,255,0.3);
-    text-shadow: none;
+    background: #e50914; 
+    color: #fff; 
+    border: 1px solid #e50914;
 }
 
-/* Glowing Progress Ring */
-.progress-ring { transform: rotate(-90deg); transform-origin: 50% 50%; filter: drop-shadow(0 0 8px rgba(158, 206, 106, 0.4)); }
-.progress-ring__circle-bg { stroke: rgba(255,255,255,0.05); }
-.progress-ring__circle { stroke: #9ece6a; transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1); }
+/* Progress Ring */
+.progress-ring { transform: rotate(-90deg); transform-origin: 50% 50%; filter: drop-shadow(0 0 6px rgba(229, 9, 20, 0.5)); }
+.progress-ring__circle-bg { stroke: #222; }
+.progress-ring__circle { stroke: #e50914; transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1); }
 
 /* Quick Nav */
 .quick-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .quick-nav-btn { 
     display: flex; align-items: center; justify-content: center; padding: 14px; 
-    background: rgba(41, 46, 66, 0.6); 
-    border: 1px solid rgba(187, 154, 247, 0.1); 
-    border-radius: 10px; text-decoration: none !important; color: var(--text-normal); font-weight: bold; font-size: 0.95em; transition: all 0.3s; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.02);
+    background: #000; 
+    border: 1px solid #444; 
+    border-radius: 8px; text-decoration: none !important; color: #fff; font-weight: bold; font-size: 0.95em; transition: all 0.2s; 
+    font-family: 'Space Mono', monospace;
 }
 .quick-nav-btn:hover { 
-    background: rgba(187, 154, 247, 0.1); 
-    border-color: #bb9af7; color: #bb9af7; 
-    box-shadow: 0 0 15px rgba(187, 154, 247, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-    text-shadow: 0 0 8px rgba(187, 154, 247, 0.4);
-    transform: translateY(-1px);
+    background: #e50914; 
+    border-color: #e50914; color: #fff; 
 }
 
 /* Daily Summary Panel */
 .daily-summary { 
     display: flex; align-items: center; justify-content: space-between; 
-    background: rgba(41, 46, 66, 0.4); 
+    background: #000; 
     padding: 18px; border-radius: 12px; margin-bottom: 20px; 
-    border: 1px solid rgba(255,255,255,0.05);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    border: 1px dashed #444;
 }
 `;
 dv.container.appendChild(style);
@@ -147,9 +145,9 @@ const summaryWrapper = document.createElement("div");
 summaryWrapper.innerHTML = `
 <div class="daily-summary">
     <div>
-        <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 4px; color: #c0caf5;">${greet}, Rayten!</div>
+        <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 4px; color: #fff;">${greet}, Rayten!</div>
         <div style="font-size: 0.85em; color: var(--text-muted);">
-            ${page ? `Задачи на день: <b style="color: #9ece6a">${completed} / ${total}</b>` : `⚠️ Заметка за сегодня не создана`}
+            ${page ? `Задачи на день: <b style="color: #e50914">${completed} / ${total}</b>` : `⚠️ Заметка за сегодня не создана`}
         </div>
     </div>
     <div style="position: relative; width: 60px; height: 60px;">
@@ -158,7 +156,7 @@ summaryWrapper.innerHTML = `
             <circle class="progress-ring__circle" stroke-width="5" fill="transparent" r="${radius}" cx="30" cy="30" 
                     stroke-dasharray="${circ} ${circ}" stroke-dashoffset="${offset}" stroke-linecap="round"/>
         </svg>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.8em; font-weight: bold; color: #c0caf5;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.8em; font-weight: bold; color: #fff;">
             ${pct}%
         </div>
     </div>
@@ -287,7 +285,7 @@ const wallContainer = document.createElement("div");
 
 let headerHtml = `
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-        <span style="font-weight: bold; font-size: 14px; color: #c0caf5;">АКТИВНЫЙ СТРИК: <span style="color: #9ece6a; font-size: 16px;">🔥 ${currentStreak} ДН.</span></span>
+        <span style="font-weight: bold; font-size: 14px; color: #fff;">АКТИВНЫЙ СТРИК: <span style="color: #e50914; font-size: 16px;">🔥 ${currentStreak} ДН.</span></span>
         <span style="font-size: 12px; color: var(--text-muted);">180 дней</span>
     </div>
 `;
@@ -303,9 +301,9 @@ for (let i = daysCount - 1; i >= 0; i--) {
     let tooltip = 'Нет задач';
     if (stats && stats.total > 0) tooltip = `Задач: ${stats.completed}/${stats.total}`;
 
-    let bg = isDone ? '#9ece6a' : 'var(--background-secondary)';
-    let border = isToday ? '2px solid #7dcfff' : '1px solid var(--background-modifier-border)';
-    let color = isDone ? '#1a1b26' : 'transparent';
+    let bg = isDone ? '#e50914' : 'var(--background-secondary)';
+    let border = isToday ? '2px solid #e50914' : '1px solid var(--background-modifier-border)';
+    let color = isDone ? '#000' : 'transparent';
 
     gridHtml += `
         <div title="${dStr} | ${tooltip}" style="
@@ -374,9 +372,9 @@ if (weekPagesChart.length < 1) {
         const inf = cleanVal(p.inf_score);
 
         allPointsByX[x] = [];
-        if (r !== null) { rusPoints.push({x, y: getValuesY(r), val: r}); allPointsByX[x].push({y: getValuesY(r), val: r, color: "#f7768e"}); }
-        if (m !== null) { mathPoints.push({x, y: getValuesY(m), val: m}); allPointsByX[x].push({y: getValuesY(m), val: m, color: "#7aa2f7"}); }
-        if (inf !== null) { infPoints.push({x, y: getValuesY(inf), val: inf}); allPointsByX[x].push({y: getValuesY(inf), val: inf, color: "#9ece6a"}); }
+        if (r !== null) { rusPoints.push({x, y: getValuesY(r), val: r}); allPointsByX[x].push({y: getValuesY(r), val: r, color: "#e50914"}); }
+        if (m !== null) { mathPoints.push({x, y: getValuesY(m), val: m}); allPointsByX[x].push({y: getValuesY(m), val: m, color: "#ffffff"}); }
+        if (inf !== null) { infPoints.push({x, y: getValuesY(inf), val: inf}); allPointsByX[x].push({y: getValuesY(inf), val: inf, color: "#888888"}); }
         
         xLabels += `<text x="${x}" y="${height - 12}" font-size="11" font-weight="bold" fill="var(--text-muted)" text-anchor="middle">W${label}</text>`;
     });
@@ -421,16 +419,16 @@ if (weekPagesChart.length < 1) {
 
     chartInner.innerHTML = `
         <div style="display: flex; gap: 16px; margin-bottom: 15px; font-size: 12px; font-weight: bold; justify-content: center; flex-wrap: wrap;">
-            <span style="color: #f7768e;">● Русский (${rusAvg})</span>
-            <span style="color: #7aa2f7;">● Математика (${mathAvg})</span>
-            <span style="color: #9ece6a;">● Информатика (${infAvg})</span>
+            <span style="color: #e50914;">● Русский (${rusAvg})</span>
+            <span style="color: #ffffff;">● Математика (${mathAvg})</span>
+            <span style="color: #e50914;">● Информатика (${infAvg})</span>
         </div>
         <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
             ${yGrid}
             ${xLabels}
-            <path d="${makePath(rusPoints)}" fill="none" stroke="#f7768e" stroke-width="2.5"></path>
-            <path d="${makePath(mathPoints)}" fill="none" stroke="#7aa2f7" stroke-width="2.5"></path>
-            <path d="${makePath(infPoints)}" fill="none" stroke="#9ece6a" stroke-width="2.5"></path>
+            <path d="${makePath(rusPoints)}" fill="none" stroke="#e50914" stroke-width="2.5"></path>
+            <path d="${makePath(mathPoints)}" fill="none" stroke="#ffffff" stroke-width="2.5"></path>
+            <path d="${makePath(infPoints)}" fill="none" stroke="#888888" stroke-width="2.5"></path>
             ${circlesAndLabels}
         </svg>
     `;
