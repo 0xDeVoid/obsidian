@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Summer ideas",
+      "path": "01_Domains/Summer ideas.md"
+    },
+    {
       "basename": "[SYS_INIT]",
       "path": "System/[SYS_INIT].md"
     },
@@ -9,16 +13,16 @@
       "path": "Dashboard.md"
     },
     {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
       "basename": "2026-10-05",
       "path": "02_Log/Days/2026-10-05.md"
     },
     {
       "basename": "2026-W41",
       "path": "02_Log/Week/2026-W41.md"
-    },
-    {
-      "basename": "Tasks",
-      "path": "Tasks.md"
     },
     {
       "basename": "Номер 9",
@@ -55,10 +59,6 @@
     {
       "basename": "Ошибки квизы",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md"
-    },
-    {
-      "basename": "словарь",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/словарь.md"
     }
   ],
   "omittedPaths": [

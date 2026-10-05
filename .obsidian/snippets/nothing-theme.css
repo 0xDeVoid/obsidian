@@ -1,0 +1,128 @@
+/* NOTHING GLOBAL THEME FOR OBSIDIAN */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    /* Base Colors */
+    --background-primary: #000000 !important;
+    --background-primary-alt: #0a0a0a !important;
+    --background-secondary: #000000 !important;
+    --background-secondary-alt: #111111 !important;
+    
+    /* Borders & Accents */
+    --background-modifier-border: rgba(255, 255, 255, 0.15) !important;
+    --background-modifier-hover: rgba(255, 255, 255, 0.05) !important;
+    
+    /* Text */
+    --text-normal: #ffffff !important;
+    --text-muted: rgba(255, 255, 255, 0.6) !important;
+    --text-faint: rgba(255, 255, 255, 0.3) !important;
+    
+    /* Nothing Red */
+    --interactive-accent: #e50914 !important;
+    --interactive-accent-hover: #ff0f1b !important;
+    
+    /* Fonts */
+    --font-text: 'Inter', sans-serif !important;
+    --font-monospace: 'Space Mono', monospace !important;
+    --font-ui: 'Space Mono', monospace !important;
+    
+    --text-selection: rgba(229, 9, 20, 0.3) !important;
+    
+    --checkbox-color: #e50914 !important;
+    
+    /* Graph */
+    --graph-text: #ffffff !important;
+    --graph-line: rgba(255, 255, 255, 0.2) !important;
+    --graph-line-focused: #e50914 !important;
+    --graph-node: #ffffff !important;
+    --graph-node-focused: #e50914 !important;
+    --graph-node-unresolved: #333333 !important;
+    --graph-node-tag: #e50914 !important;
+    --graph-node-attachment: #888888 !important;
+}
+
+/* Global Dot Matrix Background (Applies to sidebars and main editor/preview) */
+.workspace-leaf-content, .markdown-source-view, .markdown-preview-view {
+    background-color: #000000 !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px) !important;
+    background-size: 8px 8px !important;
+}
+
+/* Fix text legibility over dot background by slightly darkening text backgrounds, or keeping it raw for brutalism */
+/* We will keep it raw for the Nothing feel. */
+
+/* Headings in Space Mono */
+h1, h2, h3, h4, h5, h6,
+.cm-header {
+    font-family: 'Space Mono', monospace !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 { color: #fff !important; }
+h2 { color: #e50914 !important; border-bottom: 1px dashed rgba(255,255,255,0.2) !important; }
+h3 { color: #fff !important; }
+
+/* Custom Checkboxes */
+input[type="checkbox"] {
+    border-radius: 0px !important;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+}
+input[type="checkbox"]:checked {
+    background-color: #e50914 !important;
+    border-color: #e50914 !important;
+}
+
+/* UI Elements */
+.workspace-tab-header-container, .nav-header {
+    background-color: #000 !important;
+    border-bottom: 1px dashed rgba(255,255,255,0.1) !important;
+}
+
+.workspace-tab-header.is-active {
+    color: #e50914 !important; 
+    border-bottom: 2px solid #e50914 !important;
+}
+
+.nav-file-title, .nav-folder-title {
+    font-size: 13px !important;
+}
+.nav-file-title.is-active {
+    color: #e50914 !important;
+    background-color: rgba(229, 9, 20, 0.1) !important;
+    border-left: 2px solid #e50914;
+}
+
+/* Callouts / Dataview custom blocks */
+.callout {
+    background-color: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* Calendar Plugin overrides for Nothing style */
+#calendar-container {
+    font-family: 'Space Mono', monospace !important;
+    background-color: #000 !important;
+    --color-background-heading: transparent !important;
+    --color-background-day: transparent !important;
+    --color-dot: #e50914 !important;
+    --color-text-today: #e50914 !important;
+    --color-background-today: rgba(229, 9, 20, 0.1) !important;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+/* Hide annoying window borders and make splitters clean */
+.workspace-split.mod-root {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 8px;
+}
+.workspace-leaf-content {
+    border: none !important;
+}

@@ -45,7 +45,7 @@ const totalAvgScore = getAvgLast10(allRus) + getAvgLast10(allMath) + getAvgLast1
 const clean = (num) => Number(num.toFixed(1));
 
 const style = document.createElement("style");
-style.innerHTML = \`
+style.innerHTML = `
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 .nothing-widget {
     font-family: 'Space Mono', monospace;
@@ -123,35 +123,35 @@ style.innerHTML = \`
     color: #e50914;
     text-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
 }
-\`;
+`;
 
 const widget = document.createElement("div");
 widget.className = "nothing-widget";
-widget.innerHTML = \`
+widget.innerHTML = `
     <div class="nothing-content">
         <div class="nothing-header">SYS.TLMTRY</div>
         <div class="nothing-stat">
             <span class="nothing-label">ЕГЭ (ЧАСЫ)</span>
-            <span class="nothing-val">\${clean(tEge)} h</span>
+            <span class="nothing-val">${clean(tEge)} h</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">СРЕДНИЙ БАЛЛ</span>
-            <span class="nothing-val">\${totalAvgScore}/275</span>
+            <span class="nothing-val">${totalAvgScore}/275</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">КОД / CEO</span>
-            <span class="nothing-val">\${clean(tWork)} h</span>
+            <span class="nothing-val">${clean(tWork)} h</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">ЗАЛ (ТОННАЖ)</span>
-            <span class="nothing-val">\${tGym.toLocaleString('ru-RU')} kg</span>
+            <span class="nothing-val">${tGym.toLocaleString('ru-RU')} kg</span>
         </div>
         <div class="nothing-stat">
             <span class="nothing-label">ДО ЭКЗАМЕНА</span>
-            <span class="nothing-val red">\${daysLeft+1} d</span>
+            <span class="nothing-val red">${daysLeft+1} d</span>
         </div>
     </div>
-\`;
+`;
 
 dv.container.appendChild(style);
 dv.container.appendChild(widget);

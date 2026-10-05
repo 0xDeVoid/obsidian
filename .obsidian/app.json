@@ -5,8 +5,5 @@
   "alwaysUpdateLinks": true,
   "readableLineLength": true,
   "openBehavior": "file:Dashboard.md",
-  "spellcheck": false,
-  "enabledCssSnippets": [
-    "nothing-sidebars"
-  ]
+  "spellcheck": false
 }

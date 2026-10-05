@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
+                "file": "01_Domains/Summer ideas.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "Summer ideas"
             }
           }
         ]
@@ -33,7 +33,7 @@
       {
         "id": "e807f3b9e9eda545",
         "type": "tabs",
-        "dimension": 42.63959390862944,
+        "dimension": 30.79268292682927,
         "children": [
           {
             "id": "a779024a4f723570",
@@ -83,18 +83,18 @@
         ]
       },
       {
-        "id": "8a22f712f0f76221",
+        "id": "4de278b6a7146236",
         "type": "tabs",
-        "dimension": 24.873096446700504,
+        "dimension": 35.16260162601626,
         "children": [
           {
-            "id": "9b5e9f613d361068",
+            "id": "68c14328b60b1f4e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "System/[SYS_INIT].md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -106,7 +106,7 @@
       {
         "id": "6a5fe99b56b6e687",
         "type": "tabs",
-        "dimension": 32.48730964467005,
+        "dimension": 34.04471544715447,
         "children": [
           {
             "id": "30efe558dd8fec0f",
@@ -122,7 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 316.5859375
+    "width": 338.5
   },
   "right": {
     "id": "7ea4da97c78ab433",
@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "System/[SYS_INIT].md",
+                "file": "01_Domains/Summer ideas.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -303,12 +303,14 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "9b5e9f613d361068",
+  "active": "52d2cb72e161d20c",
   "lastOpenFiles": [
+    "System/[SYS_INIT].md",
+    "01_Domains/Summer ideas.md",
     "Dashboard.md",
+    "Tasks.md",
     "02_Log/Week/2026-W41.md",
     "02_Log/Days/2026-10-05.md",
-    "Tasks.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
@@ -331,8 +333,6 @@
     "02_Log/Week/2026-W40.md",
     "02_Log/Days/2026-08-31.md",
     "02_Log/Days/2026-08-14.md",
-    "02_Log/Days/2026-08-13.md",
-    "02_Log/Days/2026-10-03.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20251227143939829.png",

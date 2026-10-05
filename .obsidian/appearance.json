@@ -1,4 +1,6 @@
 {
-  "cssTheme": "Tokyo Night",
-  "enabledCssSnippets": []
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "nothing-theme"
+  ]
 }
