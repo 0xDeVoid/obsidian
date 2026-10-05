@@ -24,8 +24,8 @@ body {
     
     /* Fonts */
     --font-text: 'Inter', sans-serif !important;
-    --font-monospace: 'Space Mono', monospace !important;
-    --font-ui: 'Space Mono', monospace !important;
+    --font-monospace: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
+    --font-ui: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
     
     --text-selection: rgba(229, 9, 20, 0.3) !important;
     
@@ -55,7 +55,7 @@ body {
 /* Headings in Space Mono */
 h1, h2, h3, h4, h5, h6,
 .cm-header {
-    font-family: 'Space Mono', monospace !important;
+    font-family: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -103,7 +103,7 @@ input[type="checkbox"]:checked {
 
 /* Calendar Plugin overrides for Nothing style */
 #calendar-container {
-    font-family: 'Space Mono', monospace !important;
+    font-family: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
     background-color: #000 !important;
     --color-background-heading: transparent !important;
     --color-background-day: transparent !important;

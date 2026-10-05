@@ -62,7 +62,7 @@ const openTasks = allTasks.filter(t => !t.completed);
 
 // ── Шапка блока ───────────────────────────────────────────────────────────────
 const header = document.createElement("div");
-header.style.cssText = "padding: 14px 16px; background: #000; border: 1px dashed #444; border-radius: 8px; margin-bottom: 12px; font-family:'Space Mono',monospace;";
+header.style.cssText = "padding: 14px 16px; background: #000; border: 1px dashed #444; border-radius: 8px; margin-bottom: 12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;";
 
 const headerTop = document.createElement("div");
 headerTop.style.cssText = "display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;";
@@ -86,7 +86,7 @@ headerBtns.style.cssText = "display:flex; gap:8px; flex-wrap:wrap;";
 // Кнопка «Схема» — открывает canvas
 const schemaBtn = document.createElement("button");
 schemaBtn.textContent = "📐 Схема";
-schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
+schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
 schemaBtn.onclick = () => {
     const canvasName = `Номер ${taskNum}.canvas`;
     const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
@@ -100,7 +100,7 @@ schemaBtn.onclick = () => {
 // Кнопка «Повторил» — обновляет last_check
 const doneBtn = document.createElement("button");
 doneBtn.textContent = "✅ Повторил";
-doneBtn.style.cssText = "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
+doneBtn.style.cssText = "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
 doneBtn.onclick = async () => {
     const today = window.moment().format("YYYY-MM-DD");
     await app.fileManager.processFrontMatter(tFile, fm => {
@@ -142,8 +142,8 @@ quizSlice.forEach((t, i) => {
     const btn = document.createElement("button");
     btn.textContent = t.completed ? `✅ ${quizName}` : `🚀 ${quizName}`;
     btn.style.cssText = t.completed
-        ? "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;"
-        : "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
+        ? "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;"
+        : "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
 
     btn.onclick = async () => {
         window.open(url, "_blank");
@@ -152,7 +152,7 @@ quizSlice.forEach((t, i) => {
                 data.replace("- [ ] " + t.text, "- [x] " + t.text)
             );
             btn.textContent = `✅ ${quizName}`;
-            btn.style.cssText = "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
+            btn.style.cssText = "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
         }
     };
 
@@ -227,7 +227,7 @@ if (vocabPaths.length > 0) {
         vocabProgress.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
 
         const vocabTitle = document.createElement("span");
-        vocabTitle.style.cssText = "font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Space Mono',monospace; text-transform:uppercase;";
+        vocabTitle.style.cssText = "font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
         vocabTitle.textContent = `📖 Словарь №${taskNum}`;
 
         const vBarOuter = document.createElement("div");
@@ -246,7 +246,7 @@ if (vocabPaths.length > 0) {
 
         // ── Карточка ─────────────────────────────────────────────
         const vocabCard = document.createElement("div");
-        vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:'Space Mono',monospace;";
+        vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;";
         vocabWrap.appendChild(vocabCard);
 
         function renderVocabCard() {
@@ -256,7 +256,7 @@ if (vocabPaths.length > 0) {
             vCounter.textContent = `${vIdx} / ${vocabBatch.length}`;
 
             if (vIdx >= vocabBatch.length) {
-                vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.9em; font-weight:700; font-family:'Space Mono',monospace;";
+                vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.9em; font-weight:700; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;";
                 vocabCard.textContent = "✅ Словарь — сессия завершена!";
                 return;
             }
@@ -283,7 +283,7 @@ if (vocabPaths.length > 0) {
             const showBtn = document.createElement("button");
             showBtn.textContent = "👁️";
             showBtn.title = "Показать ответ";
-            showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Space Mono',monospace;";
+            showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;";
 
             topRow.appendChild(wordDiv);
             topRow.appendChild(showBtn);
@@ -334,12 +334,12 @@ if (vocabPaths.length > 0) {
 
             const btnW = document.createElement("button");
             btnW.textContent = "✅ Знаю";
-            btnW.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
+            btnW.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
             btnW.onclick = () => processVocab(true);
 
             const btnF = document.createElement("button");
             btnF.textContent = "❌ Ошибся";
-            btnF.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
+            btnF.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
             btnF.onclick = () => processVocab(false);
 
             actionsDiv.appendChild(btnW);
@@ -441,7 +441,7 @@ async function makeWordBlock(filePath, title, accentColor) {
         winText.textContent = `🏆 ${title} — всё выучено!`;
         const resetBtn = document.createElement("button");
         resetBtn.textContent = "🔄 2-й круг";
-        resetBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono',monospace; text-transform:uppercase;";
+        resetBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
         resetBtn.onclick = async () => {
             await app.vault.process(tFile, data => data.replace(/- \[x\]/g, "- [ ]"));
         };
@@ -544,7 +544,7 @@ async function makeWordBlock(filePath, title, accentColor) {
         const showBtn = document.createElement("button");
         showBtn.textContent = "👁️";
         showBtn.title = "Показать ответ";
-        showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Space Mono',monospace;";
+        showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;";
 
         topRow.appendChild(wordDiv);
         topRow.appendChild(showBtn);
@@ -592,12 +592,12 @@ async function makeWordBlock(filePath, title, accentColor) {
 
         const btnWin = document.createElement("button");
         btnWin.textContent = "✅ Знаю";
-        btnWin.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
+        btnWin.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
         btnWin.onclick = () => processTask(true);
 
         const btnFail = document.createElement("button");
         btnFail.textContent = "❌ Ошибся";
-        btnFail.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Space Mono',monospace; text-transform:uppercase;";
+        btnFail.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace; text-transform:uppercase;";
         btnFail.onclick = () => processTask(false);
 
         actionsDiv.appendChild(btnWin);
@@ -644,7 +644,7 @@ if (count >= CAPACITY) color = "#EF4444"; // Красный (Перегруз)
 else if (count >= CAPACITY * 0.7) color = "#F59E0B"; // Желтый (Внимание)
 
 dv.span(`
-<div style="background: #000; padding: 15px; border-radius: 8px; border: 1px dashed #444; margin-bottom: 20px; font-family:'Space Mono',monospace;">
+<div style="background: #000; padding: 15px; border-radius: 8px; border: 1px dashed #444; margin-bottom: 20px; font-family:'Ndot 57 Aligned', 'Space Mono', monospace;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <b style="color: ${color}; font-size: 1.1em;">📦 Буфер задач: ${count} / ${CAPACITY}</b>
         <span style="font-size: 0.9em; color: var(--text-muted);">Разбор: <b>${nextReview.format("DD.MM в HH:mm")}</b> (${nextReview.fromNow()})</span>

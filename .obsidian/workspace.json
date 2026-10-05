@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Tasks.md",
+                "file": "Dashboard.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tasks"
+              "title": "Dashboard"
             }
           }
         ]
@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Tasks.md",
+                "file": "Dashboard.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -305,12 +305,13 @@
   },
   "active": "cf0af78c202486cc",
   "lastOpenFiles": [
-    "Dashboard.md",
     "Tasks.md",
+    "Dashboard.md",
+    "02_Log/Days/2026-10-05.md",
+    "fix_tasks.py",
     "01_Domains/Summer ideas.md",
     "System/[SYS_INIT].md",
     "02_Log/Week/2026-W41.md",
-    "02_Log/Days/2026-10-05.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
@@ -332,7 +333,6 @@
     "02_Log/Days/2026-09-30.md",
     "02_Log/Week/2026-W40.md",
     "02_Log/Days/2026-08-31.md",
-    "02_Log/Days/2026-08-14.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20251227143939829.png",
@@ -357,7 +357,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 5 (паронимы)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Схемы/Номер 17.sync-conflict-20260629-213128-MPAEL2L.canvas"
