@@ -1,24 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "[SYS_INIT]",
-      "path": "System/[SYS_INIT].md"
-    },
-    {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
+      "basename": "Tasks",
+      "path": "Tasks.md"
     },
     {
       "basename": "2026-10-05",
       "path": "02_Log/Days/2026-10-05.md"
     },
     {
-      "basename": "2026-W41",
-      "path": "02_Log/Week/2026-W41.md"
-    },
-    {
-      "basename": "Tasks",
-      "path": "Tasks.md"
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
     },
     {
       "basename": "Номер 9",
@@ -49,6 +41,10 @@
       "path": "03_Knowledge/English/ENGLISH_HUB.md"
     },
     {
+      "basename": "2026-W41",
+      "path": "02_Log/Week/2026-W41.md"
+    },
+    {
       "basename": "Untitled",
       "path": "00_Inbox/Untitled.md"
     },
@@ -59,6 +55,10 @@
     {
       "basename": "словарь",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/словарь.md"
+    },
+    {
+      "basename": "Словарь",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Словарь.md"
     }
   ],
   "omittedPaths": [

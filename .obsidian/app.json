@@ -4,6 +4,9 @@
   "newFileFolderPath": "02_Log/Days",
   "alwaysUpdateLinks": true,
   "readableLineLength": true,
-  "openBehavior": "daily",
-  "spellcheck": false
+  "openBehavior": "file:Dashboard.md",
+  "spellcheck": false,
+  "enabledCssSnippets": [
+    "nothing-sidebars"
+  ]
 }

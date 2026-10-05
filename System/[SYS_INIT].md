@@ -45,13 +45,109 @@ const totalAvgScore = getAvgLast10(allRus) + getAvgLast10(allMath) + getAvgLast1
 const clean = (num) => Number(num.toFixed(1));
 
 dv.span(`
-<div style="font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; border-left: 3px solid #10B981; padding-left: 10px; background: rgba(16, 185, 129, 0.05); border-radius: 0 4px 4px 0; margin: 4px 0;">
-    <b style="color:#10B981; font-size: 1.1em;">SYS.TELEMETRY // ОБЩИЙ НАЛЁТ</b><br>
-    ├─ 📚 ЕГЭ:  <b>${clean(tEge)} ч.</b><br>
-    ├─ 🎯 Средний балл: <b>${totalAvgScore}/275</b> <span style="font-size:10px; color:var(--text-muted);"></span><br>
-    ├─ 💻 Код / СЕО:  <b>${clean(tWork)} ч.</b><br>
-    ├─ 💪 Тоннаж (зал): <b>${tGym.toLocaleString('ru-RU')} кг</b><br>
-    └─ ⏳ Прыжок (ЕГЭ): <b style="color:#EF4444;">${daysLeft+1} дн.</b>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+.nothing-widget {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    margin: 8px 0;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+.nothing-widget::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 8px 8px;
+    z-index: 0;
+    pointer-events: none;
+}
+.nothing-content {
+    position: relative;
+    z-index: 1;
+}
+.nothing-header {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px dashed #444;
+    padding-bottom: 12px;
+}
+.nothing-header::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #e50914; /* Nothing Red */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+}
+.nothing-stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 6px;
+    align-items: center;
+}
+.nothing-stat:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.nothing-label {
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+.nothing-val {
+    font-weight: 700;
+    font-size: 14px;
+}
+.nothing-val.red {
+    color: #e50914;
+    text-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+}
+</style>
+<div class="nothing-widget">
+    <div class="nothing-content">
+        <div class="nothing-header">SYS.TLMTRY</div>
+        <div class="nothing-stat">
+            <span class="nothing-label">ЕГЭ (ЧАСЫ)</span>
+            <span class="nothing-val">${clean(tEge)} h</span>
+        </div>
+        <div class="nothing-stat">
+            <span class="nothing-label">СРЕДНИЙ БАЛЛ</span>
+            <span class="nothing-val">${totalAvgScore}/275</span>
+        </div>
+        <div class="nothing-stat">
+            <span class="nothing-label">КОД / CEO</span>
+            <span class="nothing-val">${clean(tWork)} h</span>
+        </div>
+        <div class="nothing-stat">
+            <span class="nothing-label">ЗАЛ (ТОННАЖ)</span>
+            <span class="nothing-val">${tGym.toLocaleString('ru-RU')} kg</span>
+        </div>
+        <div class="nothing-stat">
+            <span class="nothing-label">ДО ЭКЗАМЕНА</span>
+            <span class="nothing-val red">${daysLeft+1} d</span>
+        </div>
+    </div>
 </div>
 `);
 ```

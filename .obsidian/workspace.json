@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Dashboard.md",
+                "file": "System/[SYS_INIT].md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -303,12 +303,12 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "52d2cb72e161d20c",
+  "active": "9b5e9f613d361068",
   "lastOpenFiles": [
+    "Dashboard.md",
     "02_Log/Week/2026-W41.md",
     "02_Log/Days/2026-10-05.md",
     "Tasks.md",
-    "Dashboard.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
