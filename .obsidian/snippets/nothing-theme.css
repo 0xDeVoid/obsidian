@@ -24,8 +24,8 @@ body {
     
     /* Fonts */
     --font-text: 'Inter', sans-serif !important;
-    --font-monospace: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
-    --font-ui: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
+    --font-monospace: 'Ndot 57', 'Space Mono', monospace !important;
+    --font-ui: 'Ndot 57', 'Space Mono', monospace !important;
     
     --text-selection: rgba(229, 9, 20, 0.3) !important;
     
@@ -55,7 +55,7 @@ body {
 /* Headings in Space Mono */
 h1, h2, h3, h4, h5, h6,
 .cm-header {
-    font-family: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
+    font-family: 'Ndot 57', 'Space Mono', monospace !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -103,7 +103,7 @@ input[type="checkbox"]:checked {
 
 /* Calendar Plugin overrides for Nothing style */
 #calendar-container {
-    font-family: 'Ndot 57 Aligned', 'Space Mono', monospace !important;
+    font-family: 'Ndot 57', 'Space Mono', monospace !important;
     background-color: #000 !important;
     --color-background-heading: transparent !important;
     --color-background-day: transparent !important;
@@ -126,3 +126,11 @@ input[type="checkbox"]:checked {
 .workspace-leaf-content {
     border: none !important;
 }
+
+/* File Titles and Sidebar Fonts */
+.nav-file-title-content, .nav-folder-title-content, .inline-title, .workspace-tab-header-inner-title {
+    font-family: 'Ndot 57', 'Space Mono', monospace !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+

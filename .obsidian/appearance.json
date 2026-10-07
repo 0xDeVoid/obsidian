@@ -1,6 +1,7 @@
 {
   "cssTheme": "",
   "enabledCssSnippets": [
-    "nothing-theme"
+    "nothing-theme",
+    "ndot-font"
   ]
 }

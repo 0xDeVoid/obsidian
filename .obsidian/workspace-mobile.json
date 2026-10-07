@@ -55,14 +55,17 @@
             "id": "aecab1a709d83c73",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Dashboard.md",
-                "mode": "preview",
-                "source": true
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
+                "viewState": {
+                  "x": 39.235663752507136,
+                  "y": 271.6218733002871,
+                  "zoom": -0.9630057925177987
+                }
               },
-              "icon": "lucide-file",
-              "title": "Dashboard"
+              "icon": "lucide-layout-dashboard",
+              "title": "Номер 7"
             }
           }
         ],
@@ -145,7 +148,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "02_Log/Days/2026-09-28.md",
+            "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -218,10 +221,14 @@
   "lastOpenFiles": [
     "Tasks.md",
     "Dashboard.md",
-    "fix_tasks.py",
+    "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-05.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
+    "System/Templates/Day template.md",
+    "03_Knowledge/English/ENGLISH_HUB.md",
+    "02_Log/Days/2026-10-06.md",
     "02_Log/Week/2026-W41.md",
+    "fix_tasks.py",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "02_Log/Days/2026-10-03.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Задание 15 (Н и НН).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md",
@@ -240,10 +247,6 @@
     "02_Log/Days/2026-09-20.md",
     "02_Log/Days/2026-09-19.md",
     "02_Log/Days/2026-09-18.md",
-    "02_Log/Days/2026-09-15.md",
-    "02_Log/Days/2026-09-14.md",
-    "02_Log/Days/2026-09-13.md",
-    "02_Log/Week/2026-W37.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",

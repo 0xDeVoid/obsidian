@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -305,8 +305,11 @@
   },
   "active": "cf0af78c202486cc",
   "lastOpenFiles": [
-    "Tasks.md",
+    "02_Log/Days/2026-10-07.md",
+    "02_Log/Days/2026-10-06.md",
     "Dashboard.md",
+    "System/Templates/Day template.md",
+    "Tasks.md",
     "02_Log/Days/2026-10-05.md",
     "fix_tasks.py",
     "01_Domains/Summer ideas.md",
@@ -331,8 +334,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь.md",
     "02_Log/Days/2026-06-22.md",
     "02_Log/Days/2026-09-30.md",
-    "02_Log/Week/2026-W40.md",
-    "02_Log/Days/2026-08-31.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20251227143939829.png",
