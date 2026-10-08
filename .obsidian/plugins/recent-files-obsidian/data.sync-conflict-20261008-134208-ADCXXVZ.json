@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
+      "basename": "Tasks",
+      "path": "Tasks.md"
     },
     {
-      "basename": "заметки по практике",
-      "path": "00_Inbox/заметки по практике.md"
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
     },
     {
       "basename": "2026-W41",
@@ -19,10 +19,6 @@
     {
       "basename": "IMG-20260808122421689",
       "path": "System/Investments/PDF/ Audio/ Other/IMG-20260808122421689.pdf"
-    },
-    {
-      "basename": "Tasks",
-      "path": "Tasks.md"
     },
     {
       "basename": "2026-10-07",
@@ -59,6 +55,10 @@
     {
       "basename": "Unit 6",
       "path": "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md"
+    },
+    {
+      "basename": "Unit 5",
+      "path": "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md"
     }
   ],
   "omittedPaths": [

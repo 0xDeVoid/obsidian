@@ -55,17 +55,14 @@
             "id": "aecab1a709d83c73",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
-                "viewState": {
-                  "x": 39.235663752507136,
-                  "y": 271.6218733002871,
-                  "zoom": -0.9630057925177987
-                }
+                "file": "Tasks.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Номер 7"
+              "icon": "lucide-file",
+              "title": "Tasks"
             }
           }
         ],
@@ -219,8 +216,9 @@
   },
   "active": "aecab1a709d83c73",
   "lastOpenFiles": [
-    "Tasks.md",
+    "00_Inbox/заметки по практике.md",
     "Dashboard.md",
+    "Tasks.md",
     "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-05.md",
     "System/Templates/Day template.md",
@@ -246,7 +244,6 @@
     "02_Log/Days/2026-09-22.md",
     "02_Log/Days/2026-09-20.md",
     "02_Log/Days/2026-09-19.md",
-    "02_Log/Days/2026-09-18.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",

@@ -435,3 +435,4 @@ if (weekPagesChart.length < 1) {
     card5.appendChild(chartInner);
 }
 ```
+

@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Dashboard.md",
+                "file": "00_Inbox/заметки по практике.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -287,7 +287,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330.5
+    "width": 330.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -305,16 +306,17 @@
   },
   "active": "cf0af78c202486cc",
   "lastOpenFiles": [
+    "02_Log/Week/2026-W41.md",
+    "00_Inbox/заметки по практике.md",
+    "Dashboard.md",
     "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-06.md",
-    "Dashboard.md",
     "System/Templates/Day template.md",
     "Tasks.md",
     "02_Log/Days/2026-10-05.md",
     "fix_tasks.py",
     "01_Domains/Summer ideas.md",
     "System/[SYS_INIT].md",
-    "02_Log/Week/2026-W41.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
@@ -333,7 +335,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Ошибки квизы.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь.md",
     "02_Log/Days/2026-06-22.md",
-    "02_Log/Days/2026-09-30.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20251227143939829.png",
