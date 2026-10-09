@@ -7,30 +7,30 @@
 ---
 ### 5.1 
 2. had 
-3. went to work 
+3. <font color="#ff0000">went to work </font>
 4. took a half an hour 
 5. She started work
-6. She didn't have a
+6. She didn't have 
 7. She finished work
-8. She always / she got 
+8. She <font color="#ff0000">always</font> / she got 
 9. She usually cooked 
 10. She usualy didnt go
 11. She went to bed
 12. She always slept 
 
 ### 5.2
-2. tought
+2. taught
 3. sold
-4. felt / hurted
-5. throwed / cathed
+4. <font color="#ff0000">felt / hurted</font>
+5. <font color="#ff0000">throwed / cathed</font>
 6. spent / boght / cost
 
 ### 5.3
-2. did you get to SF
-3. did you go to it 
-4. did you stoped 
-5. Did the shower 
-6. Did you visit
+2. did you<font color="#ff0000"> get to</font> SF
+<font color="#ffff00">3. did you go to it </font>
+<font color="#ffff00">4. did you stoped </font>
+<font color="#ffff00">5. Did the shower </font>
+3. Did you visit
 
 ### 5.4
 3. didnt disturb

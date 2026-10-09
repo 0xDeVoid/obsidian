@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-W41",
+      "path": "02_Log/Week/2026-W41.md"
+    },
+    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
     },
@@ -9,32 +13,16 @@
       "path": "Tasks.md"
     },
     {
-      "basename": "2026-W41",
-      "path": "02_Log/Week/2026-W41.md"
-    },
-    {
-      "basename": "2026-10-08",
-      "path": "02_Log/Days/2026-10-08.md"
-    },
-    {
-      "basename": "Номер 8",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas"
-    },
-    {
-      "basename": "IMG-20261009095923016",
-      "path": "System/Investments/PDF/ Audio/ Other/IMG-20261009095923016.pdf"
-    },
-    {
-      "basename": "Задание 8 (синтаксические ошибки)",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md"
-    },
-    {
-      "basename": "Задание 7 (формы слова)",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md"
+      "basename": "ENGLISH_HUB",
+      "path": "03_Knowledge/English/ENGLISH_HUB.md"
     },
     {
       "basename": "2026-10-09",
       "path": "02_Log/Days/2026-10-09.md"
+    },
+    {
+      "basename": "2026-10-08",
+      "path": "02_Log/Days/2026-10-08.md"
     },
     {
       "basename": "Unit 6",
@@ -57,8 +45,20 @@
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas"
     },
     {
+      "basename": "IMG-20260808122421689",
+      "path": "System/Investments/PDF/ Audio/ Other/IMG-20260808122421689.pdf"
+    },
+    {
       "basename": "2026-10-07",
       "path": "02_Log/Days/2026-10-07.md"
+    },
+    {
+      "basename": "2026-10-06",
+      "path": "02_Log/Days/2026-10-06.md"
+    },
+    {
+      "basename": "Day template",
+      "path": "System/Templates/Day template.md"
     }
   ],
   "omittedPaths": [

@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f5c3c89165381a69",
+        "id": "4026d13f21d7a777",
         "type": "tabs",
         "children": [
           {
-            "id": "cf0af78c202486cc",
+            "id": "62eec83faf43ddb2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -122,7 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 338.5
+    "width": 337.5
   },
   "right": {
     "id": "7ea4da97c78ab433",
@@ -139,7 +139,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "00_Inbox/заметки по практике.md",
+                "file": "Dashboard.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -287,8 +287,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330.5,
-    "collapsed": true
+    "width": 330.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -304,37 +303,37 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "cf0af78c202486cc",
+  "active": "62eec83faf43ddb2",
   "lastOpenFiles": [
+    "02_Log/Days/2026-10-08.md",
     "02_Log/Week/2026-W41.md",
-    "00_Inbox/заметки по практике.md",
     "Dashboard.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md",
+    "02_Log/Days/2026-10-09.md",
+    "Tasks.md",
+    "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
+    "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
+    "00_Inbox/заметки по практике.md",
+    "System/[SYS_INIT].md",
+    "00_Inbox/Untitled.md",
     "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-06.md",
     "System/Templates/Day template.md",
-    "Tasks.md",
     "02_Log/Days/2026-10-05.md",
     "fix_tasks.py",
     "01_Domains/Summer ideas.md",
-    "System/[SYS_INIT].md",
-    "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
-    "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 1.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 4.md",
     "03_Knowledge/English/ENGLISH_HUB.md",
-    "00_Inbox/Untitled.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/словарь.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Словарь.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Ошибки в квизах.md",
-    "02_Log/Days/2026-10-04.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание 10 (приставки).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Ошибки квизы.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь.md",
-    "02_Log/Days/2026-06-22.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20251227143939829.png",
@@ -360,7 +359,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Схемы/Номер 17.sync-conflict-20260629-213128-MPAEL2L.canvas"
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas"
   ]
 }
