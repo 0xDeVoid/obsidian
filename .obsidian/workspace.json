@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "4026d13f21d7a777",
+        "id": "a6f67955ed05a4b7",
         "type": "tabs",
         "children": [
           {
-            "id": "62eec83faf43ddb2",
+            "id": "24fdb77c104dee88",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -33,7 +33,7 @@
       {
         "id": "e807f3b9e9eda545",
         "type": "tabs",
-        "dimension": 39.9390243902439,
+        "dimension": 34.751773049645394,
         "children": [
           {
             "id": "a779024a4f723570",
@@ -85,7 +85,7 @@
       {
         "id": "4de278b6a7146236",
         "type": "tabs",
-        "dimension": 26.01626016260163,
+        "dimension": 31.20567375886525,
         "children": [
           {
             "id": "68c14328b60b1f4e",
@@ -106,7 +106,7 @@
       {
         "id": "6a5fe99b56b6e687",
         "type": "tabs",
-        "dimension": 34.04471544715447,
+        "dimension": 34.04255319148936,
         "children": [
           {
             "id": "30efe558dd8fec0f",
@@ -122,7 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5
+    "width": 338.54296875
   },
   "right": {
     "id": "7ea4da97c78ab433",
@@ -303,20 +303,35 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "62eec83faf43ddb2",
+  "active": "24fdb77c104dee88",
   "lastOpenFiles": [
-    "02_Log/Days/2026-10-08.md",
+    "02_Log/Days/2026-10-11.md",
+    "Archive/Ежеденевник/Планы по неделям/2026/Неделя 2.md",
+    "Archive/Ежеденевник/Планы по неделям/2026/Неделя 26.md",
+    "Archive/Ежеденевник/Планы по месяцам/2026/Июнь.md",
+    "Archive/Ежеденевник/Планы на год/Год 2026.md",
     "02_Log/Week/2026-W41.md",
+    "02_Log/Week/2026-W41.sync-conflict-20261010-225921-MPAEL2L.md",
     "Dashboard.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_соч_01_15__c5qbd.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Ошибки в пробниках/Пробный вариант ЕГЭ №1 10.10.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261010124622676.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261010124207794.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261010123235235.png",
+    "03_Knowledge/ЕГЭ/Русский/Untitled.md",
+    "03_Knowledge/ЕГЭ/Русский/Ошибки в пробниках",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
+    "02_Log/Days/2026-10-10.md",
+    "System/[SYS_INIT].md",
     "02_Log/Days/2026-10-09.md",
+    "02_Log/Days/2026-10-08.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas",
     "Tasks.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 6.md",
     "03_Knowledge/English/Lessons/Grammar in Use/Unit 5.md",
     "00_Inbox/заметки по практике.md",
-    "System/[SYS_INIT].md",
     "00_Inbox/Untitled.md",
     "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-06.md",
@@ -324,14 +339,6 @@
     "02_Log/Days/2026-10-05.md",
     "fix_tasks.py",
     "01_Domains/Summer ideas.md",
-    "03_Knowledge/English/Lessons/Grammar in Use/Unit 3.md",
-    "03_Knowledge/English/Lessons/Grammar in Use/Unit 1.md",
-    "03_Knowledge/English/Lessons/Grammar in Use/Unit 4.md",
-    "03_Knowledge/English/ENGLISH_HUB.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/словарь.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Словарь.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Ошибки в квизах.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
@@ -343,21 +350,15 @@
     "System/Investments/Изображения/Pasted image 20260920171331.png",
     "System/Investments/Изображения/Pasted image 20260920171406.png",
     "System/Investments/Изображения/Pasted image 20260920171358.png",
-    "System/Investments/Изображения/Pasted image 20260920135506.png",
-    "System/Investments/Изображения/Pasted image 20260920135412.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20260808122526119.png",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
     "03_Knowledge/English/Lessons/Grammar in Use/Past Continues",
     "03_Knowledge/English/Lessons/Grammar in Use",
     "03_Knowledge/English/MUCLecture_2022_5217521.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas"
   ]

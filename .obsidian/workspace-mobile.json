@@ -55,18 +55,38 @@
             "id": "aecab1a709d83c73",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Tasks.md",
-                "mode": "source",
-                "source": false
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
+                "viewState": {
+                  "x": -1130.5,
+                  "y": -560,
+                  "zoom": -3.1306389824521212
+                }
               },
-              "icon": "lucide-file",
-              "title": "Tasks"
+              "icon": "lucide-layout-dashboard",
+              "title": "Номер 15"
+            }
+          },
+          {
+            "id": "219fc41be757d7a1",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
+                "viewState": {
+                  "x": -1789.003042274238,
+                  "y": -90.13248222177185,
+                  "zoom": -0.9980704641577615
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Номер 15"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -145,7 +165,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
+            "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -214,11 +234,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "aecab1a709d83c73",
+  "active": "219fc41be757d7a1",
   "lastOpenFiles": [
     "Dashboard.md",
-    "Tasks.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
     "02_Log/Week/2026-W41.md",
+    "Tasks.md",
+    "02_Log/Days/2026-10-10.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_лето_соч_00_10__b5j9b.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание 11 (Суффиксы).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md",
     "03_Knowledge/English/ENGLISH_HUB.md",
     "02_Log/Days/2026-10-09.md",
     "02_Log/Days/2026-10-08.md",
@@ -239,11 +271,6 @@
     "02_Log/Days/2026-09-28.md",
     "02_Log/Days/2026-09-27.md",
     "02_Log/Days/2026-09-26.md",
-    "02_Log/Days/2026-09-25.md",
-    "02_Log/Days/2026-09-24.md",
-    "02_Log/Days/2026-09-23.md",
-    "02_Log/Week/2026-W39.md",
-    "02_Log/Days/2026-09-22.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
@@ -263,12 +290,6 @@
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132257854.pdf",
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132258294.pdf",
     "Log/Days",
-    "Log",
-    "База знаний/ЕГЭ/Русский/Номер 18.canvas",
-    "База знаний/ЕГЭ/Русский/Номер 16.canvas",
-    "База знаний/ЕГЭ/Русский/Номер 15.canvas",
-    "База знаний/ЕГЭ/Русский/Номер 13.canvas",
-    "База знаний/ЕГЭ/Русский/Номер 10.canvas",
-    "Вложения/PDF/Задание_7__Теория__Слова_для_заучивания__afgk3.pdf"
+    "База знаний/ЕГЭ/Русский/Номер 18.canvas"
   ]
 }
