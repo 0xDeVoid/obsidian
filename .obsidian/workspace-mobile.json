@@ -74,12 +74,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
+                "file": "02_Log/Days/2026-10-12.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "2026-10-12"
             }
           }
         ],
@@ -233,8 +233,9 @@
   },
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
-    "02_Log/Days/2026-10-12.md",
     "Dashboard.md",
+    "Tasks.md",
+    "02_Log/Days/2026-10-12.md",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133840488.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133840064.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133838809.png",
@@ -242,7 +243,6 @@
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
-    "Tasks.md",
     "02_Log/Week/2026-W42.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
