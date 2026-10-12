@@ -72,17 +72,14 @@
             "id": "219fc41be757d7a1",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
-                "viewState": {
-                  "x": -1789.003042274238,
-                  "y": -90.13248222177185,
-                  "zoom": -0.9980704641577615
-                }
+                "file": "02_Log/Days/2026-10-12.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Номер 15"
+              "icon": "lucide-file",
+              "title": "2026-10-12"
             }
           }
         ],
@@ -165,7 +162,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
+            "file": "02_Log/Days/2026-10-12.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -237,11 +234,17 @@
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
     "Dashboard.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
+    "02_Log/Days/2026-10-12.md",
+    "Tasks.md",
+    "02_Log/Week/2026-W42.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
     "02_Log/Week/2026-W41.md",
-    "Tasks.md",
     "02_Log/Days/2026-10-10.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_лето_соч_00_10__b5j9b.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
@@ -269,8 +272,6 @@
     "02_Log/Days/2026-10-01.md",
     "02_Log/Days/2026-09-29.md",
     "02_Log/Days/2026-09-28.md",
-    "02_Log/Days/2026-09-27.md",
-    "02_Log/Days/2026-09-26.md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
@@ -283,10 +284,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номер 7.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20260624101939087.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номер 4.canvas",
-    "System/Investments/PDF/ Audio/ Other/IMG-20260622132258125.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20260622132257856.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20260622132258124.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20260622132258186.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132257854.pdf",
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132258294.pdf",
     "Log/Days",

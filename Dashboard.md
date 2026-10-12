@@ -1,9 +1,13 @@
 ```dataviewjs
-// 1. Встраиваем стили (они применятся глобально, но затронут только наши классы)
+// ==============================================================================
+// 0xDeVoid Combat Dashboard // Мусаси & Nothing OS Edition
+// ==============================================================================
+
+// 1. Встраиваем стили
 const style = document.createElement("style");
 style.innerHTML = `
 .dash-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 10px; }
-@media (max-width: 768px) { .dash-container { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .dash-container { grid-template-columns: 1fr; } }
 .dash-col { display: flex; flex-direction: column; gap: 24px; }
 
 /* Brutalist Nothing Cards */
@@ -14,7 +18,7 @@ style.innerHTML = `
     padding: 22px;
     position: relative;
     overflow: hidden;
-    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.05); /* Brutalist shadow */
+    box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.05);
 }
 .dash-card::before {
     content: '';
@@ -54,7 +58,7 @@ style.innerHTML = `
 .dv-btn:hover { 
     background: #e50914; 
     border-color: #e50914; 
-    color: #fff;
+    color: #fff; 
 }
 .dv-btn-active { 
     background: #e50914; 
@@ -91,7 +95,20 @@ style.innerHTML = `
 `;
 dv.container.appendChild(style);
 
-// 2. Создаем структуру сетки
+// 2. Компактная шапка Nothing OS (БЕЗ гиммиков и баннеров)
+const topBar = document.createElement("div");
+topBar.style.cssText = "display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: #000; border: 1px dashed #444; border-radius: 12px; margin-bottom: 20px; font-family: 'Space Mono', monospace; flex-wrap: wrap; gap: 8px;";
+topBar.innerHTML = `
+    <div style="font-weight: 700; letter-spacing: 2px; color: #fff; font-size: 0.95em;">
+        🗡️ 0xDeVoid Cockpit // Мусаси Edition
+    </div>
+    <div style="font-size: 0.8em; color: #a6e3a1; font-weight: bold; font-family: 'Space Mono', monospace;">
+        ● 300 БАЛЛОВ ЕГЭ // INNOPOLIS TRACK
+    </div>
+`;
+dv.container.appendChild(topBar);
+
+// 3. Создаем структуру сетки
 const container = document.createElement("div");
 container.className = "dash-container";
 
@@ -105,9 +122,9 @@ container.appendChild(col2);
 dv.container.appendChild(container);
 
 
-// ==========================================
-// КОЛОНКА 1
-// ==========================================
+// ==============================================================================
+// КОЛОНКА 1: СВОДКА, ВВОД, НАВИГАЦИЯ, ФОКУС
+// ==============================================================================
 
 // Карточка 1: Сводка дня
 const card1 = document.createElement("div");
@@ -124,6 +141,7 @@ let completed = 0;
 let total = 0;
 let engDone = false;
 let egeTime = 0;
+let workTime = 0;
 
 if (page) {
     if (page.file && page.file.tasks) {
@@ -132,13 +150,13 @@ if (page) {
     }
     engDone = page.english_done || false;
     egeTime = page.ege_time || 0;
+    workTime = page.work_time || 0;
 }
 
 const pct = total === 0 ? 0 : Math.round((completed / total) * 100);
 const radius = 24;
 const circ = 2 * Math.PI * radius;
 const offset = circ - (pct / 100) * circ;
-
 const greet = window.moment().hour() < 12 ? "🌅 Доброе утро" : window.moment().hour() < 18 ? "☀️ Добрый день" : "🌙 Добрый вечер";
 
 const summaryWrapper = document.createElement("div");
@@ -166,8 +184,8 @@ card1.appendChild(summaryWrapper);
 
 if (page && tFile) {
     const actsTitle = document.createElement("div");
-    actsTitle.style.cssText = "font-size: 0.9em; margin-bottom: 8px; font-weight: bold; color: var(--text-muted);";
-    actsTitle.innerHTML = "🕹️ Быстрые действия:";
+    actsTitle.style.cssText = "font-size: 0.9em; margin-bottom: 8px; font-weight: bold; color: var(--text-muted); font-family: 'Space Mono', monospace;";
+    actsTitle.innerHTML = "🕹️ Быстрый трекинг времени:";
     card1.appendChild(actsTitle);
     
     const acts = document.createElement("div");
@@ -183,18 +201,91 @@ if (page && tFile) {
     
     const egeBtn = document.createElement("button");
     egeBtn.className = "dv-btn";
-    egeBtn.innerHTML = `⏱️ ЕГЭ: ${egeTime} мин <span style="font-size:0.8em; opacity:0.7;">(+30)</span>`;
+    egeBtn.innerHTML = `⏱️ ЕГЭ: ${Number(egeTime).toFixed(1)} ч <span style="font-size:0.8em; opacity:0.7;">(+0.5)</span>`;
     egeBtn.onclick = async () => {
         await app.fileManager.processFrontMatter(tFile, fm => { 
-            fm.ege_time = (fm.ege_time || 0) + 30; 
+            fm.ege_time = Math.round(((fm.ege_time || 0) + 0.5) * 10) / 10; 
         });
     };
     acts.appendChild(egeBtn);
+
+    const codeBtn = document.createElement("button");
+    codeBtn.className = "dv-btn";
+    codeBtn.innerHTML = `💻 Код: ${Number(workTime).toFixed(1)} ч <span style="font-size:0.8em; opacity:0.7;">(+0.5)</span>`;
+    codeBtn.onclick = async () => {
+        await app.fileManager.processFrontMatter(tFile, fm => { 
+            fm.work_time = Math.round(((fm.work_time || 0) + 0.5) * 10) / 10; 
+        });
+    };
+    acts.appendChild(codeBtn);
     
     card1.appendChild(acts);
 }
 
-// Карточка 2: Навигация
+// Карточка 2: Быстрый ввод задач в фокус (0 гонок Syncthing)
+const cardTerm = document.createElement("div");
+cardTerm.className = "dash-card";
+cardTerm.innerHTML = `<h3>>_ ВВОД ЗАДАЧ В ФОКУС</h3>`;
+col1.appendChild(cardTerm);
+
+const termBox = document.createElement("div");
+termBox.style.cssText = "display: flex; gap: 8px; margin-bottom: 14px;";
+
+const inputField = document.createElement("input");
+inputField.type = "text";
+inputField.placeholder = "Новая задача в фокус дня...";
+inputField.style.cssText = "flex: 1; background: #050505; color: #fff; border: 1px solid #444; border-radius: 4px; padding: 10px 12px; font-family: 'Space Mono', monospace; font-size: 0.9em; outline: none;";
+
+const addBtn = document.createElement("button");
+addBtn.className = "dv-btn dv-btn-active";
+addBtn.innerText = "+ В ФОКУС";
+
+const addTaskToDay = async () => {
+    const val = inputField.value.trim();
+    if (!val) return;
+    const dayFile = app.vault.getAbstractFileByPath(dailyPath);
+    if (dayFile) {
+        await app.vault.process(dayFile, content => {
+            const focusHeader = "### 🎯 Главный фокус дня (Топ-3)";
+            if (content.includes(focusHeader)) {
+                return content.replace(focusHeader, `${focusHeader}\n- [ ] ${val}`);
+            }
+            return `${content}\n- [ ] ${val}`;
+        });
+        inputField.value = "";
+        new Notice(`✅ Задача добавлена в фокус: ${val}`);
+    } else {
+        new Notice("⚠️ Заметка за сегодня не найдена");
+    }
+};
+
+addBtn.onclick = addTaskToDay;
+inputField.onkeydown = (e) => { if (e.key === "Enter") addTaskToDay(); };
+
+termBox.appendChild(inputField);
+termBox.appendChild(addBtn);
+cardTerm.appendChild(termBox);
+
+// Быстрые ссылки на боевые протоколы
+const quickPills = document.createElement("div");
+quickPills.style.cssText = "display: flex; gap: 6px; flex-wrap: wrap;";
+const pillsData = [
+    { label: "⚡ Компилятор русского", file: "03_Knowledge/ЕГЭ/Русский/КОМПИЛЯТОР_РУССКОГО.md" },
+    { label: "⚔️ Опережающий удар (Матан)", file: "03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md" },
+    { label: "📋 Тренажер и Задачи", file: "Tasks.md" }
+];
+pillsData.forEach(p => {
+    const pill = document.createElement("button");
+    pill.style.cssText = "background: #000; color: #aaa; border: 1px solid #333; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-family: 'Space Mono', monospace;";
+    pill.innerText = p.label;
+    pill.onmouseover = () => { pill.style.borderColor = "#e50914"; pill.style.color = "#fff"; };
+    pill.onmouseout = () => { pill.style.borderColor = "#333"; pill.style.color = "#aaa"; };
+    pill.onclick = () => app.workspace.openLinkText(p.file, "", false);
+    quickPills.appendChild(pill);
+});
+cardTerm.appendChild(quickPills);
+
+// Карточка 3: Навигация
 const card2 = document.createElement("div");
 card2.className = "dash-card";
 card2.innerHTML = `<h3>🧭 Навигация</h3>`;
@@ -221,29 +312,469 @@ links.forEach(l => {
 });
 card2.appendChild(navWrapper);
 
-
-// Карточка 3: Фокус (Q1)
+// Карточка 4: Фокус дня (активные задачи)
 const card3 = document.createElement("div");
 card3.className = "dash-card";
-card3.innerHTML = `<h3>🎯 Фокус (Q1)</h3>`;
+card3.innerHTML = `<h3>🎯 Фокус дня</h3>`;
 col1.appendChild(card3);
 
-// Рендерим задачи в основной контейнер dv.container, а затем переносим в карточку
+const getTaskHeaderStr = (t) => {
+    if (!t) return "";
+    if (t.section && t.section.subpath) return String(t.section.subpath);
+    if (t.header) {
+        if (typeof t.header === "string") return t.header;
+        if (t.header.subpath) return String(t.header.subpath);
+        if (t.header.display) return String(t.header.display);
+        return String(t.header.path || t.header);
+    }
+    return "";
+};
+
+const currentWeekFile = `02_Log/Week/${thisWeek}.md`;
+const todayTasks = dv.pages().file.tasks.where(t => {
+    if (t.completed) return false;
+    if (t.path === dailyPath) return true;
+    const hStr = getTaskHeaderStr(t);
+    if (t.path === currentWeekFile && hStr.includes(today)) return true;
+    const txt = String(t.text || "");
+    if (txt.includes("#focus") || txt.includes("#q1")) return true;
+    return false;
+});
+
 const tasksStart = dv.container.childNodes.length;
-dv.taskList(dv.pages().file.tasks.where(t => !t.completed && t.text.includes("#q1")), false);
+dv.taskList(todayTasks, false);
 setTimeout(() => {
-    // Timeout is small hack to let dataview finish rendering if it uses async microtasks
     while(dv.container.childNodes.length > tasksStart) {
         card3.appendChild(dv.container.childNodes[tasksStart]);
     }
 }, 0);
 
 
-// ==========================================
-// КОЛОНКА 2
-// ==========================================
+// ==============================================================================
+// КОЛОНКА 2: РУССКИЙ ЯЗЫК (ТРЕНАЖЕР), СТЕНА ДИСЦИПЛИНЫ, ГРАФИК
+// ==============================================================================
 
-// Карточка 4: Стена дисциплины
+// Карточка 5: РУССКИЙ ЯЗЫК // ТРЕНАЖЕР СЛОВАРЕЙ И НОМЕРОВ
+const cardRus = document.createElement("div");
+cardRus.className = "dash-card";
+cardRus.innerHTML = `<h3>📖 РУССКИЙ ЯЗЫК // ТРЕНАЖЕР</h3>`;
+col2.appendChild(cardRus);
+
+// ── Вспомогательные функции для русского тренажера ──────────
+function weightedSample(pool, n) {
+    const todayM = window.moment();
+    const weighted = pool.map(t => {
+        const failsMatch = t.text.match(/\[fails:: (\d+)\]/);
+        const fails = failsMatch ? parseInt(failsMatch[1]) : 0;
+        const dateMatch = t.text.match(/🗓️(\d{4}-\d{2}-\d{2})/);
+        const days = dateMatch ? todayM.diff(window.moment(dateMatch[1], "YYYY-MM-DD"), "days") : 999;
+        return { task: t, weight: (fails + 1) * (days + 1) };
+    });
+    const result = [];
+    const used = new Set();
+    let totalWeight = weighted.reduce((s, x) => s + x.weight, 0);
+    for (let i = 0; i < Math.min(n, pool.length); i++) {
+        let r = Math.random() * totalWeight;
+        for (const w of weighted) {
+            if (used.has(w.task)) continue;
+            r -= w.weight;
+            if (r <= 0) {
+                result.push(w.task);
+                used.add(w.task);
+                totalWeight -= w.weight;
+                break;
+            }
+        }
+    }
+    if (result.length < Math.min(n, pool.length)) {
+        for (const w of weighted) {
+            if (!used.has(w.task)) result.push(w.task);
+            if (result.length >= n) break;
+        }
+    }
+    return result;
+}
+
+async function makeWordBlock(filePath, title, accentColor, parentEl) {
+    const tFile = app.vault.getAbstractFileByPath(filePath);
+    if (!tFile) return;
+
+    const todayStr = window.moment().format("YYYY-MM-DD");
+    const pageObj = dv.page(filePath);
+    if (!pageObj) return;
+
+    const allTasks = (pageObj.file && pageObj.file.tasks) ? Array.from(pageObj.file.tasks) : [];
+    const openTasks = allTasks.filter(t => !t.completed);
+
+    const wrap = document.createElement("div");
+    wrap.style.cssText = "margin-bottom: 12px;";
+    parentEl.appendChild(wrap);
+
+    if (allTasks.length > 0 && openTasks.length === 0) {
+        const winDiv = document.createElement("div");
+        winDiv.style.cssText = "display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:#000; border:1px dashed #444; border-radius:6px;";
+        winDiv.innerHTML = `<span style="font-size:0.85em; font-weight:600;">🏆 ${title} — всё выучено!</span>`;
+        const resetBtn = document.createElement("button");
+        resetBtn.textContent = "🔄 2-й круг";
+        resetBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+        resetBtn.onclick = async () => {
+            await app.vault.process(tFile, data => data.replace(/- \[x\]/g, "- [ ]"));
+        };
+        winDiv.appendChild(resetBtn);
+        wrap.appendChild(winDiv);
+        return;
+    }
+
+    const processedToday = allTasks.filter(t => t.text.includes(`🗓️${todayStr}`)).length;
+    let remain = 15 - processedToday;
+
+    const cacheKey = `word_${title}_${todayStr}_v4`;
+    window._myWordCache = window._myWordCache || {};
+    
+    if (!window._myWordCache[cacheKey]) {
+        if (remain < 0) remain = 0;
+        const pool = openTasks.filter(t => !t.text.includes(`🗓️${todayStr}`));
+        const newBatch = weightedSample(pool, remain);
+        window._myWordCache[cacheKey] = {
+            batch: newBatch.map(t => ({ text: t.text, completed: t.completed })),
+            idx: 0
+        };
+    }
+    
+    const batch = window._myWordCache[cacheKey].batch;
+    let idx = window._myWordCache[cacheKey].idx;
+
+    if (idx >= batch.length && batch.length === 0) {
+        const doneDiv = document.createElement("div");
+        doneDiv.style.cssText = "padding:8px 12px; background:#000; border:1px dashed #444; border-radius:6px; font-size:0.82em; font-weight:700; font-family:'Space Mono',monospace;";
+        doneDiv.textContent = `✅ ${title} — норма выполнена (15 слов)`;
+        wrap.appendChild(doneDiv);
+        return;
+    }
+
+    const progressBar = document.createElement("div");
+    progressBar.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
+
+    const titleSpan = document.createElement("span");
+    titleSpan.style.cssText = "font-size:0.8em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Space Mono',monospace; text-transform:uppercase;";
+    titleSpan.textContent = title;
+
+    const barOuter = document.createElement("div");
+    barOuter.style.cssText = "flex:1; height:4px; background:var(--background-modifier-border); border-radius:2px; overflow:hidden;";
+    const barInner = document.createElement("div");
+    barInner.style.cssText = "height:100%; background:#e50914; border-radius:2px; transition:width 0.3s; width:0%;";
+    barOuter.appendChild(barInner);
+
+    const counterSpan = document.createElement("span");
+    counterSpan.style.cssText = "font-size:0.75em; color:var(--text-muted); white-space:nowrap;";
+
+    progressBar.appendChild(titleSpan);
+    progressBar.appendChild(barOuter);
+    progressBar.appendChild(counterSpan);
+    wrap.appendChild(progressBar);
+
+    const card = document.createElement("div");
+    card.style.cssText = "padding:10px 12px; background:#000; border-radius:6px; border:1px dashed #444; font-family:'Space Mono',monospace;";
+    wrap.appendChild(card);
+
+    function updateProgress() {
+        const pct = Math.round((idx / (batch.length || 1)) * 100);
+        barInner.style.width = pct + "%";
+        counterSpan.textContent = `${idx} / ${batch.length}`;
+    }
+
+    function renderCard() {
+        card.innerHTML = "";
+
+        if (idx >= batch.length) {
+            card.style.cssText = "padding:8px 12px; background:#000; border-radius:6px; border:1px dashed #444; text-align:center; font-size:0.82em; font-weight:700; font-family:'Space Mono',monospace;";
+            card.textContent = `✅ ${title} — сессия завершена!`;
+            updateProgress();
+            return;
+        }
+
+        updateProgress();
+        const t = batch[idx];
+
+        const rawText = t.text.replace(/\[fails:: \d+\]/g, "").replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "").trim();
+        const wordPart = rawText.replace(/<details>[\s\S]*?<\/details>/g, "").trim();
+        const answerMatch = rawText.match(/<details>[\s\S]*?<\/summary>([\s\S]*?)<\/details>/);
+        const answerText = answerMatch ? answerMatch[1].trim() : "—";
+
+        const topRow = document.createElement("div");
+        topRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px;";
+
+        const wordDiv = document.createElement("div");
+        wordDiv.style.cssText = "font-size:14px; font-weight:600; line-height:1.3; font-family: monospace;";
+        wordDiv.innerHTML = wordPart.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+
+        const showBtn = document.createElement("button");
+        showBtn.textContent = "👁️";
+        showBtn.title = "Показать ответ";
+        showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:2px 7px; border-radius:4px; cursor:pointer; font-size:11px; flex-shrink:0;";
+
+        topRow.appendChild(wordDiv);
+        topRow.appendChild(showBtn);
+        card.appendChild(topRow);
+
+        const answerDiv = document.createElement("div");
+        answerDiv.style.cssText = `font-size:13px; color:${accentColor}; margin-bottom:7px; display:none; font-weight:600;`;
+        answerDiv.textContent = `→ ${answerText}`;
+        card.appendChild(answerDiv);
+
+        showBtn.onclick = () => {
+            const visible = answerDiv.style.display !== "none";
+            answerDiv.style.display = visible ? "none" : "block";
+            showBtn.textContent = visible ? "👁️" : "🙈";
+        };
+
+        const actionsDiv = document.createElement("div");
+        actionsDiv.style.cssText = "display:flex; gap:6px;";
+
+        async function processTask(isSuccess) {
+            window._myWordCache[cacheKey].idx++;
+            const failsMatch = t.text.match(/\[fails:: (\d+)\]/);
+            let fails = failsMatch ? parseInt(failsMatch[1]) : 0;
+            if (!isSuccess) fails++;
+            let baseText = t.text.replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "");
+            if (failsMatch) {
+                baseText = baseText.replace(/\[fails:: \d+\]/, `[fails:: ${fails}]`);
+            } else {
+                baseText += ` [fails:: ${fails}]`;
+            }
+            const newText = baseText + ` 🗓️${todayStr}`;
+            const oldLine = (t.completed ? "- [x] " : "- [ ] ") + t.text;
+            const newLine = (isSuccess ? "- [x] " : "- [ ] ") + newText;
+            
+            t.text = newText;
+            t.completed = isSuccess ? true : t.completed;
+            
+            await app.vault.process(tFile, data => data.replace(oldLine, newLine));
+            idx = window._myWordCache[cacheKey].idx;
+            renderCard();
+        }
+
+        const btnWin = document.createElement("button");
+        btnWin.textContent = "✅ Знаю";
+        btnWin.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:6px; border-radius:4px; cursor:pointer; font-weight:700; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+        btnWin.onclick = () => processTask(true);
+
+        const btnFail = document.createElement("button");
+        btnFail.textContent = "❌ Ошибся";
+        btnFail.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:6px; border-radius:4px; cursor:pointer; font-weight:700; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+        btnFail.onclick = () => processTask(false);
+
+        actionsDiv.appendChild(btnWin);
+        actionsDiv.appendChild(btnFail);
+        card.appendChild(actionsDiv);
+    }
+
+    renderCard();
+}
+
+async function renderTaskSchema(parentEl) {
+    function parseDateStr(val) {
+        if (!val) return null;
+        if (typeof val === 'string') {
+            const s = val.trim().slice(0, 10);
+            return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
+        }
+        if (val.toISODate && typeof val.toISODate === 'function') return val.toISODate();
+        if (val.ts) return window.moment(val.ts).format("YYYY-MM-DD");
+        if (val instanceof Date) return window.moment(val).format("YYYY-MM-DD");
+        return null;
+    }
+
+    function getTimestamp(val) {
+        if (!val) return 0;
+        if (typeof val === 'number') return val;
+        if (val.ts) return val.ts;
+        if (val.toMillis && typeof val.toMillis === 'function') return val.toMillis();
+        const str = parseDateStr(val);
+        if (str) {
+            const m = window.moment(str, "YYYY-MM-DD");
+            if (m.isValid()) return m.valueOf();
+        }
+        return 0;
+    }
+
+    const rawPages = Array.from(dv.pages('"03_Knowledge/ЕГЭ/Русский/Номера"').where(p => p.type === "rus_schema"));
+    if (rawPages.length === 0) return;
+
+    const todayStr = window.moment().format("YYYY-MM-DD");
+
+    let items = rawPages.map(p => {
+        const num = Number(p.task_num);
+        const dStr = parseDateStr(p.last_check);
+        const isToday = (dStr === todayStr);
+        let daysAgo = 9999;
+        let lastCheckDisplay = "никогда";
+        if (dStr) {
+            const m = window.moment(dStr, "YYYY-MM-DD");
+            if (m.isValid()) {
+                lastCheckDisplay = m.format("DD.MM.YYYY");
+                daysAgo = window.moment().startOf('day').diff(m.startOf('day'), 'days');
+            }
+        }
+        return {
+            page: p,
+            num: num,
+            dStr: dStr,
+            ts: getTimestamp(p.last_check),
+            isToday: isToday,
+            daysAgo: daysAgo,
+            lastCheckDisplay: lastCheckDisplay
+        };
+    }).sort((a, b) => a.num - b.num);
+
+    const schemaContainer = document.createElement("div");
+    schemaContainer.style.cssText = "margin-top: 14px; padding-top: 10px; border-top: 1px dashed #333;";
+    parentEl.appendChild(schemaContainer);
+
+    function render(requestedNum = null) {
+        schemaContainer.innerHTML = "";
+
+        const uncompleted = items.filter(it => !it.isToday).sort((a, b) => a.ts - b.ts || a.num - b.num);
+        const completedCount = items.filter(it => it.isToday).length;
+
+        let activeItem = null;
+        if (requestedNum !== null) {
+            activeItem = items.find(it => it.num === requestedNum);
+        }
+        if (!activeItem) {
+            activeItem = uncompleted.length > 0 ? uncompleted[0] : items[0];
+        }
+
+        const taskNum = activeItem.num;
+        const pageObj = activeItem.page;
+        const schemaFile = app.vault.getAbstractFileByPath(pageObj.file.path);
+        const allTasks = Array.from(pageObj.file.tasks.where(t => t.text.includes("http")));
+        const openTasks = allTasks.filter(t => !t.completed);
+
+        // 1. Компактный селектор номеров
+        const navRow = document.createElement("div");
+        navRow.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-family:'Space Mono', monospace; font-size: 0.8em; flex-wrap: wrap; gap: 4px;";
+        navRow.innerHTML = `
+            <span style="font-weight: 700; color: #fff; text-transform: uppercase;">Очередь номеров:</span>
+            <span style="color: ${completedCount === items.length ? '#a6e3a1' : '#e50914'}; font-weight: bold;">
+                ${completedCount === items.length ? '🏆 Все 11 номеров повторены!' : `Повторено: ${completedCount}/${items.length}`}
+            </span>
+        `;
+        schemaContainer.appendChild(navRow);
+
+        const pillRow = document.createElement("div");
+        pillRow.style.cssText = "display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px;";
+        items.forEach(it => {
+            const btn = document.createElement("button");
+            const isActive = (it.num === activeItem.num);
+            btn.textContent = it.isToday ? `№${it.num} ✓` : `№${it.num}`;
+            btn.style.cssText = `
+                background: ${isActive ? "#e50914" : "#000"};
+                color: ${isActive ? "#fff" : (it.isToday ? "#a6e3a1" : "#888")};
+                border: 1px solid ${isActive ? "#e50914" : (it.isToday ? "#2e7d32" : "#333")};
+                padding: 3px 6px; border-radius: 4px; cursor: pointer;
+                font-size: 10px; font-weight: 700; font-family: 'Space Mono', monospace;
+            `;
+            btn.onclick = () => render(it.num);
+            pillRow.appendChild(btn);
+        });
+        schemaContainer.appendChild(pillRow);
+
+        // 2. Шапка активного номера
+        const header = document.createElement("div");
+        header.style.cssText = "padding: 8px 12px; background: #000; border: 1px dashed #444; border-radius: 6px; margin-bottom: 8px; font-family:'Space Mono', monospace;";
+
+        const headerTop = document.createElement("div");
+        headerTop.style.cssText = "display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;";
+
+        const headerInfo = document.createElement("div");
+        const daysText = activeItem.daysAgo === 9999 ? "никогда" : (activeItem.daysAgo === 0 ? "сегодня" : `${activeItem.daysAgo} дн. назад`);
+        const statusHtml = activeItem.isToday 
+            ? `<span style="font-size:0.75em; color:#a6e3a1; font-weight:bold; margin-left:6px;">● ПОВТОРЕНО СЕГОДНЯ</span>`
+            : `<span style="font-size:0.75em; color:var(--text-muted); margin-left:6px;">(${daysText})</span>`;
+        headerInfo.innerHTML = `<span style="font-size:0.95em; font-weight:700; text-transform:uppercase; color:#fff;">🔄 Задание ${taskNum}</span>${statusHtml}`;
+
+        const headerBtns = document.createElement("div");
+        headerBtns.style.cssText = "display:flex; gap:6px;";
+
+        const schemaBtn = document.createElement("button");
+        schemaBtn.textContent = "📐 Схема";
+        schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+        schemaBtn.onclick = () => {
+            const canvasName = `Номер ${taskNum}.canvas`;
+            const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
+            if (canvasFile) app.workspace.getLeaf(false).openFile(canvasFile);
+            else new Notice(`❌ Файл «${canvasName}» не найден`);
+        };
+
+        const doneBtn = document.createElement("button");
+        doneBtn.textContent = activeItem.isToday ? "✓ Повторено" : "✅ Повторил";
+        doneBtn.style.cssText = activeItem.isToday
+            ? "background:#000; color:#a6e3a1; border:1px dashed #2e7d32; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;"
+            : "background:#000; color:#fff; border:1px solid #e50914; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+
+        doneBtn.onclick = async () => {
+            await app.fileManager.processFrontMatter(schemaFile, fm => { fm.last_check = todayStr; });
+            activeItem.dStr = todayStr;
+            activeItem.isToday = true;
+            activeItem.daysAgo = 0;
+            activeItem.lastCheckDisplay = window.moment().format("DD.MM.YYYY");
+            activeItem.ts = window.moment().valueOf();
+            new Notice(`✅ Задание ${taskNum} повторено!`);
+            render(); // Автоматически переходит к следующему несданному номеру!
+        };
+
+        headerBtns.appendChild(schemaBtn);
+        headerBtns.appendChild(doneBtn);
+        headerTop.appendChild(headerInfo);
+        headerTop.appendChild(headerBtns);
+        header.appendChild(headerTop);
+        schemaContainer.appendChild(header);
+
+        // 3. Квизы
+        const quizPool = openTasks.length > 0 ? openTasks : allTasks;
+        const quizSlice = quizPool.slice(0, 4);
+
+        if (quizSlice.length > 0) {
+            const quizRow = document.createElement("div");
+            quizRow.style.cssText = "display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;";
+
+            quizSlice.forEach((t, i) => {
+                const uMatch = t.text.match(/https?:\/\/[^\s)]+/);
+                const url = uMatch ? uMatch[0] : "#";
+                const nameMatch = t.text.match(/\(([^)]+)\)/);
+                const quizName = nameMatch ? nameMatch[1] : `Квиз #${i + 1}`;
+
+                const btn = document.createElement("button");
+                btn.textContent = t.completed ? `✅ ${quizName}` : `🚀 ${quizName}`;
+                btn.style.cssText = t.completed
+                    ? "background:#000; color:#555; border:1px dashed #333; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-family:'Space Mono', monospace; text-transform:uppercase;"
+                    : "background:#000; color:#fff; border:1px solid #444; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+
+                btn.onclick = async () => {
+                    window.open(url, "_blank");
+                    if (!t.completed) {
+                        await app.vault.process(schemaFile, data => data.replace("- [ ] " + t.text, "- [x] " + t.text));
+                        btn.textContent = `✅ ${quizName}`;
+                        btn.style.cssText = "background:#000; color:#555; border:1px dashed #333; padding:5px 8px; border-radius:4px; cursor:pointer; font-size:10px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+                    }
+                };
+                quizRow.appendChild(btn);
+            });
+            schemaContainer.appendChild(quizRow);
+        }
+    }
+
+    render();
+}
+
+// ── Рендерим русский тренажер ───────────────────────────────
+await makeWordBlock("03_Knowledge/ЕГЭ/Русский/00_Словник_Ударения.md", "🎯 Ударения", "#F59E0B", cardRus);
+await makeWordBlock("03_Knowledge/ЕГЭ/Русский/01_Формы_Слов.md", "🧬 Формы слов", "#2563EB", cardRus);
+await renderTaskSchema(cardRus);
+
+
+// Карточка 6: Стена дисциплины
 const card4 = document.createElement("div");
 card4.className = "dash-card";
 card4.innerHTML = `<h3>📅 Стена дисциплины</h3>`;
@@ -253,8 +784,9 @@ const weekPages = dv.pages('"02_Log/Week"');
 const dateStats = {}; 
 
 for (let p of weekPages) {
+    if (!p.file || !p.file.tasks) continue;
     for (let t of p.file.tasks) {
-        const subpath = (t.section ? t.section.subpath : "") || (t.header || "");
+        const subpath = getTaskHeaderStr(t);
         const match = subpath.match(/\d{4}-\d{2}-\d{2}/);
         if (match) {
             const d = match[0];
@@ -320,7 +852,7 @@ wallContainer.innerHTML = headerHtml + gridHtml;
 card4.appendChild(wallContainer);
 
 
-// Карточка 5: График результатов
+// Карточка 7: График результатов
 const card5 = document.createElement("div");
 card5.className = "dash-card";
 card5.innerHTML = `<h3>📈 График результатов</h3>`;
@@ -421,7 +953,7 @@ if (weekPagesChart.length < 1) {
         <div style="display: flex; gap: 16px; margin-bottom: 15px; font-size: 12px; font-weight: bold; justify-content: center; flex-wrap: wrap;">
             <span style="color: #e50914;">● Русский (${rusAvg})</span>
             <span style="color: #ffffff;">● Математика (${mathAvg})</span>
-            <span style="color: #e50914;">● Информатика (${infAvg})</span>
+            <span style="color: #888888;">● Информатика (${infAvg})</span>
         </div>
         <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
             ${yGrid}
@@ -435,4 +967,3 @@ if (weekPagesChart.length < 1) {
     card5.appendChild(chartInner);
 }
 ```
-

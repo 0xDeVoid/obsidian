@@ -29,143 +29,73 @@ else dv.paragraph("*Чисто*");
 
 ```dataviewjs
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// ⚙️ НАСТРОЙКИ (меняй здесь)
-const QUIZ_COUNT = 6; // Сколько квизов показывать за одно повторение
+// ⚙️ НАСТРОЙКИ
+const QUIZ_COUNT = 6;
+const VOCAB_COUNT = 10;
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const pages = dv.pages('"03_Knowledge/ЕГЭ/Русский/Номера"')
-    .where(p => p.type === "rus_schema")
-    .sort(p => p.task_num, "asc")
-    .sort(p => {
-        const lc = p.last_check;
-        if (!lc) return -Infinity;
-        return window.moment(lc, "YYYY-MM-DD").valueOf();
-    }, "asc");
+function parseDateStr(val) {
+    if (!val) return null;
+    if (typeof val === 'string') {
+        const s = val.trim().slice(0, 10);
+        return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
+    }
+    if (val.toISODate && typeof val.toISODate === 'function') return val.toISODate();
+    if (val.ts) return window.moment(val.ts).format("YYYY-MM-DD");
+    if (val instanceof Date) return window.moment(val).format("YYYY-MM-DD");
+    return null;
+}
 
-if (pages.length === 0) {
+function getTimestamp(val) {
+    if (!val) return 0;
+    if (typeof val === 'number') return val;
+    if (val.ts) return val.ts;
+    if (val.toMillis && typeof val.toMillis === 'function') return val.toMillis();
+    const str = parseDateStr(val);
+    if (str) {
+        const m = window.moment(str, "YYYY-MM-DD");
+        if (m.isValid()) return m.valueOf();
+    }
+    return 0;
+}
+
+const rawPages = Array.from(dv.pages('"03_Knowledge/ЕГЭ/Русский/Номера"').where(p => p.type === "rus_schema"));
+
+if (rawPages.length === 0) {
     dv.paragraph("❌ Нет файлов с `type: rus_schema`.");
     return;
 }
 
-const page = pages[0];
-const taskNum = page.task_num;
-const lastCheck = page.last_check
-    ? window.moment(page.last_check, "YYYY-MM-DD").format("DD.MM.YYYY")
-    : "никогда";
-const daysAgo = page.last_check
-    ? window.moment().diff(window.moment(page.last_check, "YYYY-MM-DD"), "days")
-    : 9999;
+const todayStr = window.moment().format("YYYY-MM-DD");
 
-const tFile = app.vault.getAbstractFileByPath(page.file.path);
-const allTasks = Array.from(page.file.tasks.where(t => t.text.includes("http")));
-const openTasks = allTasks.filter(t => !t.completed);
-
-// ── Шапка блока ───────────────────────────────────────────────────────────────
-const header = document.createElement("div");
-header.style.cssText = "padding: 14px 16px; background: #000; border: 1px dashed #444; border-radius: 8px; margin-bottom: 12px; font-family:'Ndot 57', 'Space Mono', monospace;";
-
-const headerTop = document.createElement("div");
-headerTop.style.cssText = "display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;";
-
-const headerInfo = document.createElement("div");
-
-const titleSpan = document.createElement("span");
-titleSpan.style.cssText = "font-size:1.15em; font-weight:700; text-transform:uppercase; letter-spacing:1px;";
-titleSpan.textContent = `🔄 Задание ${taskNum}`;
-
-const subtitleSpan = document.createElement("span");
-subtitleSpan.style.cssText = "font-size:0.85em; color:var(--text-muted); margin-left:10px;";
-subtitleSpan.textContent = `последний раз: ${lastCheck} (${daysAgo} дн. назад)`;
-
-headerInfo.appendChild(titleSpan);
-headerInfo.appendChild(subtitleSpan);
-
-const headerBtns = document.createElement("div");
-headerBtns.style.cssText = "display:flex; gap:8px; flex-wrap:wrap;";
-
-// Кнопка «Схема» — открывает canvas
-const schemaBtn = document.createElement("button");
-schemaBtn.textContent = "📐 Схема";
-schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-schemaBtn.onclick = () => {
-    const canvasName = `Номер ${taskNum}.canvas`;
-    const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
-    if (canvasFile) {
-        app.workspace.getLeaf(false).openFile(canvasFile);
-    } else {
-        new Notice(`❌ Файл «${canvasName}» не найден`);
-    }
-};
-
-// Кнопка «Повторил» — обновляет last_check
-const doneBtn = document.createElement("button");
-doneBtn.textContent = "✅ Повторил";
-doneBtn.style.cssText = "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-doneBtn.onclick = async () => {
-    const today = window.moment().format("YYYY-MM-DD");
-    await app.fileManager.processFrontMatter(tFile, fm => {
-        fm.last_check = today;
-    });
-    new Notice(`✅ Задание ${taskNum}: last_check обновлён на ${today}`);
-};
-
-headerBtns.appendChild(schemaBtn);
-headerBtns.appendChild(doneBtn);
-headerTop.appendChild(headerInfo);
-headerTop.appendChild(headerBtns);
-header.appendChild(headerTop);
-dv.container.appendChild(header);
-
-// ── Квизы ─────────────────────────────────────────────────────────────────────
-const quizPool = openTasks.length > 0 ? openTasks : allTasks;
-const quizSlice = quizPool.slice(0, QUIZ_COUNT);
-
-if (quizSlice.length === 0) {
-    dv.paragraph("🔻 **Барабан пуст.** Добавь ссылки в файл задания.");
-    return;
+function getItems() {
+    return rawPages.map(p => {
+        const num = Number(p.task_num);
+        const dStr = parseDateStr(p.last_check);
+        const isToday = (dStr === todayStr);
+        let daysAgo = 9999;
+        let lastCheckDisplay = "никогда";
+        if (dStr) {
+            const m = window.moment(dStr, "YYYY-MM-DD");
+            if (m.isValid()) {
+                lastCheckDisplay = m.format("DD.MM.YYYY");
+                daysAgo = window.moment().startOf('day').diff(m.startOf('day'), 'days');
+            }
+        }
+        return {
+            page: p,
+            num: num,
+            dStr: dStr,
+            ts: getTimestamp(p.last_check),
+            isToday: isToday,
+            daysAgo: daysAgo,
+            lastCheckDisplay: lastCheckDisplay
+        };
+    }).sort((a, b) => a.num - b.num);
 }
 
-const quizLabel = document.createElement("div");
-quizLabel.style.cssText = "font-size:0.85em; color:var(--text-muted); margin-bottom:6px;";
-quizLabel.textContent = `🎯 Квизы (${quizSlice.length} из ${allTasks.length}):`;
-dv.container.appendChild(quizLabel);
+let items = getItems();
 
-const quizRow = document.createElement("div");
-quizRow.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px;";
-
-quizSlice.forEach((t, i) => {
-    const uMatch = t.text.match(/https?:\/\/[^\s)]+/);
-    const url = uMatch ? uMatch[0] : "#";
-    const nameMatch = t.text.match(/\(([^)]+)\)/);
-    const quizName = nameMatch ? nameMatch[1] : `Квиз #${i + 1}`;
-
-    const btn = document.createElement("button");
-    btn.textContent = t.completed ? `✅ ${quizName}` : `🚀 ${quizName}`;
-    btn.style.cssText = t.completed
-        ? "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;"
-        : "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-
-    btn.onclick = async () => {
-        window.open(url, "_blank");
-        if (!t.completed) {
-            await app.vault.process(tFile, data =>
-                data.replace("- [ ] " + t.text, "- [x] " + t.text)
-            );
-            btn.textContent = `✅ ${quizName}`;
-            btn.style.cssText = "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:12px; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-        }
-    };
-
-    quizRow.appendChild(btn);
-});
-
-dv.container.appendChild(quizRow);
-
-// ── Словарь текущего задания ───────────────────────────────
-// ⚙️ VOCAB_COUNT — сколько карточек из словаря показывать
-const VOCAB_COUNT = 10;
-
-// Карта: номер задания → пути к словарям (относительно vault root)
 const VOCAB_MAP = {
     5:  ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 5 (паронимы)/Словник паронимов"],
     7:  ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Ошибки квизы"],
@@ -182,191 +112,339 @@ const VOCAB_MAP = {
     18: [],
 };
 
-const vocabPaths = VOCAB_MAP[taskNum] || [];
+const mainWrap = document.createElement("div");
+dv.container.appendChild(mainWrap);
 
-if (vocabPaths.length > 0) {
-    // Собираем все задачи из всех словарей задания
-    let vocabPool = [];
-    for (const vPath of vocabPaths) {
-        const vPage = dv.page(vPath);
-        if (!vPage) continue;
-        const tasks = (vPage.file && vPage.file.tasks) ? Array.from(vPage.file.tasks) : [];
-        const open = tasks.filter(t => !t.completed);
-        // Предпочитаем незакрытые; если всё закрыто — берём все
-        vocabPool = vocabPool.concat(open.length > 0 ? open : tasks);
+async function renderView(requestedNum = null) {
+    mainWrap.innerHTML = "";
+
+    // Recompute due items
+    const uncompleted = items.filter(it => !it.isToday).sort((a, b) => a.ts - b.ts || a.num - b.num);
+    const completedCount = items.filter(it => it.isToday).length;
+
+    let activeItem = null;
+    if (requestedNum !== null) {
+        activeItem = items.find(it => it.num === requestedNum);
+    }
+    if (!activeItem) {
+        activeItem = uncompleted.length > 0 ? uncompleted[0] : items[0];
     }
 
-    if (vocabPool.length > 0) {
-        const todayStr = window.moment().format("YYYY-MM-DD");
-        const cacheKey = `vocab_${taskNum}_${todayStr}_v3`;
-        window._myVocabCache = window._myVocabCache || {};
-        
-        if (!window._myVocabCache[cacheKey]) {
-            // Случайная выборка VOCAB_COUNT карточек
-            const shuffled = [...vocabPool].sort(() => Math.random() - 0.5);
-            window._myVocabCache[cacheKey] = {
-                batch: shuffled.slice(0, VOCAB_COUNT).map(t => ({ text: t.text, path: t.path, completed: t.completed })),
-                idx: 0
-            };
-        }
-        
-        const vocabBatch = window._myVocabCache[cacheKey].batch;
-        let vIdx = window._myVocabCache[cacheKey].idx;
+    const taskNum = activeItem.num;
+    const page = activeItem.page;
+    const tFile = app.vault.getAbstractFileByPath(page.file.path);
+    const allTasks = Array.from(page.file.tasks.where(t => t.text.includes("http")));
+    const openTasks = allTasks.filter(t => !t.completed);
 
-        // ── Разделитель ─────────────────────────────────────────
-        const sep = document.createElement("div");
-        sep.style.cssText = "border-top:1px solid var(--background-modifier-border); margin:12px 0 8px;";
-        dv.container.appendChild(sep);
+    // ── 1. Панель быстрого переключения номеров ──
+    const selectorWrap = document.createElement("div");
+    selectorWrap.style.cssText = "margin-bottom: 14px; font-family:'Space Mono', monospace;";
 
-        // ── Прогресс + заголовок ────────────────────────────────
-        const vocabWrap = document.createElement("div");
-        vocabWrap.style.cssText = "margin-bottom:4px;";
-        dv.container.appendChild(vocabWrap);
+    const selectorHeader = document.createElement("div");
+    selectorHeader.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.82em; color: var(--text-muted); flex-wrap: wrap; gap: 6px;";
+    selectorHeader.innerHTML = `
+        <span style="text-transform: uppercase; font-weight: 700; color: #fff;">Очередь повторения номеров:</span>
+        <span style="color: ${completedCount === items.length ? '#a6e3a1' : '#e50914'}; font-weight: bold;">
+            ${completedCount === items.length ? '🏆 Все 11 номеров повторены сегодня!' : `Повторено сегодня: ${completedCount} из ${items.length}`}
+        </span>
+    `;
+    selectorWrap.appendChild(selectorHeader);
 
-        const vocabProgress = document.createElement("div");
-        vocabProgress.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
+    const selectorBar = document.createElement("div");
+    selectorBar.style.cssText = "display: flex; gap: 6px; flex-wrap: wrap;";
 
-        const vocabTitle = document.createElement("span");
-        vocabTitle.style.cssText = "font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-        vocabTitle.textContent = `📖 Словарь №${taskNum}`;
+    items.forEach(it => {
+        const btn = document.createElement("button");
+        const isActive = (it.num === activeItem.num);
+        btn.textContent = it.isToday ? `№${it.num} ✓` : `№${it.num}`;
+        btn.style.cssText = `
+            background: ${isActive ? "#e50914" : "#000"};
+            color: ${isActive ? "#fff" : (it.isToday ? "#a6e3a1" : "#aaa")};
+            border: 1px solid ${isActive ? "#e50914" : (it.isToday ? "#2e7d32" : "#333")};
+            padding: 5px 10px; border-radius: 4px; cursor: pointer;
+            font-size: 11px; font-weight: 700; font-family: 'Space Mono', monospace;
+            transition: all 0.2s;
+        `;
+        btn.onclick = () => renderView(it.num);
+        selectorBar.appendChild(btn);
+    });
+    selectorWrap.appendChild(selectorBar);
+    mainWrap.appendChild(selectorWrap);
 
-        const vBarOuter = document.createElement("div");
-        vBarOuter.style.cssText = "flex:1; height:5px; background:var(--background-modifier-border); border-radius:3px; overflow:hidden;";
-        const vBarInner = document.createElement("div");
-        vBarInner.style.cssText = "height:100%; background:#e50914; border-radius:3px; transition:width 0.3s; width:0%;";
-        vBarOuter.appendChild(vBarInner);
+    // ── 2. Шапка активного задания ──
+    const header = document.createElement("div");
+    header.style.cssText = "padding: 14px 16px; background: #000; border: 1px dashed #444; border-radius: 8px; margin-bottom: 12px; font-family:'Space Mono', monospace;";
 
-        const vCounter = document.createElement("span");
-        vCounter.style.cssText = "font-size:0.78em; color:var(--text-muted); white-space:nowrap;";
+    const headerTop = document.createElement("div");
+    headerTop.style.cssText = "display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;";
 
-        vocabProgress.appendChild(vocabTitle);
-        vocabProgress.appendChild(vBarOuter);
-        vocabProgress.appendChild(vCounter);
-        vocabWrap.appendChild(vocabProgress);
+    const headerInfo = document.createElement("div");
 
-        // ── Карточка ─────────────────────────────────────────────
-        const vocabCard = document.createElement("div");
-        vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:'Ndot 57', 'Space Mono', monospace;";
-        vocabWrap.appendChild(vocabCard);
+    const titleSpan = document.createElement("span");
+    titleSpan.style.cssText = "font-size:1.15em; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#fff;";
+    titleSpan.textContent = `🔄 Задание ${taskNum}`;
 
-        function renderVocabCard() {
-            vocabCard.innerHTML = "";
-            const pct = Math.round((vIdx / vocabBatch.length) * 100);
-            vBarInner.style.width = pct + "%";
-            vCounter.textContent = `${vIdx} / ${vocabBatch.length}`;
-
-            if (vIdx >= vocabBatch.length) {
-                vocabCard.style.cssText = "padding:10px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.9em; font-weight:700; font-family:'Ndot 57', 'Space Mono', monospace;";
-                vocabCard.textContent = "✅ Словарь — сессия завершена!";
-                return;
-            }
-
-            const t = vocabBatch[vIdx];
-            const rawText = t.text
-                .replace(/\[fails:: \d+\]/g, "")
-                .replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "")
-                .trim();
-
-            // Извлекаем слово и ответ из <details>
-            const wordPart = rawText.replace(/<details>[\s\S]*?<\/details>/g, "").trim();
-            const answerMatch = rawText.match(/<details>[\s\S]*?<\/summary>([\s\S]*?)<\/details>/);
-            const answerText = answerMatch ? answerMatch[1].trim() : "—";
-
-            // Верхняя строка: вопрос + кнопка показать
-            const topRow = document.createElement("div");
-            topRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px;";
-
-            const wordDiv = document.createElement("div");
-            wordDiv.style.cssText = "font-size:15px; font-weight:500; line-height:1.3; font-family: monospace;";
-            wordDiv.innerHTML = wordPart.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-
-            const showBtn = document.createElement("button");
-            showBtn.textContent = "👁️";
-            showBtn.title = "Показать ответ";
-            showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Ndot 57', 'Space Mono', monospace;";
-
-            topRow.appendChild(wordDiv);
-            topRow.appendChild(showBtn);
-            vocabCard.appendChild(topRow);
-
-            const answerDiv = document.createElement("div");
-            answerDiv.style.cssText = "font-size:13px; color:#8B5CF6; margin-bottom:7px; display:none; font-weight:500;";
-            answerDiv.innerHTML = answerText.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-            vocabCard.appendChild(answerDiv);
-
-            showBtn.onclick = () => {
-                const visible = answerDiv.style.display !== "none";
-                answerDiv.style.display = visible ? "none" : "block";
-                showBtn.textContent = visible ? "👁️" : "🙈";
-            };
-
-            const actionsDiv = document.createElement("div");
-            actionsDiv.style.cssText = "display:flex; gap:6px;";
-
-            async function processVocab(isSuccess) {
-                const today = window.moment().format("YYYY-MM-DD");
-                // Update state synchronously so dataview refresh gets the new idx
-                window._myVocabCache[cacheKey].idx++;
-                
-                const vtFile = app.vault.getAbstractFileByPath(t.path);
-                if (vtFile) {
-                    const failsMatch = t.text.match(/\[fails:: (\d+)\]/);
-                    let fails = failsMatch ? parseInt(failsMatch[1]) : 0;
-                    if (!isSuccess) fails++;
-                    let baseText = t.text.replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "");
-                    if (failsMatch) {
-                        baseText = baseText.replace(/\[fails:: \d+\]/, `[fails:: ${fails}]`);
-                    } else {
-                        baseText += ` [fails:: ${fails}]`;
-                    }
-                    const newText = baseText + ` 🗓️${today}`;
-                    const oldLine = (t.completed ? "- [x] " : "- [ ] ") + t.text;
-                    const newLine = (isSuccess ? "- [x] " : "- [ ] ") + newText;
-                    
-                    t.text = newText;
-                    t.completed = isSuccess ? true : t.completed;
-                    
-                    await app.vault.process(vtFile, data => data.replace(oldLine, newLine));
-                }
-                vIdx = window._myVocabCache[cacheKey].idx;
-                renderVocabCard();
-            }
-
-            const btnW = document.createElement("button");
-            btnW.textContent = "✅ Знаю";
-            btnW.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-            btnW.onclick = () => processVocab(true);
-
-            const btnF = document.createElement("button");
-            btnF.textContent = "❌ Ошибся";
-            btnF.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:12px; font-family:'Ndot 57', 'Space Mono', monospace; text-transform:uppercase;";
-            btnF.onclick = () => processVocab(false);
-
-            actionsDiv.appendChild(btnW);
-            actionsDiv.appendChild(btnF);
-            vocabCard.appendChild(actionsDiv);
-        }
-
-        renderVocabCard();
+    const subtitleSpan = document.createElement("span");
+    subtitleSpan.style.cssText = "font-size:0.85em; margin-left:10px;";
+    if (activeItem.isToday) {
+        subtitleSpan.innerHTML = `<span style="color:#a6e3a1; font-weight:bold;">● ПОВТОРЕНО СЕГОДНЯ</span>`;
     } else {
-        const sep = document.createElement("div");
-        sep.style.cssText = "border-top:1px solid var(--background-modifier-border); margin:12px 0 8px;";
-        dv.container.appendChild(sep);
-        const warn = document.createElement("div");
-        warn.style.cssText = "padding:10px; background:#EF444422; border:1px solid #EF4444; border-radius:8px; font-size:0.9em; text-align:center;";
-        warn.innerHTML = `⚠️ <b>Не удалось загрузить словари для задания ${taskNum}.</b><br><span style="font-size:0.85em; color:var(--text-muted);">Не найдены задачи в файлах:</span><br><ul style="text-align:left; font-size:0.8em; margin: 5px 0;">${vocabPaths.map(p => `<li>${p}</li>`).join("")}</ul><span style="font-size:0.85em; color:var(--text-muted);">Убедитесь, что файлы скачались на телефон и в них есть чекбоксы.</span>`;
-        dv.container.appendChild(warn);
+        const daysText = activeItem.daysAgo === 9999 ? "никогда" : (activeItem.daysAgo === 0 ? "сегодня" : `${activeItem.daysAgo} дн. назад`);
+        subtitleSpan.style.color = "var(--text-muted)";
+        subtitleSpan.textContent = `последний раз: ${activeItem.lastCheckDisplay} (${daysText})`;
     }
-} else {
-    // ── Разделитель ─────────────────────────────────────────
-    const sep = document.createElement("div");
-    sep.style.cssText = "border-top:1px solid var(--background-modifier-border); margin:12px 0 8px;";
-    dv.container.appendChild(sep);
-    const noVocab = document.createElement("div");
-    noVocab.style.cssText = "font-size:0.85em; color:var(--text-muted); text-align:center; margin-bottom:8px;";
-    noVocab.textContent = `📌 Для задания ${taskNum} нет словаря с ошибками.`;
-    dv.container.appendChild(noVocab);
+
+    headerInfo.appendChild(titleSpan);
+    headerInfo.appendChild(subtitleSpan);
+
+    const headerBtns = document.createElement("div");
+    headerBtns.style.cssText = "display:flex; gap:8px; flex-wrap:wrap;";
+
+    // Кнопка «Схема» — открывает canvas
+    const schemaBtn = document.createElement("button");
+    schemaBtn.textContent = "📐 Схема";
+    schemaBtn.style.cssText = "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+    schemaBtn.onclick = () => {
+        const canvasName = `Номер ${taskNum}.canvas`;
+        const canvasFile = app.vault.getFiles().find(f => f.name === canvasName);
+        if (canvasFile) {
+            app.workspace.getLeaf(false).openFile(canvasFile);
+        } else {
+            new Notice(`❌ Файл «${canvasName}» не найден`);
+        }
+    };
+
+    // Кнопка «Повторил» — обновляет last_check и ротирует
+    const doneBtn = document.createElement("button");
+    doneBtn.textContent = activeItem.isToday ? "✓ Повторено сегодня" : "✅ Повторил";
+    doneBtn.style.cssText = activeItem.isToday
+        ? "background:#000; color:#a6e3a1; border:1px dashed #2e7d32; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;"
+        : "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+
+    doneBtn.onclick = async () => {
+        await app.fileManager.processFrontMatter(tFile, fm => {
+            fm.last_check = todayStr;
+        });
+        activeItem.dStr = todayStr;
+        activeItem.isToday = true;
+        activeItem.daysAgo = 0;
+        activeItem.lastCheckDisplay = window.moment().format("DD.MM.YYYY");
+        activeItem.ts = window.moment().valueOf();
+
+        new Notice(`✅ Задание ${taskNum} повторено!`);
+        renderView(); // Автоматически переходит к следующему несданному номеру!
+    };
+
+    headerBtns.appendChild(schemaBtn);
+    headerBtns.appendChild(doneBtn);
+    headerTop.appendChild(headerInfo);
+    headerTop.appendChild(headerBtns);
+    header.appendChild(headerTop);
+    mainWrap.appendChild(header);
+
+    // ── 3. Квизы ──
+    const quizPool = openTasks.length > 0 ? openTasks : allTasks;
+    const quizSlice = quizPool.slice(0, QUIZ_COUNT);
+
+    if (quizSlice.length > 0) {
+        const quizLabel = document.createElement("div");
+        quizLabel.style.cssText = "font-size:0.85em; color:var(--text-muted); margin-bottom:6px; font-family:'Space Mono', monospace;";
+        quizLabel.textContent = `🎯 Квизы (${quizSlice.length} из ${allTasks.length}):`;
+        mainWrap.appendChild(quizLabel);
+
+        const quizRow = document.createElement("div");
+        quizRow.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;";
+
+        quizSlice.forEach((t, i) => {
+            const uMatch = t.text.match(/https?:\/\/[^\s)]+/);
+            const url = uMatch ? uMatch[0] : "#";
+            const nameMatch = t.text.match(/\(([^)]+)\)/);
+            const quizName = nameMatch ? nameMatch[1] : `Квиз #${i + 1}`;
+
+            const btn = document.createElement("button");
+            btn.textContent = t.completed ? `✅ ${quizName}` : `🚀 ${quizName}`;
+            btn.style.cssText = t.completed
+                ? "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;"
+                : "background:#000; color:#fff; border:1px solid #555; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
+
+            btn.onclick = async () => {
+                window.open(url, "_blank");
+                if (!t.completed) {
+                    await app.vault.process(tFile, data =>
+                        data.replace("- [ ] " + t.text, "- [x] " + t.text)
+                    );
+                    btn.textContent = `✅ ${quizName}`;
+                    btn.style.cssText = "background:#000; color:#666; border:1px dashed #444; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+                }
+            };
+
+            quizRow.appendChild(btn);
+        });
+
+        mainWrap.appendChild(quizRow);
+    }
+
+    // ── 4. Словарь текущего задания ──
+    const vocabPaths = VOCAB_MAP[taskNum] || [];
+
+    if (vocabPaths.length > 0) {
+        let vocabPool = [];
+        for (const vPath of vocabPaths) {
+            const vPage = dv.page(vPath);
+            if (!vPage) continue;
+            const tasks = (vPage.file && vPage.file.tasks) ? Array.from(vPage.file.tasks) : [];
+            const open = tasks.filter(t => !t.completed);
+            vocabPool = vocabPool.concat(open.length > 0 ? open : tasks);
+        }
+
+        if (vocabPool.length > 0) {
+            const cacheKey = `vocab_${taskNum}_${todayStr}_v5`;
+            window._myVocabCache = window._myVocabCache || {};
+
+            if (!window._myVocabCache[cacheKey]) {
+                const shuffled = [...vocabPool].sort(() => Math.random() - 0.5);
+                window._myVocabCache[cacheKey] = {
+                    batch: shuffled.slice(0, VOCAB_COUNT).map(t => ({ text: t.text, path: t.path, completed: t.completed })),
+                    idx: 0
+                };
+            }
+
+            const vocabBatch = window._myVocabCache[cacheKey].batch;
+            let vIdx = window._myVocabCache[cacheKey].idx;
+
+            const sep = document.createElement("div");
+            sep.style.cssText = "border-top:1px dashed #333; margin:14px 0 10px;";
+            mainWrap.appendChild(sep);
+
+            const vocabWrap = document.createElement("div");
+            vocabWrap.style.cssText = "margin-bottom:4px;";
+            mainWrap.appendChild(vocabWrap);
+
+            const vocabProgress = document.createElement("div");
+            vocabProgress.style.cssText = "display:flex; align-items:center; gap:8px; margin-bottom:6px;";
+
+            const vocabTitle = document.createElement("span");
+            vocabTitle.style.cssText = "font-size:0.82em; font-weight:700; color:#e50914; white-space:nowrap; font-family:'Space Mono', monospace; text-transform:uppercase;";
+            vocabTitle.textContent = `📖 Карточки Задания ${taskNum}`;
+
+            const vBarOuter = document.createElement("div");
+            vBarOuter.style.cssText = "flex:1; height:4px; background:var(--background-modifier-border); border-radius:2px; overflow:hidden;";
+            const vBarInner = document.createElement("div");
+            vBarInner.style.cssText = "height:100%; background:#e50914; border-radius:2px; transition:width 0.3s; width:0%;";
+            vBarOuter.appendChild(vBarInner);
+
+            const vCounter = document.createElement("span");
+            vCounter.style.cssText = "font-size:0.75em; color:var(--text-muted); white-space:nowrap;";
+
+            vocabProgress.appendChild(vocabTitle);
+            vocabProgress.appendChild(vBarOuter);
+            vocabProgress.appendChild(vCounter);
+            vocabWrap.appendChild(vocabProgress);
+
+            const vocabCard = document.createElement("div");
+            vocabCard.style.cssText = "padding:12px 14px; background:#000; border-radius:8px; border:1px dashed #444; font-family:'Space Mono', monospace;";
+            vocabWrap.appendChild(vocabCard);
+
+            function renderVocabCard() {
+                vocabCard.innerHTML = "";
+                const pct = Math.round((vIdx / vocabBatch.length) * 100);
+                vBarInner.style.width = pct + "%";
+                vCounter.textContent = `${vIdx} / ${vocabBatch.length}`;
+
+                if (vIdx >= vocabBatch.length) {
+                    vocabCard.style.cssText = "padding:12px 14px; background:#000; border-radius:8px; border:1px dashed #444; text-align:center; font-size:0.85em; font-weight:700; font-family:'Space Mono', monospace;";
+                    vocabCard.textContent = `✅ Задание ${taskNum}: карточки на сегодня завершены!`;
+                    return;
+                }
+
+                const t = vocabBatch[vIdx];
+                const rawText = t.text
+                    .replace(/\[fails:: \d+\]/g, "")
+                    .replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "")
+                    .trim();
+
+                const wordPart = rawText.replace(/<details>[\s\S]*?<\/details>/g, "").trim();
+                const answerMatch = rawText.match(/<details>[\s\S]*?<\/summary>([\s\S]*?)<\/details>/);
+                const answerText = answerMatch ? answerMatch[1].trim() : "—";
+
+                const topRow = document.createElement("div");
+                topRow.style.cssText = "display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px;";
+
+                const wordDiv = document.createElement("div");
+                wordDiv.style.cssText = "font-size:15px; font-weight:600; line-height:1.3; font-family: monospace; color:#fff;";
+                wordDiv.innerHTML = wordPart.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+
+                const showBtn = document.createElement("button");
+                showBtn.textContent = "👁️";
+                showBtn.title = "Показать ответ";
+                showBtn.style.cssText = "background:#000; color:#fff; border:1px dashed #555; padding:3px 8px; border-radius:4px; cursor:pointer; font-size:12px; flex-shrink:0; font-family:'Space Mono', monospace;";
+
+                topRow.appendChild(wordDiv);
+                topRow.appendChild(showBtn);
+                vocabCard.appendChild(topRow);
+
+                const answerDiv = document.createElement("div");
+                answerDiv.style.cssText = "font-size:13px; color:#a6e3a1; margin-bottom:8px; display:none; font-weight:600;";
+                answerDiv.innerHTML = `→ ${answerText.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")}`;
+                vocabCard.appendChild(answerDiv);
+
+                showBtn.onclick = () => {
+                    const visible = answerDiv.style.display !== "none";
+                    answerDiv.style.display = visible ? "none" : "block";
+                    showBtn.textContent = visible ? "👁️" : "🙈";
+                };
+
+                const actionsDiv = document.createElement("div");
+                actionsDiv.style.cssText = "display:flex; gap:6px;";
+
+                async function processVocab(isSuccess) {
+                    window._myVocabCache[cacheKey].idx++;
+                    const vtFile = app.vault.getAbstractFileByPath(t.path);
+                    if (vtFile) {
+                        const failsMatch = t.text.match(/\[fails:: (\d+)\]/);
+                        let fails = failsMatch ? parseInt(failsMatch[1]) : 0;
+                        if (!isSuccess) fails++;
+                        let baseText = t.text.replace(/ 🗓️\d{4}-\d{2}-\d{2}/g, "");
+                        if (failsMatch) {
+                            baseText = baseText.replace(/\[fails:: \d+\]/, `[fails:: ${fails}]`);
+                        } else {
+                            baseText += ` [fails:: ${fails}]`;
+                        }
+                        const newText = baseText + ` 🗓️${todayStr}`;
+                        const oldLine = (t.completed ? "- [x] " : "- [ ] ") + t.text;
+                        const newLine = (isSuccess ? "- [x] " : "- [ ] ") + newText;
+
+                        t.text = newText;
+                        t.completed = isSuccess ? true : t.completed;
+
+                        await app.vault.process(vtFile, data => data.replace(oldLine, newLine));
+                    }
+                    vIdx = window._myVocabCache[cacheKey].idx;
+                    renderVocabCard();
+                }
+
+                const btnW = document.createElement("button");
+                btnW.textContent = "✅ Знаю";
+                btnW.style.cssText = "flex:1; background:#000; color:#fff; border:1px solid #555; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+                btnW.onclick = () => processVocab(true);
+
+                const btnF = document.createElement("button");
+                btnF.textContent = "❌ Ошибся";
+                btnF.style.cssText = "flex:1; background:#000; color:#e50914; border:1px solid #e50914; padding:7px; border-radius:4px; cursor:pointer; font-weight:700; font-size:11px; font-family:'Space Mono', monospace; text-transform:uppercase;";
+                btnF.onclick = () => processVocab(false);
+
+                actionsDiv.appendChild(btnW);
+                actionsDiv.appendChild(btnF);
+                vocabCard.appendChild(actionsDiv);
+            }
+
+            renderVocabCard();
+        }
+    }
 }
+
+await renderView();
+
 ```
 
 ```dataviewjs

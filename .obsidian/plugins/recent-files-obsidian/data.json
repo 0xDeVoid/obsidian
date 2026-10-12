@@ -1,12 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-10-12",
+      "path": "02_Log/Days/2026-10-12.md"
+    },
+    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
     },
     {
+      "basename": "2026-W42",
+      "path": "02_Log/Week/2026-W42.md"
+    },
+    {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
       "basename": "2026-10-11",
       "path": "02_Log/Days/2026-10-11.md"
+    },
+    {
+      "basename": "Swarm Protocols",
+      "path": "System/Agents/Swarm Protocols.md"
+    },
+    {
+      "basename": "Vlad Dossier",
+      "path": "System/Agents/Vlad Dossier.md"
+    },
+    {
+      "basename": "2026-W40",
+      "path": "02_Log/Week/2026-W40.md"
+    },
+    {
+      "basename": "Active Context",
+      "path": "System/Agents/Active Context.md"
+    },
+    {
+      "basename": "2026-W38",
+      "path": "02_Log/Week/2026-W38.md"
+    },
+    {
+      "basename": "2026-W39",
+      "path": "02_Log/Week/2026-W39.md"
+    },
+    {
+      "basename": "2026-W41",
+      "path": "02_Log/Week/2026-W41.md"
     },
     {
       "basename": "Неделя 2",
@@ -15,50 +55,6 @@
     {
       "basename": "Неделя 26",
       "path": "Archive/Ежеденевник/Планы по неделям/2026/Неделя 26.md"
-    },
-    {
-      "basename": "Июнь",
-      "path": "Archive/Ежеденевник/Планы по месяцам/2026/Июнь.md"
-    },
-    {
-      "basename": "Год 2026",
-      "path": "Archive/Ежеденевник/Планы на год/Год 2026.md"
-    },
-    {
-      "basename": "2026-W41",
-      "path": "02_Log/Week/2026-W41.md"
-    },
-    {
-      "basename": "Влад_Сошников_соч_01_15__c5qbd",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_соч_01_15__c5qbd.pdf"
-    },
-    {
-      "basename": "Номер 15",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas"
-    },
-    {
-      "basename": "Задание 8 (синтаксические ошибки)",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md"
-    },
-    {
-      "basename": "Задание_9__Корни_с_чередованием__Теория__978sp",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf"
-    },
-    {
-      "basename": "Tasks",
-      "path": "Tasks.md"
-    },
-    {
-      "basename": "2026-10-10",
-      "path": "02_Log/Days/2026-10-10.md"
-    },
-    {
-      "basename": "Номер 13",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas"
-    },
-    {
-      "basename": "Влад_Сошников_лето_соч_00_10__b5j9b",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_лето_соч_00_10__b5j9b.pdf"
     }
   ],
   "omittedPaths": [
