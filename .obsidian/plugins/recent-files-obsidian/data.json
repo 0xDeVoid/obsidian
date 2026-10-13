@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "2026-10-12",
-      "path": "02_Log/Days/2026-10-12.md"
-    },
-    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
+    },
+    {
+      "basename": "2026-W42",
+      "path": "02_Log/Week/2026-W42.md"
+    },
+    {
+      "basename": "2026-10-13",
+      "path": "02_Log/Days/2026-10-13.md"
     },
     {
       "basename": "Tasks",
       "path": "Tasks.md"
     },
     {
-      "basename": "2026-W42",
-      "path": "02_Log/Week/2026-W42.md"
+      "basename": "Задание 8 (синтаксические ошибки)",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md"
+    },
+    {
+      "basename": "2026-10-12",
+      "path": "02_Log/Days/2026-10-12.md"
     },
     {
       "basename": "2026-10-11",
@@ -51,10 +59,6 @@
     {
       "basename": "Неделя 2",
       "path": "Archive/Ежеденевник/Планы по неделям/2026/Неделя 2.md"
-    },
-    {
-      "basename": "Неделя 26",
-      "path": "Archive/Ежеденевник/Планы по неделям/2026/Неделя 26.md"
     }
   ],
   "omittedPaths": [

@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Log/Days/2026-10-12.md",
+                "file": "Dashboard.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-10-12"
+              "title": "Dashboard"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -153,7 +154,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Dashboard.md",
+                "file": "02_Log/Week/2026-W42.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -318,44 +319,44 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "a98cf378ac40474a",
+  "active": "f0c74c679f7434b9",
   "lastOpenFiles": [
-    "03_Knowledge/Спорт/ПРОГРАММА_И_ПРОГРЕССИЯ.md",
+    "02_Log/Days/2026-10-13.md",
+    "02_Log/Days/2026-10-12.md",
+    "Dashboard.md",
+    "02_Log/Workouts/2026-07-22.md",
+    "02_Log/Workouts/2026-07-24.md",
+    "02_Log/Workouts/2026-07-27.md",
+    "02_Log/Workouts/2026-07-29.md",
+    "02_Log/Workouts/2026-08-03.md",
+    "02_Log/Workouts/2026-08-05.md",
+    "02_Log/Workouts/2026-08-10.md",
+    "02_Log/Workouts/2026-08-12.md",
+    "02_Log/Workouts/2026-08-14.md",
+    "02_Log/Workouts/2026-08-17.md",
+    "02_Log/Workouts/2026-08-19.md",
+    "02_Log/Workouts/2026-08-24.md",
+    "02_Log/Workouts/2026-08-26.md",
+    "02_Log/Workouts/2026-08-28.md",
+    "02_Log/Workouts/2026-08-31.md",
+    "02_Log/Workouts/2026-09-02.md",
+    "02_Log/Workouts/2026-09-04.md",
+    "02_Log/Workouts/2026-09-07.md",
+    "02_Log/Workouts/2026-09-09.md",
+    "02_Log/Workouts/2026-09-11.md",
+    "02_Log/Workouts/2026-09-14.md",
+    "02_Log/Workouts/2026-09-16.md",
+    "02_Log/Workouts/2026-09-18.md",
     "03_Knowledge/Спорт",
-    "02_Log/Workouts/2026-09-28.md",
-    "02_Log/Workouts/2026-09-30.md",
-    "02_Log/Workouts/2026-10-05.md",
-    "02_Log/Workouts/2026-10-07.md",
-    "02_Log/Workouts/2026-10-12.md",
     "02_Log/Workouts",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133840488.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133840064.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012133838809.png",
-    "Tasks.md",
-    "Dashboard.md",
-    "02_Log/Days/2026-10-12.md",
-    "00_Inbox/📱_MOBILE_INBOX.md",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
-    "System/📱_Мобильная_Синхронизация.md",
-    "02_Log/Days/2026-10-11.md",
-    "System/Agents/Swarm Protocols.md",
-    "System/Agents/Vlad Dossier.md",
-    "02_Log/Week/2026-W40.md",
-    "System/Agents/Active Context.md",
-    "03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md",
-    "03_Knowledge/ЕГЭ/Русский/КОМПИЛЯТОР_РУССКОГО.md",
     "System/Agents",
-    "02_Log/Week/2026-W42.md",
-    "02_Log/Week/2026-W38.md",
-    "02_Log/Week/2026-W39.md",
-    "02_Log/Week/2026-W41.md",
-    "Archive/Ежеденевник/Планы по неделям/2026/Неделя 2.md",
-    "Archive/Ежеденевник/Планы по неделям/2026/Неделя 26.md",
-    "Archive/Ежеденевник/Планы по месяцам/2026/Июнь.md",
-    "Archive/Ежеденевник/Планы на год/Год 2026.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_соч_01_15__c5qbd.pdf",
     "System/Investments/PDF/ Audio/ Other/IMG-20261010124622676.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261010124207794.png",
