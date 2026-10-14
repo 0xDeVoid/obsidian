@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
+      "basename": "2026-10-14",
+      "path": "02_Log/Days/2026-10-14.md"
+    },
+    {
+      "basename": "Номер 10",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas"
+    },
+    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
     },
@@ -9,56 +21,36 @@
       "path": "02_Log/Week/2026-W42.md"
     },
     {
+      "basename": "Ошибки квизы",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md"
+    },
+    {
+      "basename": "Dictionary",
+      "path": "03_Knowledge/English/Dictionary.md"
+    },
+    {
+      "basename": "Задание 9 (корни)",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание 9 (корни).md"
+    },
+    {
+      "basename": "Словарь",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь.md"
+    },
+    {
+      "basename": "Номер 9",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas"
+    },
+    {
       "basename": "2026-10-13",
       "path": "02_Log/Days/2026-10-13.md"
     },
     {
-      "basename": "Tasks",
-      "path": "Tasks.md"
+      "basename": "IMG-20260920125757215",
+      "path": "System/Investments/PDF/ Audio/ Other/IMG-20260920125757215.png"
     },
     {
       "basename": "Задание 8 (синтаксические ошибки)",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md"
-    },
-    {
-      "basename": "2026-10-12",
-      "path": "02_Log/Days/2026-10-12.md"
-    },
-    {
-      "basename": "2026-10-11",
-      "path": "02_Log/Days/2026-10-11.md"
-    },
-    {
-      "basename": "Swarm Protocols",
-      "path": "System/Agents/Swarm Protocols.md"
-    },
-    {
-      "basename": "Vlad Dossier",
-      "path": "System/Agents/Vlad Dossier.md"
-    },
-    {
-      "basename": "2026-W40",
-      "path": "02_Log/Week/2026-W40.md"
-    },
-    {
-      "basename": "Active Context",
-      "path": "System/Agents/Active Context.md"
-    },
-    {
-      "basename": "2026-W38",
-      "path": "02_Log/Week/2026-W38.md"
-    },
-    {
-      "basename": "2026-W39",
-      "path": "02_Log/Week/2026-W39.md"
-    },
-    {
-      "basename": "2026-W41",
-      "path": "02_Log/Week/2026-W41.md"
-    },
-    {
-      "basename": "Неделя 2",
-      "path": "Archive/Ежеденевник/Планы по неделям/2026/Неделя 2.md"
     }
   ],
   "omittedPaths": [

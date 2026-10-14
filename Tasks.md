@@ -100,7 +100,7 @@ const VOCAB_MAP = {
     5:  ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 5 (паронимы)/Словник паронимов"],
     7:  ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Ошибки квизы"],
     8:  ["03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Ошибки в квизах"],
-    9:  [],
+    9:  ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь"],
     10: ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь",
          "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы"],
     11: ["03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/словарь"],
@@ -120,15 +120,19 @@ async function renderView(requestedNum = null) {
 
     // Recompute due items
     const uncompleted = items.filter(it => !it.isToday).sort((a, b) => a.ts - b.ts || a.num - b.num);
-    const completedCount = items.filter(it => it.isToday).length;
+    const todayItems = items.filter(it => it.isToday);
 
     let activeItem = null;
     if (requestedNum !== null) {
         activeItem = items.find(it => it.num === requestedNum);
+    } else if (window._myActiveRusTask && items.some(it => it.num === window._myActiveRusTask)) {
+        activeItem = items.find(it => it.num === window._myActiveRusTask);
     }
     if (!activeItem) {
-        activeItem = uncompleted.length > 0 ? uncompleted[0] : items[0];
+        const todayDone = items.find(it => it.isToday);
+        activeItem = todayDone || (uncompleted.length > 0 ? uncompleted[0] : items[0]);
     }
+    window._myActiveRusTask = activeItem.num;
 
     const taskNum = activeItem.num;
     const page = activeItem.page;
@@ -140,13 +144,20 @@ async function renderView(requestedNum = null) {
     const selectorWrap = document.createElement("div");
     selectorWrap.style.cssText = "margin-bottom: 14px; font-family:'Space Mono', monospace;";
 
+    const nextDue = uncompleted.length > 0 ? `№${uncompleted[0].num}` : "все повторены";
+    let statusText = "";
+    if (todayItems.length > 0) {
+        const doneNums = todayItems.map(it => `№${it.num}`).join(", ");
+        statusText = `<span style="color: #a6e3a1; font-weight: bold;">✅ Норма дня закрыта (${doneNums})</span> · <span style="color: var(--text-muted);">Следующий в очереди: <b style="color: #fff;">${nextDue}</b></span>`;
+    } else {
+        statusText = `<span style="color: #fff; font-weight: bold;">🎯 Цель на день: 1 номер</span> · <span style="color: var(--text-muted);">К повторению: <b style="color: #e50914;">${nextDue}</b></span>`;
+    }
+
     const selectorHeader = document.createElement("div");
     selectorHeader.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.82em; color: var(--text-muted); flex-wrap: wrap; gap: 6px;";
     selectorHeader.innerHTML = `
-        <span style="text-transform: uppercase; font-weight: 700; color: #fff;">Очередь повторения номеров:</span>
-        <span style="color: ${completedCount === items.length ? '#a6e3a1' : '#e50914'}; font-weight: bold;">
-            ${completedCount === items.length ? '🏆 Все 11 номеров повторены сегодня!' : `Повторено сегодня: ${completedCount} из ${items.length}`}
-        </span>
+        <span style="text-transform: uppercase; font-weight: 700; color: #fff;">Очередь ротации (1 день = 1 номер):</span>
+        <div>${statusText}</div>
     `;
     selectorWrap.appendChild(selectorHeader);
 
@@ -165,7 +176,10 @@ async function renderView(requestedNum = null) {
             font-size: 11px; font-weight: 700; font-family: 'Space Mono', monospace;
             transition: all 0.2s;
         `;
-        btn.onclick = () => renderView(it.num);
+        btn.onclick = () => {
+            window._myActiveRusTask = it.num;
+            renderView(it.num);
+        };
         selectorBar.appendChild(btn);
     });
     selectorWrap.appendChild(selectorBar);
@@ -214,7 +228,7 @@ async function renderView(requestedNum = null) {
         }
     };
 
-    // Кнопка «Повторил» — обновляет last_check и ротирует
+    // Кнопка «Повторил» — обновляет last_check
     const doneBtn = document.createElement("button");
     doneBtn.textContent = activeItem.isToday ? "✓ Повторено сегодня" : "✅ Повторил";
     doneBtn.style.cssText = activeItem.isToday
@@ -222,6 +236,10 @@ async function renderView(requestedNum = null) {
         : "background:#000; color:#fff; border:1px solid #e50914; padding:8px 14px; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; font-family:'Space Mono', monospace; text-transform:uppercase;";
 
     doneBtn.onclick = async () => {
+        if (activeItem.isToday) {
+            new Notice(`Задание ${taskNum} уже повторено сегодня! 🎯`);
+            return;
+        }
         await app.fileManager.processFrontMatter(tFile, fm => {
             fm.last_check = todayStr;
         });
@@ -231,8 +249,9 @@ async function renderView(requestedNum = null) {
         activeItem.lastCheckDisplay = window.moment().format("DD.MM.YYYY");
         activeItem.ts = window.moment().valueOf();
 
-        new Notice(`✅ Задание ${taskNum} повторено!`);
-        renderView(); // Автоматически переходит к следующему несданному номеру!
+        window._myActiveRusTask = taskNum;
+        new Notice(`✅ Задание ${taskNum} повторено! Норма на сегодня закрыта 🎯`);
+        renderView(taskNum);
     };
 
     headerBtns.appendChild(schemaBtn);
@@ -241,7 +260,6 @@ async function renderView(requestedNum = null) {
     headerTop.appendChild(headerBtns);
     header.appendChild(headerTop);
     mainWrap.appendChild(header);
-
     // ── 3. Квизы ──
     const quizPool = openTasks.length > 0 ? openTasks : allTasks;
     const quizSlice = quizPool.slice(0, QUIZ_COUNT);
@@ -270,6 +288,7 @@ async function renderView(requestedNum = null) {
             btn.onclick = async () => {
                 window.open(url, "_blank");
                 if (!t.completed) {
+                    window._myActiveRusTask = taskNum;
                     await app.vault.process(tFile, data =>
                         data.replace("- [ ] " + t.text, "- [x] " + t.text)
                     );
@@ -399,6 +418,7 @@ async function renderView(requestedNum = null) {
 
                 async function processVocab(isSuccess) {
                     window._myVocabCache[cacheKey].idx++;
+                    window._myActiveRusTask = taskNum;
                     const vtFile = app.vault.getAbstractFileByPath(t.path);
                     if (vtFile) {
                         const failsMatch = t.text.match(/\[fails:: (\d+)\]/);
