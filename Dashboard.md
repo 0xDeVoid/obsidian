@@ -133,21 +133,59 @@ card1.innerHTML = `<h3>⚡ Сводка дня</h3>`;
 col1.appendChild(card1);
 
 const today = window.moment().format("YYYY-MM-DD");
+const thisWeek = window.moment().format("YYYY-[W]WW");
 const dailyPath = `02_Log/Days/${today}.md`;
+const currentWeekFile = `02_Log/Week/${thisWeek}.md`;
 const tFile = app.vault.getAbstractFileByPath(dailyPath);
 const page = dv.page(dailyPath);
 
-let completed = 0;
-let total = 0;
+const getTaskHeaderStr = (t) => {
+    if (!t) return "";
+    if (t.section && t.section.subpath) return String(t.section.subpath);
+    if (t.header) {
+        if (typeof t.header === "string") return t.header;
+        if (t.header.subpath) return String(t.header.subpath);
+        if (t.header.display) return String(t.header.display);
+        return String(t.header.path || t.header);
+    }
+    return "";
+};
+
+const isTodayTask = (t) => {
+    if (!t || !t.text) return false;
+    const txt = String(t.text).trim();
+    if (!txt) return false;
+
+    // 1. Задачи из еженедельного плана на сегодня
+    if (t.path === currentWeekFile) {
+        const h = getTaskHeaderStr(t);
+        if (h.includes(today)) return true;
+    }
+
+    // 2. Задачи из дневной заметки (исключая лог спринтов и чекаут)
+    if (t.path === dailyPath) {
+        const h = getTaskHeaderStr(t).toLowerCase();
+        if (h.includes("лог спринтов") || h.includes("спринт") || h.includes("чекаут") || txt.toLowerCase().includes("отбой по графику")) {
+            return false;
+        }
+        return true;
+    }
+
+    // 3. Задачи с тегом #focus или #q1
+    if (txt.includes("#focus") || txt.includes("#q1")) return true;
+
+    return false;
+};
+
+const allTodayTasks = dv.pages().file.tasks.where(t => isTodayTask(t));
+const total = allTodayTasks.length;
+const completed = allTodayTasks.filter(t => t.completed).length;
+
 let engDone = false;
 let egeTime = 0;
 let workTime = 0;
 
 if (page) {
-    if (page.file && page.file.tasks) {
-        total = page.file.tasks.length;
-        completed = page.file.tasks.filter(t => t.completed).length;
-    }
     engDone = page.english_done || false;
     egeTime = page.ege_time || 0;
     workTime = page.work_time || 0;
@@ -243,19 +281,57 @@ addBtn.innerText = "+ В ФОКУС";
 const addTaskToDay = async () => {
     const val = inputField.value.trim();
     if (!val) return;
-    const dayFile = app.vault.getAbstractFileByPath(dailyPath);
-    if (dayFile) {
-        await app.vault.process(dayFile, content => {
-            const focusHeader = "### 🎯 Главный фокус дня (Топ-3)";
-            if (content.includes(focusHeader)) {
-                return content.replace(focusHeader, `${focusHeader}\n- [ ] ${val}`);
+    
+    let added = false;
+    const weekFile = app.vault.getAbstractFileByPath(currentWeekFile);
+    if (weekFile) {
+        await app.vault.process(weekFile, content => {
+            const lines = content.split("\n");
+            let targetIdx = -1;
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].startsWith("#") && lines[i].includes(today)) {
+                    targetIdx = i;
+                    break;
+                }
             }
-            return `${content}\n- [ ] ${val}`;
+            if (targetIdx !== -1) {
+                let insertIdx = targetIdx + 1;
+                while (insertIdx < lines.length && (lines[insertIdx].startsWith("- [") || lines[insertIdx].trim() === "")) {
+                    if (lines[insertIdx].startsWith("- [")) {
+                        insertIdx++;
+                    } else if (lines[insertIdx].trim() === "" && insertIdx + 1 < lines.length && lines[insertIdx + 1].startsWith("- [")) {
+                        insertIdx++;
+                    } else {
+                        break;
+                    }
+                }
+                lines.splice(insertIdx, 0, `- [ ] ${val}`);
+                added = true;
+                return lines.join("\n");
+            }
+            return content;
         });
+    }
+    
+    if (!added) {
+        const dayFile = app.vault.getAbstractFileByPath(dailyPath);
+        if (dayFile) {
+            await app.vault.process(dayFile, content => {
+                const opHeader = "### 🎯 Оперативные задачи";
+                if (content.includes(opHeader)) {
+                    return content.replace(opHeader, `${opHeader}\n- [ ] ${val}`);
+                }
+                return `${content}\n\n${opHeader}\n- [ ] ${val}\n`;
+            });
+            added = true;
+        }
+    }
+    
+    if (added) {
         inputField.value = "";
         new Notice(`✅ Задача добавлена в фокус: ${val}`);
     } else {
-        new Notice("⚠️ Заметка за сегодня не найдена");
+        new Notice("⚠️ Не найден файл недели или дня для добавления задачи");
     }
 };
 
@@ -291,7 +367,6 @@ card2.className = "dash-card";
 card2.innerHTML = `<h3>🧭 Навигация</h3>`;
 col1.appendChild(card2);
 
-const thisWeek = window.moment().format("YYYY-[W]WW");
 const navWrapper = document.createElement("div");
 navWrapper.className = "quick-nav";
 const links = [
@@ -318,36 +393,22 @@ card3.className = "dash-card";
 card3.innerHTML = `<h3>🎯 Фокус дня</h3>`;
 col1.appendChild(card3);
 
-const getTaskHeaderStr = (t) => {
-    if (!t) return "";
-    if (t.section && t.section.subpath) return String(t.section.subpath);
-    if (t.header) {
-        if (typeof t.header === "string") return t.header;
-        if (t.header.subpath) return String(t.header.subpath);
-        if (t.header.display) return String(t.header.display);
-        return String(t.header.path || t.header);
-    }
-    return "";
-};
+const pendingTasks = allTodayTasks.where(t => !t.completed);
 
-const currentWeekFile = `02_Log/Week/${thisWeek}.md`;
-const todayTasks = dv.pages().file.tasks.where(t => {
-    if (t.completed) return false;
-    if (t.path === dailyPath) return true;
-    const hStr = getTaskHeaderStr(t);
-    if (t.path === currentWeekFile && hStr.includes(today)) return true;
-    const txt = String(t.text || "");
-    if (txt.includes("#focus") || txt.includes("#q1")) return true;
-    return false;
-});
-
-const tasksStart = dv.container.childNodes.length;
-dv.taskList(todayTasks, false);
-setTimeout(() => {
-    while(dv.container.childNodes.length > tasksStart) {
-        card3.appendChild(dv.container.childNodes[tasksStart]);
-    }
-}, 0);
+if (pendingTasks.length === 0) {
+    const emptyMsg = document.createElement("div");
+    emptyMsg.style.cssText = "color: var(--text-muted); font-size: 0.85em; font-style: italic; padding: 4px 0;";
+    emptyMsg.innerText = total > 0 ? "🔥 Все задачи на день закрыты!" : "Задач в фокусе пока нет";
+    card3.appendChild(emptyMsg);
+} else {
+    const tasksStart = dv.container.childNodes.length;
+    dv.taskList(pendingTasks, false);
+    setTimeout(() => {
+        while(dv.container.childNodes.length > tasksStart) {
+            card3.appendChild(dv.container.childNodes[tasksStart]);
+        }
+    }, 0);
+}
 
 
 // ==============================================================================

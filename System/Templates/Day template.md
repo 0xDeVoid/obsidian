@@ -28,18 +28,8 @@ cns_status: ok
 # 🗓 <% dayName %>, <% title %>
 > *[[System/Agents/Swarm Protocols|🗡️ Протоколы Мусаси]] • [[System/Agents/Active Context|Оперативный журнал Swarm]]*
 
-### 🎯 Главный фокус дня (Топ-3)
-- [ ] 
-- [ ] 
-- [ ] 
-
 ### 📅 План из недели:
 ![[<% weekFileName %>#<% headingName %>]]
-
-### 💪 База & Здоровье
-- [ ] Тренировка / Зал
-- [ ] Креатин / Протеин
-- [ ] Английский (English Hub)
 
 ---
 
