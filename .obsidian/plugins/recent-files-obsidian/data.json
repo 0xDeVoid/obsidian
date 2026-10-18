@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
+      "basename": "Номер 13",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas"
     },
     {
       "basename": "Словарь",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Словарь.md"
     },
     {
-      "basename": "Номер 13",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas"
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
+      "basename": "Словник",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md"
+    },
+    {
+      "basename": "Номер 15",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas"
     },
     {
       "basename": "2026-W42",
@@ -51,14 +59,6 @@
     {
       "basename": "повторение",
       "path": "03_Knowledge/ЕГЭ/Математика/повторение.md"
-    },
-    {
-      "basename": "Номер 8",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas"
-    },
-    {
-      "basename": "2026-10-14",
-      "path": "02_Log/Days/2026-10-14.md"
     }
   ],
   "omittedPaths": [

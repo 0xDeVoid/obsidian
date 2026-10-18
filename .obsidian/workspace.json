@@ -15,9 +15,9 @@
               "state": {
                 "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
                 "viewState": {
-                  "x": 1580.0928699381484,
-                  "y": -438.107530933742,
-                  "zoom": -0.058327699402968156
+                  "x": 1487.6619503511208,
+                  "y": 228.1185042408893,
+                  "zoom": -1.4979830409513462
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -30,16 +30,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
-                "mode": "preview",
+                "file": "02_Log/Week/2026-W42.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "2026-W42"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -157,7 +156,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Dashboard.md",
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -321,15 +320,24 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "1359186b7161abe9",
+  "active": "1a1838b23261e8ac",
   "lastOpenFiles": [
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Словарь.md",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261017170012269.png",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
+    "Dashboard.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840488.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840064.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133838809.png",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "02_Log/Week/2026-W42.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261017170012269.png",
     "02_Log/Days/2026-10-17.md",
     "02_Log/Days/2026-10-16.md",
-    "Dashboard.md",
     "02_Log/Days/2026-10-15.md",
     "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 00. Аудит твоего окружения (Формируем запрос).md",
     "03_Knowledge/Мышление и Продуктивность/Упражнения/Упражнение - Анатомирование сопротивления задаче.md",
@@ -349,7 +357,6 @@
     "03_Knowledge/Мышление и Продуктивность/Упражнения/Упражнение - Будильник — Встать, нельзя сдаваться.md",
     "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - Вечерняя выгрузка мыслей (Декомпрессия ЦНС перед сном).md",
     "03_Knowledge/Мышление и Продуктивность/Упражнения/Упражнение - Построение карты отношений.md",
-    "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - Будильник — Встать, нельзя сдаваться.md",
     "03_Knowledge/Мышление и Продуктивность/Упражнения",
     "03_Knowledge/Мышление и Продуктивность/Конспекты",
     "03_Knowledge/Мышление и Продуктивность",
@@ -359,20 +366,12 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "03_Knowledge/Спорт",
     "02_Log/Workouts",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840488.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840064.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012133838809.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
     "System/Agents",
     "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_соч_01_15__c5qbd.pdf",
     "03_Knowledge/ЕГЭ/Русский/Ошибки в пробниках",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas",
     "fix_tasks.py",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
