@@ -11,17 +11,14 @@
             "id": "1a1838b23261e8ac",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
-                "viewState": {
-                  "x": 1487.6619503511208,
-                  "y": 228.1185042408893,
-                  "zoom": -1.4979830409513462
-                }
+                "file": "Dashboard.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Номер 13"
+              "icon": "lucide-file",
+              "title": "Dashboard"
             }
           },
           {
@@ -156,7 +153,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
+                "file": "Dashboard.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
