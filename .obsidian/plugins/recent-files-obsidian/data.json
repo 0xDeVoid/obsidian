@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
       "basename": "2026-W43",
       "path": "02_Log/Week/2026-W43.md"
     },
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
+      "basename": "2026-10-20",
+      "path": "02_Log/Days/2026-10-20.md"
+    },
+    {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
+      "basename": "словник",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/словник.md"
+    },
+    {
+      "basename": "Номер 16",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas"
+    },
+    {
+      "basename": "IMG-20260808122526185",
+      "path": "System/Investments/PDF/ Audio/ Other/IMG-20260808122526185.pdf"
     },
     {
       "basename": "Конспект - Триггеры прокрастинации (Делаем задачу привлекательной)",
@@ -25,18 +45,6 @@
       "path": "02_Log/Days/2026-10-19.md"
     },
     {
-      "basename": "Tasks",
-      "path": "Tasks.md"
-    },
-    {
-      "basename": "словник",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/словник.md"
-    },
-    {
-      "basename": "Номер 16",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas"
-    },
-    {
       "basename": "Номер 15",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas"
     },
@@ -51,14 +59,6 @@
     {
       "basename": "Словник",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Словник.md"
-    },
-    {
-      "basename": "2026-W42",
-      "path": "02_Log/Week/2026-W42.md"
-    },
-    {
-      "basename": "Номер 13",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas"
     }
   ],
   "omittedPaths": [
