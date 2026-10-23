@@ -74,12 +74,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
+                "file": "02_Log/Week/2026-W43.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "2026-W43"
             }
           }
         ],
@@ -233,9 +233,9 @@
   },
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
+    "Dashboard.md",
     "02_Log/Week/2026-W43.md",
     "02_Log/Days/2026-10-20.md",
-    "Dashboard.md",
     "Tasks.md",
     "03_Knowledge/Спорт/ПРОГРАММА_И_ПРОГРЕССИЯ.md",
     "02_Log/Days/2026-10-15.md",
