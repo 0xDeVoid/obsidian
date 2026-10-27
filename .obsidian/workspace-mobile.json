@@ -72,14 +72,17 @@
             "id": "219fc41be757d7a1",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Dashboard.md",
-                "mode": "preview",
-                "source": false
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
+                "viewState": {
+                  "x": -1992.1147903968624,
+                  "y": 590.3880757386441,
+                  "zoom": -0.9670823884901946
+                }
               },
-              "icon": "lucide-file",
-              "title": "Dashboard"
+              "icon": "lucide-layout-dashboard",
+              "title": "Номер 11"
             }
           }
         ],
@@ -233,10 +236,12 @@
   },
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
-    "02_Log/Week/2026-W43.md",
-    "Dashboard.md",
-    "02_Log/Days/2026-10-20.md",
     "Tasks.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
+    "Dashboard.md",
+    "02_Log/Days/2026-10-26.md",
+    "02_Log/Week/2026-W43.md",
+    "02_Log/Days/2026-10-20.md",
     "03_Knowledge/Спорт/ПРОГРАММА_И_ПРОГРЕССИЯ.md",
     "02_Log/Days/2026-10-15.md",
     "03_Knowledge/ЕГЭ/Математика/повторение.md",
@@ -277,15 +282,12 @@
     "02_Log/Days/2026-10-06.md",
     "fix_tasks.py",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
-    "02_Log/Days/2026-10-03.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Задание 15 (Н и НН).md",
     "Untitled.canvas",
     "01_Domains/LifeHub",
     "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
     "03_Knowledge/ЕГЭ/Русский/Номера/Схемы/Номер 17.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номер 7.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20260624101939087.pdf",
-    "03_Knowledge/ЕГЭ/Русский/Номер 4.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132257854.pdf",
     "System/Investments/PDF/ Audio/ Other/IMG-20260622132258294.pdf",
     "Log/Days"
