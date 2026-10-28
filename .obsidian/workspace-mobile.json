@@ -72,17 +72,14 @@
             "id": "219fc41be757d7a1",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
-                "viewState": {
-                  "x": -1992.1147903968624,
-                  "y": 590.3880757386441,
-                  "zoom": -0.9670823884901946
-                }
+                "file": "02_Log/Week/2026-W44.md",
+                "mode": "preview",
+                "source": true
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Номер 11"
+              "icon": "lucide-file",
+              "title": "2026-W44"
             }
           }
         ],
@@ -165,7 +162,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Dashboard.md",
+            "file": "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 01. Карта отношений (Кто рядом и как это влияет).md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -236,9 +233,11 @@
   },
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
+    "Dashboard.md",
+    "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 00. Аудит твоего окружения (Формируем запрос).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "Tasks.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
-    "Dashboard.md",
     "02_Log/Days/2026-10-26.md",
     "02_Log/Week/2026-W43.md",
     "02_Log/Days/2026-10-20.md",
@@ -260,7 +259,6 @@
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
     "02_Log/Week/2026-W41.md",
     "02_Log/Days/2026-10-10.md",
