@@ -74,12 +74,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Log/Week/2026-W44.md",
+                "file": "Dashboard.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "2026-W44"
+              "title": "Dashboard"
             }
           }
         ],
@@ -233,6 +233,7 @@
   },
   "active": "219fc41be757d7a1",
   "lastOpenFiles": [
+    "02_Log/Week/2026-W44.md",
     "Dashboard.md",
     "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 00. Аудит твоего окружения (Формируем запрос).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
@@ -277,7 +278,6 @@
     "02_Log/Days/2026-10-07.md",
     "02_Log/Days/2026-10-05.md",
     "System/Templates/Day template.md",
-    "02_Log/Days/2026-10-06.md",
     "fix_tasks.py",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "Untitled.canvas",
