@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
       "basename": "2026-W44",
       "path": "02_Log/Week/2026-W44.md"
+    },
+    {
+      "basename": "2026-10-31",
+      "path": "02_Log/Days/2026-10-31.md"
+    },
+    {
+      "basename": "Словник",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Словник.md"
+    },
+    {
+      "basename": "Номер 17",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas"
     },
     {
       "basename": "2026-10-30",
       "path": "02_Log/Days/2026-10-30.md"
     },
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
+      "basename": "рабочий",
+      "path": "00_Inbox/рабочий.md"
     },
     {
       "basename": "Untitled",
@@ -41,24 +57,8 @@
       "path": "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 00. Аудит твоего окружения (Формируем запрос).md"
     },
     {
-      "basename": "рабочий",
-      "path": "00_Inbox/рабочий.md"
-    },
-    {
-      "basename": "Словник",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Словник.md"
-    },
-    {
       "basename": "2026-10-29",
       "path": "02_Log/Days/2026-10-29.md"
-    },
-    {
-      "basename": "2026-W43",
-      "path": "02_Log/Week/2026-W43.md"
-    },
-    {
-      "basename": "Номер 17",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas"
     }
   ],
   "omittedPaths": [
