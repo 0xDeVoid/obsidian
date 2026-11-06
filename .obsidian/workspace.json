@@ -28,7 +28,7 @@
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -321,10 +321,11 @@
   },
   "active": "5e790b41e033c40b",
   "lastOpenFiles": [
+    "02_Log/Days/2026-11-04.md",
+    "Dashboard.md",
     "02_Log/Days/2026-11-03.md",
     "02_Log/Week/2026-W44.md",
     "02_Log/Week/2026-W45.md",
-    "Dashboard.md",
     "02_Log/Days/2026-11-02.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Номер 18.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Словник.md",
@@ -350,7 +351,6 @@
     "02_Log/Days/2026-10-20.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",
     "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - Триггеры прокрастинации (Делаем задачу привлекательной).md",
-    "03_Knowledge/Мышление и Продуктивность/README.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
