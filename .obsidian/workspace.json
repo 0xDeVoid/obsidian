@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "8ff659f6e8eb5c00",
+            "id": "81c2af5cf23a85d4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,8 +35,7 @@
               "title": "словник"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -154,7 +153,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)/словник.md",
+                "file": "Dashboard.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -302,8 +301,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 285.5,
-    "collapsed": true
+    "width": 332.20166015625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -319,13 +317,14 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "8ff659f6e8eb5c00",
+  "active": "5e790b41e033c40b",
   "lastOpenFiles": [
-    "00_Inbox/Untitled.md",
+    "02_Log/Days/2026-11-08.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)/словник.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)",
-    "Dashboard.md",
     "02_Log/Week/2026-W45.md",
+    "Dashboard.md",
+    "00_Inbox/Untitled.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)",
     "02_Log/Days/2026-11-06.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Словник.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Номер 19.canvas",
@@ -351,7 +350,6 @@
     "00_Inbox/Как зарождался бизнес.md",
     "02_Log/Days/2026-10-28.md",
     "02_Log/Days/2026-10-25.md",
-    "02_Log/Days/2026-10-22.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
