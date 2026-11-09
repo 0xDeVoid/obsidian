@@ -1,24 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "2026-11-09",
-      "path": "02_Log/Days/2026-11-09.md"
-    },
-    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
+    },
+    {
+      "basename": "[SYS_INIT]",
+      "path": "System/[SYS_INIT].md"
+    },
+    {
+      "basename": "2026-W46",
+      "path": "02_Log/Week/2026-W46.md"
     },
     {
       "basename": "2026-W45",
       "path": "02_Log/Week/2026-W45.md"
     },
     {
-      "basename": "2026-11-08",
-      "path": "02_Log/Days/2026-11-08.md"
-    },
-    {
       "basename": "словник",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)/словник.md"
+    },
+    {
+      "basename": "2026-11-09",
+      "path": "02_Log/Days/2026-11-09.md"
+    },
+    {
+      "basename": "2026-11-08",
+      "path": "02_Log/Days/2026-11-08.md"
     },
     {
       "basename": "Untitled",
@@ -51,14 +59,6 @@
     {
       "basename": "2026-W44",
       "path": "02_Log/Week/2026-W44.md"
-    },
-    {
-      "basename": "2026-11-04",
-      "path": "02_Log/Days/2026-11-04.md"
-    },
-    {
-      "basename": "Tasks",
-      "path": "Tasks.md"
     }
   ],
   "omittedPaths": [

@@ -1,0 +1,58 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "System/Templates",
+  "templates_pairs": [
+    [
+      "",
+      ""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": false,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "02_Log/Days",
+      "template": "System/Templates/Day template.md"
+    },
+    {
+      "folder": "02_Log/Years",
+      "template": "System/Templates/Year template.md"
+    },
+    {
+      "folder": "02_Log/Week",
+      "template": "System/Templates/Week template.md"
+    },
+    {
+      "folder": "03_Knowledge/Englich/Grammar_Engine",
+      "template": "System/Templates/ENG_Grammar.md"
+    },
+    {
+      "folder": "03_Knowledge/Englich/Error_Tracker",
+      "template": "System/Templates/ENG_Bug.md"
+    },
+    {
+      "folder": "03_Knowledge/Englich/Chunks_Vocabulary",
+      "template": "System/Templates/ENG_Chunks.md"
+    }
+  ],
+  "enable_file_templates": false,
+  "file_templates": [
+    {
+      "regex": ".*",
+      "template": ""
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    ""
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "intellisense_render": 1
+}

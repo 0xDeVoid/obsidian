@@ -1,0 +1,9 @@
+{
+  "cssTheme": "Minimal",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "nothing-theme",
+    "ndot-font"
+  ],
+  "showRibbon": true
+}

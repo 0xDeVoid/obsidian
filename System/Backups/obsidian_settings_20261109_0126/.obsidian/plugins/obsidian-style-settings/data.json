@@ -1,0 +1,13 @@
+{
+  "minimal-style@@interface": true,
+  "minimal-style@@bg1": "#000000",
+  "minimal-style@@bg2": "#050505",
+  "minimal-style@@bg3": "#0a0a0a",
+  "minimal-style@@ax1": "#e50914",
+  "minimal-style@@ax2": "#ff2d37",
+  "minimal-style@@ui1": "rgba(255, 255, 255, 0.12)",
+  "minimal-style@@ui2": "rgba(255, 255, 255, 0.06)",
+  "minimal-style@@tx1": "#ffffff",
+  "minimal-style@@tx2": "rgba(255, 255, 255, 0.7)",
+  "minimal-style@@tx3": "rgba(255, 255, 255, 0.4)"
+}

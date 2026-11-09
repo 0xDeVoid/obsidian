@@ -1,0 +1,10 @@
+{
+  "promptDelete": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "02_Log/Days",
+  "alwaysUpdateLinks": true,
+  "readableLineLength": true,
+  "openBehavior": "file:Dashboard.md",
+  "spellcheck": false,
+  "attachmentFolderPath": "System/Investments/PDF/ Audio/ Other"
+}

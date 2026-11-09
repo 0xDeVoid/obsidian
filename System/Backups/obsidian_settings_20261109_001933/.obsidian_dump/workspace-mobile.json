@@ -1,0 +1,292 @@
+{
+  "main": {
+    "id": "558da02304ef0285",
+    "type": "split",
+    "children": [
+      {
+        "id": "fa87cfb1e0363d05",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f02c581d997eaad5",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ежеденевник/Планы по неделям/2026/Неделя 23.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Неделя 23"
+            }
+          },
+          {
+            "id": "9df0dfe5ae1a0b26",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ежеденевник/Планы по неделям/2026/Неделя 24.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Неделя 24"
+            }
+          },
+          {
+            "id": "be28173dd5f5668f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_Log/Days/2026-09-28.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-09-28"
+            }
+          },
+          {
+            "id": "aecab1a709d83c73",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
+                "viewState": {
+                  "x": -1130.5,
+                  "y": -560,
+                  "zoom": -3.1306389824521212
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Номер 15"
+            }
+          },
+          {
+            "id": "219fc41be757d7a1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_Inbox/Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "24eb236f91e11ed6",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "0497b1813f3a86e3",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "219e733e1b20ffc5",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "6981947887fec811",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": true,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "975581f3793cce6d",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "d80103c1a1dc39d7",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "667b38d88eabacf0",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Tasks.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "302f0cd5b034039e",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Ежеденевник/Планы по неделям/2026/Неделя 17.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "03f3d4d361d6c010",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Ежеденевник/Планы по неделям/2026/Неделя 17.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      },
+      {
+        "id": "8b7fe304f336bbfb",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "calendar"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "219fc41be757d7a1",
+  "lastOpenFiles": [
+    "Dashboard.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
+    "Tasks.md",
+    "02_Log/Week/2026-W45.md",
+    "02_Log/Days/2026-10-30.md",
+    "00_Inbox/Untitled.md",
+    "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - Возглавь безумие.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas",
+    "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 05. Как учиться эффективно.md",
+    "03_Knowledge/Мышление и Продуктивность/Конспекты/Конспект - 00. Аудит твоего окружения (Формируем запрос).md",
+    "00_Inbox/рабочий.md",
+    "02_Log/Week/2026-W44.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
+    "02_Log/Days/2026-10-26.md",
+    "02_Log/Week/2026-W43.md",
+    "02_Log/Days/2026-10-20.md",
+    "03_Knowledge/Спорт/ПРОГРАММА_И_ПРОГРЕССИЯ.md",
+    "02_Log/Days/2026-10-15.md",
+    "03_Knowledge/ЕГЭ/Математика/повторение.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Номер 8.canvas",
+    "02_Log/Week/2026-W42.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261014222036343.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261014222035660.png",
+    "02_Log/Days/2026-10-14.md",
+    "02_Log/Days/2026-10-13.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/!!! Задание 8 (синтаксические нормы)/Задание 8 (синтаксические ошибки).md",
+    "02_Log/Days/2026-10-12.md",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840488.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133840064.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012133838809.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122823026.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822620.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122822233.png",
+    "System/Investments/PDF/ Audio/ Other/IMG-20261012122821961.png",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
+    "02_Log/Week/2026-W41.md",
+    "02_Log/Days/2026-10-10.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_лето_соч_00_10__b5j9b.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание 11 (Суффиксы).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md",
+    "fix_tasks.py",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
+    "Untitled.canvas",
+    "01_Domains/LifeHub",
+    "System/Investments/PDF/ Audio/ Other/IMG-20260702080930601.png",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Схемы/Номер 17.canvas",
+    "System/Investments/PDF/ Audio/ Other/IMG-20260624101939087.pdf",
+    "System/Investments/PDF/ Audio/ Other/IMG-20260622132257854.pdf",
+    "System/Investments/PDF/ Audio/ Other/IMG-20260622132258294.pdf",
+    "Log/Days"
+  ]
+}

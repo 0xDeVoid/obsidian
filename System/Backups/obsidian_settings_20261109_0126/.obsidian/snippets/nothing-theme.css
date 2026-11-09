@@ -1,0 +1,336 @@
+/* ==============================================================================
+   NOTHING OS COMPANION SUITE // 0xDeVoid Edition
+   Curated by: Obsidian Curator
+   Compatible with: Minimal Theme + Style Settings + Hider
+   ============================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ------------------------------------------------------------------------------
+   1. GLOBAL TOKENS
+   ------------------------------------------------------------------------------ */
+body {
+    --font-monospace-theme: 'Space Mono', 'Ndot 57', monospace;
+    --font-interface-theme: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-text-theme: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --accent-h: 357;
+    --accent-s: 92%;
+    --accent-l: 47%;
+    
+    --color-accent: #e50914 !important;
+    --color-accent-hover: #ff2d37 !important;
+    
+    --tab-text-color-active: #e50914 !important;
+    --nav-item-color-active: #ffffff !important;
+    --nav-item-background-active: rgba(229, 9, 20, 0.14) !important;
+}
+
+/* ------------------------------------------------------------------------------
+   2. SUBTLE NOTHING DOT-MATRIX TEXTURE
+   ------------------------------------------------------------------------------ */
+.workspace-leaf-content,
+.markdown-source-view,
+.markdown-preview-view {
+    background-color: #000000 !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) !important;
+    background-size: 8px 8px !important;
+}
+
+/* ------------------------------------------------------------------------------
+   3. HEADINGS & TYPOGRAPHY
+   ------------------------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6,
+.cm-header {
+    font-family: 'Space Mono', 'Ndot 57', monospace !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+h1 { color: #ffffff !important; }
+h2 { color: #e50914 !important; border-bottom: 1px dashed rgba(255,255,255,0.18) !important; }
+h3 { color: #ffffff !important; }
+
+/* Brutalist Checkboxes */
+input[type="checkbox"] {
+    border-radius: 2px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: transparent !important;
+    transition: all 0.15s ease !important;
+}
+input[type="checkbox"]:checked {
+    background-color: #e50914 !important;
+    border-color: #e50914 !important;
+    box-shadow: 0 0 6px rgba(229, 9, 20, 0.45) !important;
+}
+
+/* ------------------------------------------------------------------------------
+   4. TABS & DOCK BUTTONS
+   ------------------------------------------------------------------------------ */
+.workspace-tab-header {
+    border-radius: 6px !important;
+    padding: 5px 10px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.65;
+}
+
+.workspace-tab-header:hover {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.workspace-tab-header.is-active {
+    opacity: 1 !important;
+    background: rgba(229, 9, 20, 0.12) !important;
+    border-bottom: 2px solid #e50914 !important;
+    box-shadow: 0 4px 14px rgba(229, 9, 20, 0.3) !important;
+}
+
+.workspace-tab-header-inner-icon svg {
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    width: 17px !important;
+    height: 17px !important;
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon svg {
+    color: #e50914 !important;
+    filter: drop-shadow(0 0 6px rgba(229, 9, 20, 0.6)) !important;
+}
+
+/* ------------------------------------------------------------------------------
+   5. FILE EXPLORER // SECTOR LABELS & ACTIVE NEEDLE
+   ------------------------------------------------------------------------------ */
+/* Active File State - Glowing Nothing Red Needle */
+.nav-file-title.is-active {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    background: linear-gradient(90deg, rgba(229, 9, 20, 0.18) 0%, rgba(229, 9, 20, 0.03) 100%) !important;
+    border-left: 2px solid #e50914 !important;
+    box-shadow: inset 2px 0 8px rgba(229, 9, 20, 0.25) !important;
+}
+
+/* Sector Headers for Root Folders */
+.nav-folder[data-path="00_Inbox"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "00 // ";
+    color: #e50914;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+.nav-folder[data-path="01_Domains"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "01 // ";
+    color: #e50914;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+.nav-folder[data-path="02_Log"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "02 // ";
+    color: #e50914;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+.nav-folder[data-path="03_Knowledge"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "03 // ";
+    color: #e50914;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+.nav-folder[data-path="System"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "SYS // ";
+    color: #e50914;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+.nav-folder[data-path="Archive"] > .nav-folder-title .nav-folder-title-content::before {
+    content: "ARC // ";
+    color: rgba(255, 255, 255, 0.45);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+
+.nav-folder-title {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.nav-file-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12.5px !important;
+}
+
+.iconize-icon {
+    flex-shrink: 0 !important;
+    margin: 0 6px 0 0 !important;
+}
+
+/* ------------------------------------------------------------------------------
+   6. RIGHT SIDEBAR // SONAR RADAR, READING TIMELINE & CALENDAR
+   ------------------------------------------------------------------------------ */
+
+/* LOCAL GRAPH AS SCI-FI SONAR RADAR */
+.workspace-leaf-content[data-type="localgraph"] {
+    position: relative !important;
+    background-color: #020202 !important;
+    background-image: 
+        radial-gradient(circle at center, transparent 35px, rgba(255, 255, 255, 0.03) 36px, transparent 37px),
+        radial-gradient(circle at center, transparent 75px, rgba(255, 255, 255, 0.03) 76px, transparent 77px),
+        radial-gradient(circle at center, transparent 125px, rgba(255, 255, 255, 0.04) 126px, transparent 127px),
+        radial-gradient(circle at center, transparent 180px, rgba(229, 9, 20, 0.06) 181px, transparent 183px),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px !important;
+    background-position: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    margin: 6px !important;
+    overflow: hidden !important;
+}
+
+.workspace-leaf-content[data-type="localgraph"]::after {
+    content: "RADAR // SONAR ACTIVE";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: rgba(229, 9, 20, 0.7);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* OUTLINE READING TIMELINE */
+.outline-container {
+    padding: 8px 6px !important;
+}
+
+.outline-container .tree-item-children {
+    border-left: 1px dashed rgba(255, 255, 255, 0.12) !important;
+    margin-left: 8px !important;
+    padding-left: 8px !important;
+}
+
+.outline-container .tree-item-self {
+    border-radius: 4px !important;
+    padding: 3px 6px !important;
+    transition: all 0.15s ease !important;
+}
+
+.outline-container .tree-item-self:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+}
+
+.outline-container .tree-item-inner {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 11px !important;
+}
+
+.outline-container .tree-item-self.is-active {
+    background: rgba(229, 9, 20, 0.15) !important;
+    border-left: 2px solid #e50914 !important;
+}
+
+.outline-container .tree-item-self.is-active .tree-item-inner {
+    color: #e50914 !important;
+    font-weight: 700 !important;
+}
+
+/* CALENDAR (Nothing Dial Dot-Matrix Widget) */
+#calendar-container {
+    background-color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin: 6px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+    --color-dot: #e50914 !important;
+    --color-text-today: #ffffff !important;
+}
+
+#calendar-container th {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 9.5px !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    text-transform: uppercase !important;
+}
+
+#calendar-container .day {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 11px !important;
+    border-radius: 4px !important;
+    transition: all 0.15s ease !important;
+    position: relative !important;
+}
+
+#calendar-container .day:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+#calendar-container .day.has-note::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 4px !important;
+    height: 4px !important;
+    background-color: #e50914 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 4px #e50914 !important;
+}
+
+#calendar-container .today {
+    border: 1px solid #e50914 !important;
+    background: rgba(229, 9, 20, 0.18) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 8px rgba(229, 9, 20, 0.4) !important;
+}
+
+/* RECENT FILES PLUGIN STYLING */
+.recent-files-container {
+    padding: 8px 6px !important;
+}
+
+.recent-files-item {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid transparent !important;
+    padding: 5px 8px !important;
+    margin-bottom: 2px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    transition: all 0.15s ease !important;
+}
+
+.recent-files-item:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.recent-files-item.is-active {
+    background: rgba(229, 9, 20, 0.12) !important;
+    border-color: rgba(229, 9, 20, 0.4) !important;
+    color: #ffffff !important;
+}
+
+/* ------------------------------------------------------------------------------
+   7. EMBEDDED WIDGET STYLING
+   ------------------------------------------------------------------------------ */
+.workspace-split.mod-left-split .inline-title,
+.workspace-split.mod-right-split .inline-title {
+    display: none !important;
+}
+
+.workspace-split.mod-left-split .markdown-source-view.mod-cm6 .cm-editor,
+.workspace-split.mod-left-split .markdown-preview-view,
+.workspace-split.mod-right-split .markdown-source-view.mod-cm6 .cm-editor,
+.workspace-split.mod-right-split .markdown-preview-view {
+    padding: 2px 4px !important;
+}
