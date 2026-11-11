@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-W46",
+      "path": "02_Log/Week/2026-W46.md"
+    },
+    {
+      "basename": "2026-11-10",
+      "path": "02_Log/Days/2026-11-10.md"
+    },
+    {
       "basename": "Dashboard",
       "path": "Dashboard.md"
     },
     {
       "basename": "[SYS_INIT]",
       "path": "System/[SYS_INIT].md"
-    },
-    {
-      "basename": "2026-W46",
-      "path": "02_Log/Week/2026-W46.md"
     },
     {
       "basename": "2026-W45",
@@ -55,10 +59,6 @@
     {
       "basename": "Номер 18",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Номер 18.canvas"
-    },
-    {
-      "basename": "2026-W44",
-      "path": "02_Log/Week/2026-W44.md"
     }
   ],
   "omittedPaths": [
