@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
       "basename": "2026-W46",
       "path": "02_Log/Week/2026-W46.md"
+    },
+    {
+      "basename": "2026-11-13",
+      "path": "02_Log/Days/2026-11-13.md"
+    },
+    {
+      "basename": "Номер 11",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas"
     },
     {
       "basename": "2026-11-12",
@@ -37,10 +49,6 @@
       "path": "03_Knowledge/ЕГЭ/Информатика/Теория игр.md"
     },
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
-    },
-    {
       "basename": "Номер 9",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas"
     },
@@ -51,14 +59,6 @@
     {
       "basename": "Словарь",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь.md"
-    },
-    {
-      "basename": "Задание 9 (корни)",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание 9 (корни).md"
-    },
-    {
-      "basename": "IMG-20260920130401604",
-      "path": "System/Investments/PDF/ Audio/ Other/IMG-20260920130401604.png"
     }
   ],
   "omittedPaths": [
