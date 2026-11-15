@@ -1,20 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
-    },
-    {
       "basename": "2026-W46",
       "path": "02_Log/Week/2026-W46.md"
     },
     {
-      "basename": "2026-11-13",
-      "path": "02_Log/Days/2026-11-13.md"
+      "basename": "2026-11-14",
+      "path": "02_Log/Days/2026-11-14.md"
+    },
+    {
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
+      "basename": "Теория игр",
+      "path": "03_Knowledge/ЕГЭ/Информатика/Теория игр.md"
+    },
+    {
+      "basename": "КОМПИЛЯТОР_РУССКОГО",
+      "path": "03_Knowledge/ЕГЭ/Русский/КОМПИЛЯТОР_РУССКОГО.md"
+    },
+    {
+      "basename": "ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА",
+      "path": "03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md"
+    },
+    {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
+      "basename": "ENGLISH_HUB",
+      "path": "03_Knowledge/English/ENGLISH_HUB.md"
+    },
+    {
+      "basename": "Задание 11 (Суффиксы)",
+      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание 11 (Суффиксы).md"
     },
     {
       "basename": "Номер 11",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas"
+    },
+    {
+      "basename": "2026-11-13",
+      "path": "02_Log/Days/2026-11-13.md"
     },
     {
       "basename": "2026-11-12",
@@ -31,34 +59,6 @@
     {
       "basename": "Номер 10",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas"
-    },
-    {
-      "basename": "IMG-20260808122436370",
-      "path": "System/Investments/PDF/ Audio/ Other/IMG-20260808122436370.png"
-    },
-    {
-      "basename": "Словарь",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь.md"
-    },
-    {
-      "basename": "словник",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 20 (Сп с разными видами связей)/словник.md"
-    },
-    {
-      "basename": "Теория игр",
-      "path": "03_Knowledge/ЕГЭ/Информатика/Теория игр.md"
-    },
-    {
-      "basename": "Номер 9",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas"
-    },
-    {
-      "basename": "Задание_9__Корни_с_чередованием__Теория__978sp",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf"
-    },
-    {
-      "basename": "Словарь",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь.md"
     }
   ],
   "omittedPaths": [

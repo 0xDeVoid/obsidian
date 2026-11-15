@@ -11,17 +11,28 @@
             "id": "5e790b41e033c40b",
             "type": "leaf",
             "state": {
+              "type": "nothing-space",
+              "state": {},
+              "icon": "circle-dot",
+              "title": "SPACE"
+            }
+          },
+          {
+            "id": "324c1a4c9e0adc7f",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
+                "file": "02_Log/Week/2026-W46.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "2026-W46"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -31,10 +42,19 @@
     "type": "split",
     "children": [
       {
-        "id": "e807f3b9e9eda545",
+        "id": "ns-left-tabs",
         "type": "tabs",
-        "dimension": 39.55147808358817,
         "children": [
+          {
+            "id": "ns-nav-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "nothing-space-nav",
+              "state": {},
+              "icon": "panels-left-bottom",
+              "title": "Навигация"
+            }
+          },
           {
             "id": "a779024a4f723570",
             "type": "leaf",
@@ -79,37 +99,9 @@
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
-          }
-        ]
-      },
-      {
-        "id": "4de278b6a7146236",
-        "type": "tabs",
-        "dimension": 27.013251783893985,
-        "children": [
+          },
           {
-            "id": "18dc9db67ed9dcd0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "System/[SYS_INIT].md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "[SYS_INIT]"
-            }
-          }
-        ]
-      },
-      {
-        "id": "6a5fe99b56b6e687",
-        "type": "tabs",
-        "dimension": 33.435270132517836,
-        "children": [
-          {
-            "id": "30efe558dd8fec0f",
+            "id": "ns-calendar-leaf",
             "type": "leaf",
             "state": {
               "type": "calendar",
@@ -122,24 +114,32 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5
+    "width": 226
   },
   "right": {
     "id": "7ea4da97c78ab433",
     "type": "split",
     "children": [
       {
-        "id": "2c9adc85bfbd9c6f",
+        "id": "ns-right-tabs",
         "type": "tabs",
-        "dimension": 67.55725190839695,
         "children": [
+          {
+            "id": "ns-pulse-leaf",
+            "type": "leaf",
+            "state": {
+              "type": "nothing-space-pulse",
+              "state": {},
+              "icon": "activity",
+              "title": "Пульс"
+            }
+          },
           {
             "id": "18a7d6ef5ea0209b",
             "type": "leaf",
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Dashboard.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -147,30 +147,37 @@
                   "localBacklinks": true,
                   "localForelinks": true,
                   "localInterlinks": true,
-                  "showTags": true,
-                  "showAttachments": true,
-                  "hideUnresolved": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": true,
                   "collapse-color-groups": false,
                   "colorGroups": [
                     {
-                      "query": "path:03_Knowledge  ",
+                      "query": "path:03_Knowledge/ЕГЭ",
                       "color": {
                         "a": 1,
-                        "rgb": 16746496
+                        "rgb": 15010068
                       }
                     },
                     {
-                      "query": "path:\"02_Log/Days\"",
+                      "query": "path:03_Knowledge/English",
                       "color": {
                         "a": 1,
-                        "rgb": 3668964
+                        "rgb": 15263455
                       }
                     },
                     {
-                      "query": "path:02_Log/Week  ",
+                      "query": "path:03_Knowledge/Программирование",
                       "color": {
                         "a": 1,
-                        "rgb": 6619274
+                        "rgb": 9608366
+                      }
+                    },
+                    {
+                      "query": "path:02_Log",
+                      "color": {
+                        "a": 1,
+                        "rgb": 6580339
                       }
                     }
                   ],
@@ -208,12 +215,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Tasks.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Исходящие ссылки из Tasks"
+              "title": "Outgoing links"
             }
           },
           {
@@ -237,22 +243,14 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Tasks.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура Tasks"
+              "title": "Outline"
             }
-          }
-        ]
-      },
-      {
-        "id": "91e0d834e909f0a9",
-        "type": "tabs",
-        "dimension": 32.44274809160305,
-        "children": [
+          },
           {
             "id": "785f5208f3103236",
             "type": "leaf",
@@ -282,15 +280,16 @@
               "title": "Recent files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 332.20166015625
+    "width": 246
   },
   "left-ribbon": {
     "hiddenItems": {
+      "nothing-space:Nothing Space": false,
+      "nothing-space:SPACE · быстрый захват": false,
       "switcher:Open quick switcher": true,
       "graph:Open graph view": false,
       "canvas:Create new canvas": true,
@@ -303,11 +302,20 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "5e790b41e033c40b",
+  "active": "324c1a4c9e0adc7f",
   "lastOpenFiles": [
-    "02_Log/Days/2026-11-13.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
+    "02_Log/Days/2026-11-15.md",
+    "02_Log/Days/2026-11-14.md",
+    "Dashboard.md",
+    "03_Knowledge/ЕГЭ/Информатика/Теория игр.md",
+    "03_Knowledge/ЕГЭ/Русский/КОМПИЛЯТОР_РУССКОГО.md",
+    "03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md",
+    "Tasks.md",
+    "03_Knowledge/English/ENGLISH_HUB.md",
     "02_Log/Week/2026-W46.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание 11 (Суффиксы).md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
+    "02_Log/Days/2026-11-13.md",
     "02_Log/Days/2026-11-12.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md",
     "System/[SYS_INIT].md",
@@ -315,7 +323,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Словарь.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 20 (Сп с разными видами связей)/словник.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 20 (Сп с разными видами связей)",
-    "03_Knowledge/ЕГЭ/Информатика/Теория игр.md",
     "03_Knowledge/ЕГЭ/Информатика",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
@@ -324,22 +331,15 @@
     "02_Log/Week/2026-W45.md",
     "02_Log/Days/2026-11-11.md",
     "02_Log/Days/2026-11-10.md",
-    "Dashboard.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)/словник.md",
     "02_Log/Days/2026-11-09.md",
     "02_Log/Days/2026-11-08.md",
     "00_Inbox/Untitled.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)",
     "02_Log/Days/2026-11-06.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Словник.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Номер 19.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Задание 19 (CПП).md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Номер 19.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Задание 18 (вводные слова и обращения).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Номер 18.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)",
-    "02_Log/Week/2026-W44.md",
-    "02_Log/Days/2026-11-04.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 17 (прич и дееприч оборот)/Номер 17.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 16 (ССП и однородные)/Номер 16.canvas",

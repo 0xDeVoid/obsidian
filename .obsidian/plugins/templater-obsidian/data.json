@@ -27,15 +27,15 @@
       "template": "System/Templates/Week template.md"
     },
     {
-      "folder": "03_Knowledge/Englich/Grammar_Engine",
+      "folder": "03_Knowledge/English/Grammar_Engine",
       "template": "System/Templates/ENG_Grammar.md"
     },
     {
-      "folder": "03_Knowledge/Englich/Error_Tracker",
+      "folder": "03_Knowledge/English/Error_Tracker",
       "template": "System/Templates/ENG_Bug.md"
     },
     {
-      "folder": "03_Knowledge/Englich/Chunks_Vocabulary",
+      "folder": "03_Knowledge/English/Chunks_Vocabulary",
       "template": "System/Templates/ENG_Chunks.md"
     }
   ],

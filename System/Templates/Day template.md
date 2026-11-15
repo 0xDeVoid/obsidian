@@ -1,39 +1,37 @@
 <%*
-let title = tp.file.title;
-if (title.includes("Untitled") || title.includes("Без названия") || title.includes("Новая заметка")) {
-    title = window.moment().format("YYYY-MM-DD");
-    try { await tp.file.rename(title); } catch(e) {}
+let key = tp.file.title;
+if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) {
+    key = window.moment().format("YYYY-MM-DD");
+    try { await tp.file.rename(key); } catch (_) {}
 }
-
-const noteDate = window.moment(title, "YYYY-MM-DD");
-const wn = noteDate.isoWeek();
-const year = noteDate.isoWeekYear();
-const weekFileName = `${year}-W${wn < 10 ? '0' + wn : wn}`;
-
-const dayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-const dayName = dayNames[noteDate.day()]; 
-const headingName = `${dayName} — ${title}`;
--%>
----
+const d = window.moment(key, "YYYY-MM-DD", true);
+const dow = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"][d.day()];
+const wk = `${d.isoWeekYear()}-W${String(d.isoWeek()).padStart(2, "0")}`;
+tR += `---
 type: day
-tags:
-  - day
-week: "[[<% weekFileName %>]]"
+cssclasses: [space-note]
+tags: [day]
+week: "[[02_Log/Week/${wk}]]"
 work_time: 0
 ege_time: 0
 gym_weight: 0
 english_done: false
 cns_status: ok
 ---
-# 🗓 <% dayName %>, <% title %>
-> *[[System/Agents/Swarm Protocols|🗡️ Протоколы Мусаси]] • [[System/Agents/Active Context|Оперативный журнал Swarm]]*
+# ${dow} / ${key}
 
-### 📅 План из недели:
-![[<% weekFileName %>#<% headingName %>]]
+[[Dashboard|← SPACE]] · [[02_Log/Week/${wk}|План недели]]
 
----
+## План из недели
+![[02_Log/Week/${wk}#${dow} — ${key}]]
 
-### 🌙 Вечерний чекаут (30 сек)
-- **Главный результат дня (EV)**: 
-- **Ловушка (гиммики / потеря фокуса)**: 
-- [ ] Отбой по графику (восстановление ЦНС)
+### 🎯 Оперативные задачи
+
+## Заметки
+
+## Вечерний чекаут · 30 секунд
+- **Главный результат:**
+- **Что мешало:**
+- **Первый шаг завтра:**
+`;
+%>

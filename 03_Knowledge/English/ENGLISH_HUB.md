@@ -1,11 +1,11 @@
 # 🇬🇧 English B1 // Главный Терминал
 
 ```dataviewjs
-const bugs = dv.pages('"03_Knowledge/Englich/Error_Tracker"');
+const bugs = dv.pages('"03_Knowledge/English/Error_Tracker"');
 const open = bugs.where(b => b.status === "open").length;
 const fixed = bugs.where(b => b.status === "fixed").length;
-const rules = dv.pages('"03_Knowledge/Englich/Grammar_Engine"').length;
-const chunks = dv.pages('"03_Knowledge/Englich/Chunks_Vocabulary"');
+const rules = dv.pages('"03_Knowledge/English/Grammar_Engine"').length;
+const chunks = dv.pages('"03_Knowledge/English/Chunks_Vocabulary"');
 const ammo = chunks.where(c => c.status === "active").length;
 
 dv.span(`<span style="font-family: monospace; font-size: 14px;">` +

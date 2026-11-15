@@ -72,6 +72,58 @@
             "id": "219fc41be757d7a1",
             "type": "leaf",
             "state": {
+              "type": "nothing-space",
+              "state": {},
+              "icon": "circle-dot",
+              "title": "SPACE"
+            }
+          },
+          {
+            "id": "c1184bc50b967294",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashboard.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dashboard"
+            }
+          },
+          {
+            "id": "6f15cd0541896a77",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashboard.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dashboard"
+            }
+          },
+          {
+            "id": "25716310fe6cad0e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dashboard.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dashboard"
+            }
+          },
+          {
+            "id": "34066819a9d3c690",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
                 "file": "Dashboard.md",
@@ -83,7 +135,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -219,6 +271,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "nothing-space:Nothing Space": false,
+      "nothing-space:SPACE · быстрый захват": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -231,8 +285,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "219fc41be757d7a1",
+  "active": "c1184bc50b967294",
   "lastOpenFiles": [
+    "02_Log/Days/2026-10-17.md",
     "Dashboard.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
     "Tasks.md",

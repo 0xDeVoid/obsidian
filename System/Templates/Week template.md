@@ -1,61 +1,43 @@
 <%*
-const a = await tp.system.prompt("0 — эта неделя, 1 — следующая", "0");
-const offset = parseInt(a) || 0;
-
-// Используем window.moment для 100% совместимости
-const startOfWeek = window.moment().add(offset, 'weeks').startOf('isoWeek');
-
-const days = [];
-const dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-
-for (let i = 0; i < 7; i++) {
-    days.push({
-        name: dayNames[i],
-        date: startOfWeek.clone().add(i, 'days').format("YYYY-MM-DD")
-    });
-}
-
-const wn = startOfWeek.isoWeek();
-const year = startOfWeek.isoWeekYear();
-const fileName = `${year}-W${wn < 10 ? '0' + wn : wn}`;
-
-try { 
-    // Проверяем, есть ли уже такой файл, чтобы не выбивать ошибку переименования
-    if (tp.file.title !== fileName) {
-        await tp.file.rename(fileName); 
-    }
-} catch (e) {
-    new Notice("Файл недели уже существует или переименован.");
-}
--%>
----
+const match = /^(\d{4})-W(\d{2})$/.exec(tp.file.title);
+const start = match
+  ? window.moment().isoWeekYear(Number(match[1])).isoWeek(Number(match[2])).startOf('isoWeek')
+  : window.moment().startOf('isoWeek');
+const wk = `${start.isoWeekYear()}-W${String(start.isoWeek()).padStart(2, '0')}`;
+if (tp.file.title !== wk) { try { await tp.file.rename(wk); } catch (_) {} }
+const first = start.format('YYYY-MM-DD');
+const last = start.clone().add(6, 'days').format('YYYY-MM-DD');
+const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+tR += `---
 type: week
-tags:
-  - week
-rus_score: 
-math_score: 
-inf_score: 
+cssclasses: [space-note]
+tags: [week]
+rus_score:
+math_score:
+inf_score:
 ---
-# 📅 Неделя <% wn %> (<% days[0].date %> — <% days[6].date %>)
+# Неделя ${String(start.isoWeek()).padStart(2, '0')} / ${first} — ${last}
 
-### 📊 Авто-сводка за неделю
-<%* tR += "```dataviewjs\n"; %>
-const weekDates = ["<% days[0].date %>", "<% days[1].date %>", "<% days[2].date %>", "<% days[3].date %>", "<% days[4].date %>", "<% days[5].date %>", "<% days[6].date %>"];
+[[Dashboard|← SPACE]]
 
-const pages = dv.pages().where(p => weekDates.includes(p.file.name));
+> [!focus] Главное на неделю
+> Один результат, который сделает эту неделю полезной.
 
-dv.table(["День", "💻 Код (ч)", "📚 ЕГЭ (ч)", "💪 Тоннаж (кг)", "🇬🇧 Англ"], 
-    pages.sort(p => p.file.name).map(p => [p.file.link, p.work_time || 0, p.ege_time || 0, p.gym_weight || 0, p.english_done ? "✅" : "❌"])
-);
-let tWork = 0, tEge = 0, tGym = 0, tEng = 0;
-pages.forEach(p => { tWork += p.work_time || 0; tEge += p.ege_time || 0; tGym += p.gym_weight || 0; if(p.english_done) tEng++; });
-dv.paragraph("> **🔥 ИТОГИ НЕДЕЛИ:** Код: " + tWork + " ч | ЕГЭ: " + tEge + " ч | Тоннаж: " + tGym + " кг | Англ: " + tEng + " дн");
-<%* tR += "```\n"; %>
+## Ритм недели
 
-### 📝 Планы по дням
-
-<%* for (let d of days) { %>
-#### <% d.name %> — <% d.date %>
-- [ ] 
-
-<%* } %>
+`;
+tR += '\x60\x60\x60dataview\n';
+tR += `TABLE work_time AS "Код, ч", ege_time AS "Учёба, ч", english_done AS "English"
+FROM "02_Log/Days"
+WHERE file.name >= "${first}" AND file.name <= "${last}"
+SORT file.name ASC
+`;
+tR += '\x60\x60\x60\n\n## План по дням\n\n';
+for (let i = 0; i < 7; i++) {
+  tR += `#### ${days[i]} — ${start.clone().add(i, 'days').format('YYYY-MM-DD')}\n\n`;
+}
+tR += `## Итоги
+- **Получилось:**
+- **Изменить на следующей неделе:**
+`;
+%>

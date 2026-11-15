@@ -1,12 +1,41 @@
 {
   "collapse-filter": false,
-  "search": "",
-  "showTags": true,
-  "showAttachments": true,
-  "hideUnresolved": false,
+  "search": "-path:Archive -path:System/Backups",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
   "showOrphans": true,
   "collapse-color-groups": true,
-  "colorGroups": [],
+  "colorGroups": [
+    {
+      "query": "path:03_Knowledge/ЕГЭ",
+      "color": {
+        "a": 1,
+        "rgb": 15010068
+      }
+    },
+    {
+      "query": "path:03_Knowledge/English",
+      "color": {
+        "a": 1,
+        "rgb": 15263455
+      }
+    },
+    {
+      "query": "path:03_Knowledge/Программирование",
+      "color": {
+        "a": 1,
+        "rgb": 9608366
+      }
+    },
+    {
+      "query": "path:02_Log",
+      "color": {
+        "a": 1,
+        "rgb": 6580339
+      }
+    }
+  ],
   "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,

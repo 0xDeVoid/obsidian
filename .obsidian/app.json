@@ -1,7 +1,7 @@
 {
   "promptDelete": false,
   "newFileLocation": "folder",
-  "newFileFolderPath": "02_Log/Days",
+  "newFileFolderPath": "00_Inbox",
   "alwaysUpdateLinks": true,
   "readableLineLength": true,
   "openBehavior": "file:Dashboard.md",

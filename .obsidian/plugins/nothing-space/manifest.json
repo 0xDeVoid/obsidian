@@ -1,0 +1,9 @@
+{
+  "id": "nothing-space",
+  "name": "Nothing Space",
+  "version": "1.3.0",
+  "minAppVersion": "1.6.0",
+  "description": "A quiet home for your notes. Dashboard, journal, spaced review, structured library and quick capture, entirely inside your vault.",
+  "author": "0xDeVoid · local edition",
+  "isDesktopOnly": false
+}

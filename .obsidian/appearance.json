@@ -1,8 +1,8 @@
 {
-  "cssTheme": "",
-  "enabledCssSnippets": [
-    "nothing-theme",
-    "ndot-font"
-  ],
-  "showRibbon": true
+  "cssTheme": "Nothing Space",
+  "enabledCssSnippets": [],
+  "showRibbon": true,
+  "theme": "obsidian",
+  "accentColor": "#e50914",
+  "baseFontSize": 16
 }

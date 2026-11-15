@@ -16,6 +16,6 @@ status: learning
 ### 🪲 Привязанные баги (подтягиваются авто-запросом):
 ```dataview
 TABLE Ляпнул, Надо, status as "Статус"
-FROM "03_Knowledge/Englich" AND [[]]
+FROM "03_Knowledge/English" AND [[]]
 ```
 
