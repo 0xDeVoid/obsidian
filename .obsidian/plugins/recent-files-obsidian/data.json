@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "2026-W47",
+      "path": "02_Log/Week/2026-W47.md"
+    },
+    {
+      "basename": "2026-11-16",
+      "path": "02_Log/Days/2026-11-16.md"
+    },
+    {
+      "basename": "Dashboard",
+      "path": "Dashboard.md"
+    },
+    {
       "basename": "2026-W46",
       "path": "02_Log/Week/2026-W46.md"
     },
     {
       "basename": "2026-11-14",
       "path": "02_Log/Days/2026-11-14.md"
-    },
-    {
-      "basename": "Dashboard",
-      "path": "Dashboard.md"
     },
     {
       "basename": "Теория игр",
@@ -51,14 +59,6 @@
     {
       "basename": "Ошибки квизы",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md"
-    },
-    {
-      "basename": "[SYS_INIT]",
-      "path": "System/[SYS_INIT].md"
-    },
-    {
-      "basename": "Номер 10",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Номер 10.canvas"
     }
   ],
   "omittedPaths": [
