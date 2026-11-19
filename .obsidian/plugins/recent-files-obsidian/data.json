@@ -9,6 +9,18 @@
       "path": "02_Log/Week/2026-W47.md"
     },
     {
+      "basename": "2026-11-19",
+      "path": "02_Log/Days/2026-11-19.md"
+    },
+    {
+      "basename": "Tasks",
+      "path": "Tasks.md"
+    },
+    {
+      "basename": "2026-11-18",
+      "path": "02_Log/Days/2026-11-18.md"
+    },
+    {
       "basename": "2026-11-16",
       "path": "02_Log/Days/2026-11-16.md"
     },
@@ -33,10 +45,6 @@
       "path": "03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md"
     },
     {
-      "basename": "Tasks",
-      "path": "Tasks.md"
-    },
-    {
       "basename": "ENGLISH_HUB",
       "path": "03_Knowledge/English/ENGLISH_HUB.md"
     },
@@ -51,14 +59,6 @@
     {
       "basename": "2026-11-13",
       "path": "02_Log/Days/2026-11-13.md"
-    },
-    {
-      "basename": "2026-11-12",
-      "path": "02_Log/Days/2026-11-12.md"
-    },
-    {
-      "basename": "Ошибки квизы",
-      "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Ошибки квизы.md"
     }
   ],
   "omittedPaths": [

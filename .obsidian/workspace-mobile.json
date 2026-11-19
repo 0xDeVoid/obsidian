@@ -4,72 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "fa87cfb1e0363d05",
+        "id": "0af5ddca99082684",
         "type": "tabs",
         "children": [
           {
-            "id": "f02c581d997eaad5",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Ежеденевник/Планы по неделям/2026/Неделя 23.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Неделя 23"
-            }
-          },
-          {
-            "id": "9df0dfe5ae1a0b26",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Ежеденевник/Планы по неделям/2026/Неделя 24.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Неделя 24"
-            }
-          },
-          {
-            "id": "be28173dd5f5668f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02_Log/Days/2026-09-28.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-09-28"
-            }
-          },
-          {
-            "id": "aecab1a709d83c73",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 15 (Н и НН)/Номер 15.canvas",
-                "viewState": {
-                  "x": -1130.5,
-                  "y": -560,
-                  "zoom": -3.1306389824521212
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Номер 15"
-            }
-          },
-          {
-            "id": "219fc41be757d7a1",
+            "id": "c86149a0725c6412",
             "type": "leaf",
             "state": {
               "type": "nothing-space",
@@ -77,65 +16,8 @@
               "icon": "circle-dot",
               "title": "SPACE"
             }
-          },
-          {
-            "id": "c1184bc50b967294",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dashboard.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dashboard"
-            }
-          },
-          {
-            "id": "6f15cd0541896a77",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dashboard.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dashboard"
-            }
-          },
-          {
-            "id": "25716310fe6cad0e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dashboard.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dashboard"
-            }
-          },
-          {
-            "id": "34066819a9d3c690",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Dashboard.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dashboard"
-            }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -214,7 +96,6 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Tasks.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -285,12 +166,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c1184bc50b967294",
+  "active": "c86149a0725c6412",
   "lastOpenFiles": [
-    "02_Log/Days/2026-10-17.md",
     "Dashboard.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
     "Tasks.md",
+    "02_Log/Days/2026-11-18.md",
+    "02_Log/Days/2026-10-17.md",
+    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas",
     "02_Log/Week/2026-W45.md",
     "02_Log/Days/2026-10-30.md",
     "00_Inbox/Untitled.md",
@@ -332,7 +214,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Задание 7 (формы слова).md",
     "fix_tasks.py",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "Untitled.canvas",
