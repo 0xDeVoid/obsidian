@@ -18,21 +18,7 @@
             }
           },
           {
-            "id": "3ca49e2a751b95ed",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02_Log/Week/2026-W47.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-W47"
-            }
-          },
-          {
-            "id": "4d671bf536833643",
+            "id": "52e15ace50cfb99e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -315,12 +301,14 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "4d671bf536833643",
+  "active": "52e15ace50cfb99e",
   "lastOpenFiles": [
+    "02_Log/Days/2026-11-24.md",
+    "02_Log/Week/2026-W47.md",
+    "02_Log/Week/2026-W48.md",
+    "Dashboard.md",
     "02_Log/Days/2026-11-21.md",
     "02_Log/Days/2026-11-20.md",
-    "Dashboard.md",
-    "02_Log/Week/2026-W47.md",
     "02_Log/Days/2026-11-19.md",
     "02_Log/Days/2026-11-16.md",
     "02_Log/Days/2026-11-17.md",
@@ -347,8 +335,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание 9 (корни).md",
-    "02_Log/Week/2026-W45.md",
-    "02_Log/Days/2026-11-11.md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Номер 19.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Номер 18.canvas",

@@ -5,6 +5,10 @@
       "path": "Dashboard.md"
     },
     {
+      "basename": "2026-W48",
+      "path": "02_Log/Week/2026-W48.md"
+    },
+    {
       "basename": "2026-W47",
       "path": "02_Log/Week/2026-W47.md"
     },
@@ -55,10 +59,6 @@
     {
       "basename": "Номер 11",
       "path": "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Номер 11.canvas"
-    },
-    {
-      "basename": "2026-11-13",
-      "path": "02_Log/Days/2026-11-13.md"
     }
   ],
   "omittedPaths": [
