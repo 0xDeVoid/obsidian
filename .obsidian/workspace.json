@@ -18,7 +18,7 @@
             }
           },
           {
-            "id": "52e15ace50cfb99e",
+            "id": "d25a84ded296d3f0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,7 +31,8 @@
               "title": "Dashboard"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -301,12 +302,17 @@
       "obsidian-git:Open Git source control": true
     }
   },
-  "active": "52e15ace50cfb99e",
+  "active": "d25a84ded296d3f0",
   "lastOpenFiles": [
+    "02_Log/Days/2026-11-25.md",
+    "Dashboard.md",
+    "Фокус.md",
+    "02_Log/Week/2026-W48.md",
+    "System/Focus/view.css",
+    "System/Focus/view.js",
+    "System/Focus",
     "02_Log/Days/2026-11-24.md",
     "02_Log/Week/2026-W47.md",
-    "02_Log/Week/2026-W48.md",
-    "Dashboard.md",
     "02_Log/Days/2026-11-21.md",
     "02_Log/Days/2026-11-20.md",
     "02_Log/Days/2026-11-19.md",
@@ -333,8 +339,6 @@
     "03_Knowledge/ЕГЭ/Информатика",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Номер 9.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание_9__Корни_с_чередованием__Теория__978sp.pdf",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Словарь.md",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 9 (корни)/Задание 9 (корни).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 22 (средства выразительности)",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 19 (СПП)/Номер 19.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 18 (вводные слова и обращения)/Номер 18.canvas",
@@ -354,10 +358,7 @@
     "System/Investments/PDF/ Audio/ Other/IMG-20261017170012269.png",
     "03_Knowledge/Мышление и Продуктивность/Упражнения",
     "03_Knowledge/Мышление и Продуктивность/Конспекты",
-    "03_Knowledge/Мышление и Продуктивность",
     "System/Investments/PDF/ Audio/ Other/IMG-20261014222035660.png",
-    "System/Investments/PDF/ Audio/ Other/IMG-20261014222036343.png",
-    "03_Knowledge/Спорт",
-    "02_Log/Workouts"
+    "System/Investments/PDF/ Audio/ Other/IMG-20261014222036343.png"
   ]
 }

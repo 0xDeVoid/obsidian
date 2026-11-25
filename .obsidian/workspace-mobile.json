@@ -13,8 +13,8 @@
             "state": {
               "type": "nothing-space",
               "state": {},
-              "icon": "circle-dot",
-              "title": "SPACE"
+              "icon": "lucide-ghost",
+              "title": "nothing-space"
             }
           },
           {
@@ -37,15 +37,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dashboard.md",
+                "file": "02_Log/Week/2026-W48.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Dashboard"
+              "title": "2026-W48"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -180,8 +181,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "nothing-space:Nothing Space": false,
-      "nothing-space:SPACE · быстрый захват": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -196,6 +195,7 @@
   },
   "active": "b2b397661c55d735",
   "lastOpenFiles": [
+    "02_Log/Days/2026-11-25.md",
     "Dashboard.md",
     "Tasks.md",
     "02_Log/Days/2026-11-18.md",
@@ -238,7 +238,6 @@
     "03_Knowledge/ЕГЭ/Русский/Номера/Сочинения/Ошибки/Влад_Сошников_лето_соч_00_10__b5j9b.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 13 (НЕ и НИ)/Номер 13.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 12 (окончание главголов и суффиксы причастий)/Номер 12.canvas",
-    "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание 11 (Суффиксы).md",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 11 (Суффиксы)/Задание_11__Теория__a3315.pdf",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 7 (формы слова)/Номер 7.canvas",
     "03_Knowledge/ЕГЭ/Русский/Номера/Задание 10 (приставки)/Задание_10__Теория__7h1nf.pdf",

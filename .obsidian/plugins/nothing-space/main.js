@@ -1,3 +1,4 @@
+const { execFile } = require('child_process');
 /* Nothing Space · local edition. No network requests, dependencies or telemetry. */
 const { Plugin, ItemView, Modal, Notice, FuzzySuggestModal, MarkdownRenderChild,
   PluginSettingTab, Setting, TFile, setIcon, parseYaml } = require('obsidian');
@@ -208,11 +209,11 @@ class SpaceUI {
     button(controls,'Найти заметку',()=>new NoteFinder(this.p).open(),'ns-search','search');
     button(controls,'Захватить',()=>new CaptureModal(this.p).open(),'ns-button ns-primary','plus');
     const tabs=element(shell,'nav','ns-main-tabs');tabs.setAttribute('aria-label','Разделы SPACE');
-    [['overview','Обзор','01'],['week','Неделя','02'],['library','Библиотека','03']].forEach(([tab,title,n])=>{
+    [['overview','Обзор','01'],['week','Неделя','02'],['library','Библиотека','03'],['focus','Фокус','04']].forEach(([tab,title,n])=>{
       const b=button(tabs,title,()=>this.go(tab),`ns-main-tab ${this.tab===tab?'is-active':''}`);element(b,'small','',n);b.setAttribute('aria-current',this.tab===tab?'page':'false');
     });
     const stamp=element(tabs,'span','ns-date-stamp',new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long',weekday:'short'}));
-    if(this.tab==='overview')this.overview(shell,d);else if(this.tab==='week')this.week(shell,d);else this.library(shell,d);
+    if(this.tab==='overview')this.overview(shell,d);else if(this.tab==='week')this.week(shell,d);else if(this.tab==='focus')this.focus(shell,d);else this.library(shell,d);
     const footer=element(shell,'footer','ns-footer');element(footer,'span','','LESS NOISE. MORE MEANING.');
     button(footer,'Как это работает ↗',()=>this.p.open('System/Nothing Space/Начни здесь.md'),'ns-footer-link');
     element(footer,'span','','0xDeVoid / LOCAL EDITION');
@@ -386,6 +387,303 @@ class SpaceUI {
     };
     search.addEventListener('input',()=>{this.libraryQuery=search.value;render();});render();
   }
+
+  focus(shell, d) {
+    const header = element(shell, 'div', 'ns-page-heading');
+    element(header, 'span', 'ns-eyebrow', 'FOCUS / LOCAL TIME TRACKER');
+    element(header, 'h1', 'ns-page-title', 'Твой ритм.\nТвоё время.');
+    const mount = element(shell, 'div', 'ns-focus-mount');
+    this.mountFocus(mount);
+  }
+  mountFocus(parent) {
+    const host = element(parent, 'div', 'focus-app');
+    const el = (p, tag, cls, text) => element(p, tag, cls, text);
+    const btn = (p, text, fn, cls='', glyph) => button(p, text, fn, cls, glyph);
+    const fmt = ms => { let m = Math.floor(Math.max(0, ms) / 60000); return `${Math.floor(m / 60)}ч ${String(m % 60).padStart(2, '0')}м`; };
+    const clock = ms => { let s = Math.floor(Math.max(0, ms) / 1000); return [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map(v => String(v).padStart(2, '0')).join(':'); };
+    const dateKeyLocal = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const shiftDate = (date, n) => { const d = new Date(date + 'T12:00:00'); d.setDate(d.getDate() + n); return dateKeyLocal(d); };
+    const localDt = ms => { const d = new Date(ms); return `${dateKeyLocal(d)}T${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
+    const timeStr = ms => new Date(ms).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+    let state = null, selected = null, span = 7, editing = false, busy = false, liveLabel = null, liveTotal = null, loadedAt = 0;
+    const totalFor = day => (state && day === state.currentDate ? state.liveTotals : (state?.history?.[day] || {}));
+    const sum = obj => Object.values(obj || {}).reduce((a, b) => a + Number(b), 0);
+
+    const api = (args) => new Promise((resolve, reject) => {
+      execFile('/home/devoid/.local/bin/study-timer', args, { encoding: 'utf8', timeout: 15000, maxBuffer: 8 * 1024 * 1024 }, (err, out, stderr) => {
+        err ? reject(new Error(stderr || err.message)) : resolve(out);
+      });
+    });
+
+    const refresh = async () => {
+      if (busy || editing) return;
+      busy = true;
+      try {
+        const out = await api(['dashboard']);
+        state = JSON.parse(out);
+        loadedAt = Date.now();
+        selected ||= state.currentDate;
+        render();
+      } catch (e) {
+        host.empty ? host.empty() : host.replaceChildren();
+        el(host, 'p', 'focus-error', 'Не удалось загрузить данные таймера: ' + e.message);
+        btn(host, 'Повторить', refresh, 'ns-button');
+      } finally {
+        busy = false;
+      }
+    };
+
+    const act = async (args) => {
+      try {
+        await api(args);
+        await refresh();
+      } catch (e) {
+        new Notice(e.message, 8000);
+      }
+    };
+
+    const openEditor = (record) => {
+      editing = true;
+      const modal = new Modal(this.p.app);
+      modal.titleEl.setText(record ? 'Редактировать занятие' : 'Добавить занятие');
+      modal.contentEl.addClass('focus-editor');
+
+      const field = (lbl, type, val) => {
+        const l = el(modal.contentEl, 'label', '', lbl);
+        const i = el(l, 'input', '');
+        i.type = type;
+        i.value = val;
+        return i;
+      };
+
+      const subjectLabel = el(modal.contentEl, 'label', '', 'Предмет');
+      const subject = el(subjectLabel, 'select', '');
+      (state.subjects || []).forEach(s => {
+        const o = el(subject, 'option', '', s.name);
+        o.value = s.id;
+      });
+      subject.value = record?.subject || state.activeSubjectId;
+
+      const kindLabel = el(modal.contentEl, 'label', '', 'Способ записи');
+      const kind = el(kindLabel, 'select', '');
+      [['interval', 'Начало и конец'], ['duration', 'Только длительность']].forEach(([v, t]) => {
+        const o = el(kind, 'option', '', t);
+        o.value = v;
+      });
+      kind.value = record && !record.startedAt ? 'duration' : 'interval';
+
+      const now = Date.now();
+      const start = field('Начало', 'datetime-local', localDt(record?.startedAt || (selected === state.currentDate ? now - 3600000 : new Date(selected + 'T12:00:00').getTime())));
+      const end = field('Конец', 'datetime-local', localDt(record?.endedAt || (selected === state.currentDate ? now : new Date(selected + 'T13:00:00').getTime())));
+      const date = field('Учебный день', 'date', record?.date || selected);
+      const minutes = field('Длительность, минут', 'number', String(Math.max(1, Math.round((record?.durationMs || 3600000) / 60000))));
+      minutes.min = '1';
+      minutes.max = '1440';
+      const note = field('Заметка', 'text', record?.note || '');
+      note.maxLength = 500;
+
+      const toggleKind = () => {
+        start.parentElement.hidden = end.parentElement.hidden = kind.value !== 'interval';
+        date.parentElement.hidden = minutes.parentElement.hidden = kind.value === 'interval';
+      };
+      kind.onchange = toggleKind;
+      toggleKind();
+
+      el(modal.contentEl, 'p', 'focus-muted', 'Учебный день начинается в 05:00. Старые суммы сохранены без выдуманного времени начала.');
+      const msg = el(modal.contentEl, 'p', 'focus-error', '');
+
+      const save = btn(modal.contentEl, 'Сохранить', async () => {
+        save.disabled = true;
+        try {
+          const args = record ? ['edit-session', record.id] : ['add-session'];
+          args.push('--subject', subject.value, '--note', note.value, '--revision', String(state.revision));
+          if (kind.value === 'interval') args.push('--start', start.value, '--end', end.value);
+          else args.push('--date', date.value, '--minutes', minutes.value);
+          await api(args);
+          selected = kind.value === 'duration' ? date.value : dateKeyLocal(new Date(new Date(start.value).getTime() - 5 * 3600000));
+          modal.close();
+          await refresh();
+        } catch (e) {
+          msg.textContent = e.message;
+        } finally {
+          save.disabled = false;
+        }
+      }, 'ns-button ns-primary');
+
+      modal.onClose = () => { editing = false; };
+      modal.open();
+    };
+
+    const render = () => {
+      host.empty ? host.empty() : host.replaceChildren();
+      if (!state) return;
+
+      const active = (state.subjects || []).find(s => s.id === state.activeSubjectId) || {};
+      
+      // 1. Hero Card
+      const hero = el(host, 'div', 'focus-hero');
+      hero.style.setProperty('--subject', active.color || '#e50914');
+      const left = el(hero, 'div', '');
+      el(left, 'div', 'focus-eyebrow', state.isRunning ? ('● ' + (active.name || 'Фокус')) : 'СЕГОДНЯ · ВСЕ ПРЕДМЕТЫ');
+      liveLabel = el(left, 'div', 'focus-clock', clock(state.isRunning ? state.elapsedMs : sum(state.liveTotals)));
+      liveTotal = el(left, 'div', 'focus-muted', state.isRunning ? ('Текущая сессия · всего сегодня ' + fmt(sum(state.liveTotals))) : 'Время для следующего шага');
+      btn(hero, state.isRunning ? '■ Завершить' : '▶ Продолжить', () => act(state.isRunning ? ['--quiet', 'stop'] : ['--quiet', 'start', state.activeSubjectId]), 'ns-button ns-primary focus-hero-btn');
+
+      // 2. Subject Cards
+      const cards = el(host, 'div', 'focus-subjects');
+      (state.subjects || []).forEach(s => {
+        const cardEl = el(cards, 'button', 'focus-subject');
+        cardEl.style.setProperty('--subject', s.color);
+        el(cardEl, 'span', '', s.name);
+        el(cardEl, 'strong', '', fmt(state.liveTotals?.[s.id] || 0));
+        el(cardEl, 'small', '', '▶ Начать');
+        cardEl.onclick = () => act(['--quiet', 'start', s.id]);
+      });
+
+      // 3. Compact Single-Row Date & Range Controls
+      const controls = el(host, 'div', 'focus-controls');
+      const dateNav = el(controls, 'div', 'focus-date-nav');
+      btn(dateNav, '‹', () => { selected = shiftDate(selected, -1); render(); }, 'ns-button focus-nav-arrow');
+
+      const dObj = new Date(selected + 'T12:00:00');
+      const dFormatted = dObj.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric', weekday: 'short' });
+      const dateBadge = el(dateNav, 'label', 'focus-date-badge');
+      el(dateBadge, 'span', 'focus-date-text', dFormatted);
+      const picker = el(dateBadge, 'input', 'focus-date-input');
+      picker.type = 'date';
+      picker.value = selected;
+      picker.max = state.currentDate;
+      picker.onchange = () => { if (picker.value) { selected = picker.value; render(); } };
+
+      btn(dateNav, '›', () => { if (selected < state.currentDate) { selected = shiftDate(selected, 1); render(); } }, 'ns-button focus-nav-arrow');
+      btn(dateNav, 'Сегодня', () => { selected = state.currentDate; render(); }, `ns-button focus-today-btn ${selected === state.currentDate ? 'is-active' : ''}`);
+
+      const ranges = el(controls, 'div', 'focus-ranges');
+      [7, 30, 90].forEach(n => {
+        btn(ranges, n + ' дней', () => { span = n; render(); }, `ns-button focus-range-btn ${span === n ? 'is-selected' : ''}`);
+      });
+
+      // 4. Metrics Cards
+      const dates = Array.from({ length: span }, (_, i) => shiftDate(selected, i - span + 1));
+      const totals = dates.map(d => sum(totalFor(d)));
+      const combined = totals.reduce((a, b) => a + b, 0);
+
+      const metrics = el(host, 'div', 'focus-metrics');
+      [
+        ['За период', fmt(combined)],
+        ['Среднее в день', fmt(combined / span)],
+        ['Лучший день', fmt(Math.max(...totals, 0))],
+        ['Дней с фокусом', `${totals.filter(v => v > 0).length} / ${span}`]
+      ].forEach(([lbl, val]) => {
+        const c = el(metrics, 'div', 'focus-metric-card');
+        el(c, 'small', '', lbl);
+        el(c, 'strong', '', val);
+      });
+
+      // 5. Rhythm Chart
+      const chartCard = el(host, 'section', 'focus-card');
+      el(chartCard, 'h3', '', 'Ритм занятий');
+      const chart = el(chartCard, 'div', 'focus-chart');
+      const maxTotal = Math.max((state.dailyGoalMinutes || 300) * 60000, ...totals, 1);
+      dates.forEach((d, i) => {
+        const col = el(chart, 'button', 'focus-day');
+        col.title = d + ' · ' + fmt(totals[i]);
+        col.onclick = () => { selected = d; render(); };
+        const stack = el(col, 'div', 'focus-stack');
+        stack.style.height = Math.max(2, (totals[i] / maxTotal) * 125) + 'px';
+        (state.subjects || []).forEach(s => {
+          const bar = el(stack, 'div', '');
+          bar.style.background = s.color;
+          bar.style.flex = String(totalFor(d)[s.id] || 0);
+        });
+        if (span <= 30) el(col, 'small', '', d.slice(8));
+      });
+
+      const breakdown = el(chartCard, 'div', 'focus-breakdown');
+      (state.subjects || []).forEach(s => {
+        const ms = dates.reduce((a, d) => a + (totalFor(d)[s.id] || 0), 0);
+        const r = el(breakdown, 'div', '');
+        const sp = el(r, 'span', '', s.name);
+        sp.style.color = s.color;
+        el(r, 'strong', '', fmt(ms));
+      });
+
+      // 6. Session Journal
+      const journal = el(host, 'section', 'focus-card');
+      const heading = el(journal, 'div', 'focus-top');
+      const h = el(heading, 'div', '');
+      el(h, 'h3', '', 'Занятия · ' + selected);
+      el(h, 'small', 'focus-muted', fmt(sum(totalFor(selected))) + ' всего');
+      btn(heading, '+ Занятие', () => openEditor(null), 'ns-button ns-primary');
+
+      const records = (state.sessions || []).filter(r => r.date === selected && !r.deleted).sort((a, b) => (b.startedAt || 0) - (a.startedAt || 0));
+      if (state.isRunning && selected === state.currentDate) {
+        el(journal, 'p', 'focus-live', '● ' + (active.name || 'Занятие') + ' · сейчас идёт. Для изменения времени сначала заверши сессию.');
+      }
+      if (!records.length) {
+        el(journal, 'p', 'focus-muted', 'Здесь появятся завершённые занятия. Можно добавить пропущенное вручную.');
+      }
+      records.forEach(r => {
+        const s = (state.subjects || []).find(sub => sub.id === r.subject);
+        const row = el(journal, 'div', 'focus-session');
+        const details = el(row, 'div', '');
+        const nameEl = el(details, 'strong', '', s?.name || r.subject);
+        nameEl.style.color = s?.color || '#fff';
+        el(details, 'div', 'focus-muted', r.startedAt ? (timeStr(r.startedAt) + ' — ' + timeStr(r.endedAt)) : 'Без времени начала · сохранённая сумма');
+        if (r.note) el(details, 'small', 'focus-muted', r.note);
+        el(row, 'strong', '', fmt(r.durationMs));
+        btn(row, 'Править', () => openEditor(r), 'ns-button');
+        const remove = btn(row, '×', () => {
+          if (remove.dataset.confirm !== 'yes') {
+            remove.dataset.confirm = 'yes';
+            const sp = remove.querySelector('span');
+            if (sp) sp.textContent = 'Удалить?'; else remove.textContent = 'Удалить?';
+            return;
+          }
+          act(['delete-session', r.id, '--revision', String(state.revision)]);
+        }, 'ns-button');
+        remove.title = 'Удалить с возможностью восстановления';
+      });
+
+      const deleted = (state.sessions || []).filter(r => r.date === selected && r.deleted);
+      if (deleted.length) {
+        const bin = el(journal, 'details', 'focus-bin');
+        el(bin, 'summary', '', 'Удалённые · ' + deleted.length);
+        deleted.forEach(r => {
+          btn(bin, 'Восстановить ' + ((state.subjects || []).find(s => s.id === r.subject)?.name || r.subject) + ' · ' + fmt(r.durationMs), () => act(['restore-session', r.id, '--revision', String(state.revision)]), 'ns-button');
+        });
+      }
+
+      // 7. Footer
+      const foot = el(host, 'div', 'focus-footer');
+      el(foot, 'span', 'focus-muted', 'Всё хранится на ноутбуке · день с 05:00');
+      btn(foot, 'Дневная заметка ↗', () => this.p.open('02_Log/Days/' + selected + '.md'), 'ns-button');
+      btn(foot, 'Обновить', refresh, 'ns-button');
+    };
+
+    refresh();
+
+    const ticker = window.setInterval(() => {
+      if (!host.isConnected || !state || editing) return;
+      if (state.isRunning && liveLabel) {
+        const extra = Date.now() - loadedAt;
+        let elapsed = state.elapsedMs + extra;
+        if (state.mode === 'pomodoro') elapsed = Math.min(elapsed, state.pomoRemainingMs);
+        liveLabel.textContent = clock(elapsed);
+        if (liveTotal) liveTotal.textContent = 'Текущая сессия · всего сегодня ' + fmt(sum(state.liveTotals) + elapsed - state.elapsedMs);
+      }
+    }, 1000);
+
+    const poller = window.setInterval(() => {
+      if (host.isConnected && !editing && !host.contains(document.activeElement)) refresh();
+    }, 15000);
+
+    return () => {
+      window.clearInterval(ticker);
+      window.clearInterval(poller);
+    };
+  }
   navigation(d) {
     const c=element(this.root,'div','ns-nav-inner');
     const brand=element(c,'div','ns-side-brand');element(brand,'i','ns-led');element(brand,'span','','SPACE');element(brand,'small','','/ 01');
@@ -394,6 +692,7 @@ class SpaceUI {
     button(c,'Сегодня',()=>this.p.openDay(),'ns-nav-button','sun');
     button(c,'Неделя',()=>this.p.activate('week'),'ns-nav-button','calendar-range');
     button(c,'Библиотека',()=>this.p.activate('library'),'ns-nav-button','library');
+    button(c,'Фокус',()=>this.p.activate('focus'),'ns-nav-button','timer');
     label(c,'PINNED / ПОД РУКОЙ');
     [['Русский · компилятор','03_Knowledge/ЕГЭ/Русский/КОМПИЛЯТОР_РУССКОГО.md','spell-check'],['Математика · протокол','03_Knowledge/ЕГЭ/Математика/ПРОТОКОЛ_ОПЕРЕЖАЮЩЕГО_УДАРА.md','sigma'],['English · hub','03_Knowledge/English/ENGLISH_HUB.md','languages'],['Задачи & тренажёр','Tasks.md','list-checks']].forEach(([title,path,glyph])=>{if(this.p.app.vault.getAbstractFileByPath(path))button(c,title,()=>this.p.open(path),'ns-pin',glyph);});
     const inbox=button(c,'Входящие',()=>this.p.activate('library','00_Inbox/'),'ns-nav-inbox','inbox');element(inbox,'b','',String(d.inboxCount));
@@ -449,12 +748,15 @@ class NothingSpace extends Plugin {
       ['today','Открыть сегодняшний дневник',()=>this.openDay(),[{modifiers:['Mod','Alt'],key:'d'}]],
       ['week','Открыть план недели',()=>this.openWeek()],
       ['library','Открыть библиотеку',()=>this.activate('library')],
+      ['focus','Открыть Фокус',()=>this.activate('focus'),[{modifiers:['Mod','Alt'],key:'f'}]],
       ['random','Случайный конспект',()=>this.randomNote()],
       ['sidebars','Показать боковые панели',()=>this.showSidebars()]
     ];
     commands.forEach(([id,name,fn,hotkeys])=>this.addCommand({id,name,hotkeys,callback:()=>Promise.resolve().then(fn).catch(report)}));
     this.addRibbonIcon('circle-dot','Nothing Space',()=>this.activate().catch(report));
     this.addRibbonIcon('plus','SPACE · быстрый захват',()=>new CaptureModal(this).open());
+    this.registerObsidianProtocolHandler('focus',()=>this.activate('focus'));
+    this.registerObsidianProtocolHandler('nothing-space',(p)=>this.activate(p.tab||'focus'));
     this.addSettingTab(new SpaceSettings(this.app,this));
     for(const event of ['modify','create','delete','rename'])this.registerEvent(this.app.vault.on(event,file=>{if(file?.extension==='md'||event==='rename'){this.cache.delete(file?.path);this.scheduleRefresh();}}));
     this.registerEvent(this.app.metadataCache.on('resolved',()=>this.scheduleRefresh()));

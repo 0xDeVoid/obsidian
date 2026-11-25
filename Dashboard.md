@@ -5,6 +5,8 @@ aliases: [Home, Главная, SPACE]
 ```nothing-space
 ```
 
+[[Фокус|◉ Фокус · история занятий и статистика]]
+
 > [!info]- Быстрые ссылки и помощь
 > [[System/Nothing Space/Начни здесь|Как устроен SPACE]] · [[Tasks|Задачи и тренажёр]] · [[03_Knowledge/English/ENGLISH_HUB|English]]
 >
