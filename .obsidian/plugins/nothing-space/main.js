@@ -406,7 +406,7 @@ class SpaceUI {
     const localDt = ms => { const d = new Date(ms); return `${dateKeyLocal(d)}T${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
     const timeStr = ms => new Date(ms).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-    let state = null, selected = null, span = 7, editing = false, busy = false, liveLabel = null, liveTotal = null, loadedAt = 0;
+    let state = null, selected = null, span = 7, editing = false, busy = false, liveLabel = null, liveTotal = null, loadedAt = 0, lastRenderKey = '';
     const totalFor = day => (state && day === state.currentDate ? state.liveTotals : (state?.history?.[day] || {}));
     const sum = obj => Object.values(obj || {}).reduce((a, b) => a + Number(b), 0);
 
@@ -416,15 +416,20 @@ class SpaceUI {
       });
     });
 
-    const refresh = async () => {
+    const refresh = async (force = false) => {
       if (busy || editing) return;
       busy = true;
       try {
         const out = await api(['dashboard']);
-        state = JSON.parse(out);
+        const nextState = JSON.parse(out);
+        const key = JSON.stringify([nextState.revision, nextState.isRunning, nextState.activeSubjectId, nextState.currentDate, nextState.mode, nextState.pomoMinutes, nextState.sessions?.length, nextState.isRunning ? null : nextState.liveTotals]);
+        state = nextState;
         loadedAt = Date.now();
         selected ||= state.currentDate;
-        render();
+        if (force || key !== lastRenderKey) {
+          lastRenderKey = key;
+          render();
+        }
       } catch (e) {
         host.empty ? host.empty() : host.replaceChildren();
         el(host, 'p', 'focus-error', 'Не удалось загрузить данные таймера: ' + e.message);
@@ -662,10 +667,10 @@ class SpaceUI {
       btn(foot, 'Обновить', refresh, 'ns-button');
     };
 
-    refresh();
+    refresh(true);
 
     const ticker = window.setInterval(() => {
-      if (!host.isConnected || !state || editing) return;
+      if (document.hidden || !host.isConnected || !host.offsetParent || !state || editing) return;
       if (state.isRunning && liveLabel) {
         const extra = Date.now() - loadedAt;
         let elapsed = state.elapsedMs + extra;
@@ -676,7 +681,7 @@ class SpaceUI {
     }, 1000);
 
     const poller = window.setInterval(() => {
-      if (host.isConnected && !editing && !host.contains(document.activeElement)) refresh();
+      if (!document.hidden && host.isConnected && host.offsetParent && !editing && !host.contains(document.activeElement)) refresh();
     }, 15000);
 
     return () => {
@@ -864,7 +869,7 @@ class NothingSpace extends Plugin {
   async openQuiz(item,quiz){const url=quiz.text.match(/https?:\/\/[^\s)]+/)?.[0];if(url)window.open(url,'_blank');if(quiz.done)return;const f=this.app.vault.getAbstractFileByPath(item.path);if(!(f instanceof TFile))return;await this.app.vault.process(f,content=>{const rows=content.split('\n');let i=quiz.row;if(rows[i]!==quiz.raw){const found=parseTasks(content,item.path).find(t=>t.text===quiz.text);if(!found)throw new Error('Квиз изменился. Обнови экран.');i=found.row;}rows[i]=rows[i].replace(/^(\s*(?:[-*+]|\d+[.)])\s+\[)[ xX\/\-](\])/, '$1x$2');return rows.join('\n');});await this.refresh();}
   async processVocab(item,task,success){const f=this.app.vault.getAbstractFileByPath(task.path);if(!(f instanceof TFile))throw new Error('Словарь не найден');const today=dateKey();await this.app.vault.process(f,content=>{const rows=content.split('\n');let i=task.row;if(rows[i]!==task.raw){const found=parseTasks(content,task.path).find(t=>t.text===task.text);if(!found)throw new Error('Карточка изменилась. Обнови экран.');i=found.row;}const old=task.text,fails=Number(old.match(/\[fails:: (\d+)\]/)?.[1]||0),base=old.replace(/\[fails:: \d+\]/,'').replace(/ 🗓️\d{4}-\d{2}-\d{2}/,'').trim(),next=`${base} [fails:: ${success?fails:fails+1}] 🗓️${today}`;rows[i]=rows[i].replace(/^(\s*(?:[-*+]|\d+[.)])\s+\[)[ xX\/\-](\]\s+).*/,(_,a,b)=>`${a}${success?'x':' '}${b}${next}`);return rows.join('\n');});for(const ui of this.interfaces){const key=`${item.num}:${today}`,s=ui.vocabState?.get(key);if(s)s.index++;}await this.refresh();new Notice(success?'Карточка засчитана':'Отметил ошибку — вернём её позже');}
   randomNote(){const files=this.app.vault.getMarkdownFiles().filter(f=>f.path.startsWith('03_Knowledge/'));if(files.length)return this.open(files[Math.floor(Math.random()*files.length)].path);new Notice('В базе знаний пока нет заметок');}
-  paintClock(){const text=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});for(const ui of this.interfaces)ui.root.querySelectorAll('.ns-clock').forEach(el=>el.textContent=text);}
+  paintClock(){if(document.hidden)return;const text=new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});for(const ui of this.interfaces)ui.root.querySelectorAll('.ns-clock').forEach(el=>{if(el.textContent!==text)el.textContent=text;});}
 }
 module.exports=NothingSpace;
 module.exports._test={dateKey,shift,monday,weekKey,weekStart,parseTasks,setNumber,appendSection,dayContent,weekContent,frontmatter,scoreValues,isoDate,daysSince,vocabParts,SpaceUI,CaptureModal};

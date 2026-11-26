@@ -292,8 +292,7 @@
 .ns-vocab-progress {height:4px;background:#303137;border-radius:99px;overflow:hidden;margin:8px 0 12px;}.ns-vocab-progress i {display:block;height:100%;background:#e50914;border-radius:inherit;transition:width .35s ease;}
 .ns-vocab-card {position:relative;padding:15px;border:1px dashed #55565e;border-radius:10px;background:#151619;}.ns-vocab-prompt {display:block;font-size:15px;line-height:1.45;padding-right:12px;}.ns-vocab-answer {margin-top:12px;padding-top:10px;border-top:1px solid var(--ns-line);color:#c8cac5;font-size:12px;line-height:1.5;animation:ns-rise .25s ease both;}.ns-vocab-reveal {margin-top:12px;border:0;background:transparent;color:#a9abb2;font-size:10px;cursor:pointer;}.ns-vocab-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px;}.ns-vocab-button {padding:9px;border-radius:7px;cursor:pointer;font-size:10px;background:transparent;transition:transform .2s ease,filter .2s ease;}.ns-vocab-button:hover {transform:translateY(-2px);filter:brightness(1.15);}.ns-vocab-know {border:1px solid #718979;color:#b9d1bd;}.ns-vocab-fail {border:1px solid #e50914;color:#ff6b70;}.ns-vocab-complete {color:#a5b8a7;font-size:12px;}
 @keyframes ns-rise {from {opacity:0;transform:translateY(7px)} to {opacity:1;transform:translateY(0)}}
-@keyframes ns-led {0%,100% {box-shadow:0 0 0 0 rgba(229,9,20,.18)} 50% {box-shadow:0 0 0 5px rgba(229,9,20,0)}}
-.ns-card {animation:ns-rise .42s ease both;}.ns-led,.ns-review-dot {animation:ns-led 2.8s ease-in-out infinite;}
+.ns-card {animation:ns-rise .42s ease both;}.ns-led,.ns-review-dot {box-shadow:0 0 0 3px rgba(229,9,20,.16);}
 /* Inline dashboard and narrower windows */
 .markdown-preview-view.space-dashboard {padding:0;}
 .markdown-preview-view.space-dashboard .markdown-preview-sizer {max-width:none;padding:0!important;}
